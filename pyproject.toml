@@ -1,0 +1,36 @@
+[project]
+name = "orbital"
+version = "1.0.0"
+description = "A fast, offline-first periodic table for macOS, Windows, and Linux"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+    "PySide6>=6.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "Pillow>=10.0",
+]
+package = [
+    "pyinstaller>=6.0",
+]
+
+[project.scripts]
+orbital = "orbital.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["orbital*"]
+
+[tool.setuptools.package-data]
+orbital = ["data/elements/*.json", "resources/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
