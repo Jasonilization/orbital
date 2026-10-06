@@ -1,0 +1,43 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 68,
+  "symbol": "Er",
+  "name": "Erbium",
+  "atomic_mass": 167.26,
+  "electron_configuration": "[Xe] 4f12 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.24,
+  "ionization_energy_kj": 589,
+  "atomic_radius_pm": 175,
+  "melt_k": 1802,
+  "boil_k": 3141,
+  "density_g_cm3": 9.066,
+  "abundance_ppm": 3.5,
+  "discovered": {
+    "year": 1843,
+    "by": "Carl Gustaf Mosander",
+    "origin": "Ytterby, a Swedish village"
+  },
+  "uses": [
+    "Erbium-doped fibre amplifiers \u2014 boost the internet's long-haul signals",
+    "Er:YAG lasers (skin and dentistry)",
+    "Pink glass and photographic filters",
+    "Neutron-absorbing control rods"
+  ],
+  "compounds": [
+    "Er2O3 \u2014 erbium oxide",
+    "ErCl3 \u2014 erbium chloride",
+    "Er:YAG \u2014 laser crystal"
+  ]
+}

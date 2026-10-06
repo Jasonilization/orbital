@@ -1,0 +1,40 @@
+{
+  "number": 9,
+  "symbol": "F",
+  "name": "Fluorine",
+  "atomic_mass": 18.998,
+  "group": 17,
+  "period": 2,
+  "block": "p",
+  "category": "halogen",
+  "state": "gas",
+  "electron_configuration": "[He] 2s2 2p5",
+  "oxidation_states": [
+    "-1*"
+  ],
+  "electronegativity": 3.98,
+  "ionization_energy_kj": 1681,
+  "atomic_radius_pm": 50,
+  "melt_k": 53.53,
+  "boil_k": 85.03,
+  "density_g_cm3": 0.001696,
+  "abundance_ppm": 585,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1886,
+    "by": "Henri Moissan",
+    "origin": "Latin fluere 'to flow', from fluorspar"
+  },
+  "uses": [
+    "Toothpaste and water fluoridation",
+    "PTFE non-stick coatings",
+    "Refrigerant gases (HFCs)",
+    "Uranium enrichment (UF6)"
+  ],
+  "compounds": [
+    "NaF \u2014 sodium fluoride",
+    "CaF2 \u2014 calcium fluoride (fluorspar)",
+    "HF \u2014 hydrogen fluoride"
+  ]
+}

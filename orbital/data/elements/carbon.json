@@ -1,0 +1,52 @@
+{
+  "number": 6,
+  "symbol": "C",
+  "name": "Carbon",
+  "atomic_mass": 12.011,
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    12.0096,
+    12.0116
+  ],
+  "group": 14,
+  "period": 2,
+  "block": "p",
+  "category": "nonmetal",
+  "state": "solid",
+  "electron_configuration": "[He] 2s2 2p2",
+  "oxidation_states": [
+    "-4*",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2*",
+    "+3",
+    "+4*"
+  ],
+  "electronegativity": 2.55,
+  "ionization_energy_kj": 1087,
+  "atomic_radius_pm": 70,
+  "melt_k": 3823,
+  "boil_k": 4098,
+  "density_g_cm3": 2.267,
+  "abundance_ppm": 200,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": "ancient",
+    "by": "Known since prehistory",
+    "origin": "Latin carbo 'charcoal'"
+  },
+  "uses": [
+    "Steel and cast iron",
+    "Polymers, fuels, all organic chemistry",
+    "Graphite electrodes and lubricants",
+    "Diamond cutting tools"
+  ],
+  "compounds": [
+    "CO2 \u2014 carbon dioxide",
+    "CaCO3 \u2014 calcium carbonate",
+    "CH4 \u2014 methane"
+  ]
+}

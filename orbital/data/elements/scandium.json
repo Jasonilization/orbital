@@ -1,0 +1,40 @@
+{
+  "number": 21,
+  "symbol": "Sc",
+  "name": "Scandium",
+  "atomic_mass": 44.956,
+  "group": 3,
+  "period": 4,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Ar] 3d1 4s2",
+  "oxidation_states": [
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.36,
+  "ionization_energy_kj": 633,
+  "atomic_radius_pm": 160,
+  "melt_k": 1814,
+  "boil_k": 3109,
+  "density_g_cm3": 2.985,
+  "abundance_ppm": 22,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1879,
+    "by": "Lars Fredrik Nilson",
+    "origin": "Latin Scandia 'Scandinavia'"
+  },
+  "uses": [
+    "High-strength aluminium alloys (bikes, aircraft, baseball bats)",
+    "High-intensity stadium lamps",
+    "Solid-state laser crystals"
+  ],
+  "compounds": [
+    "Sc2O3 \u2014 scandium oxide",
+    "ScCl3 \u2014 scandium chloride"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "number": 86,
+  "symbol": "Rn",
+  "name": "Radon",
+  "atomic_mass": 222,
+  "atomic_mass_type": "isotope",
+  "group": 18,
+  "period": 6,
+  "block": "p",
+  "category": "noble gas",
+  "state": "gas",
+  "electron_configuration": "[Xe] 4f14 5d10 6s2 6p6",
+  "oxidation_states": [
+    "0*",
+    "+2",
+    "+6"
+  ],
+  "electronegativity": 2.2,
+  "ionization_energy_kj": 1037,
+  "atomic_radius_pm": 120,
+  "melt_k": 202,
+  "boil_k": 211.5,
+  "density_g_cm3": 0.00973,
+  "radioactive": true,
+  "synthetic": false,
+  "discovered": {
+    "year": 1900,
+    "by": "Friedrich Ernst Dorn",
+    "origin": "From radium \u2014 'radium emanation'"
+  },
+  "uses": [
+    "Radiotherapy seeds (historical)",
+    "Radon monitoring \u2014 a researched earthquake precursor signal",
+    "Indoor radon testing: the second-leading cause of lung cancer"
+  ],
+  "compounds": [
+    "RnF2 \u2014 radon difluoride (trace studies)"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "period": 7,
+  "radioactive": true,
+  "synthetic": true,
+  "category": "transition metal",
+  "block": "d",
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 109,
+  "symbol": "Mt",
+  "name": "Meitnerium",
+  "atomic_mass": 278,
+  "atomic_mass_type": "isotope",
+  "group": 9,
+  "electron_configuration": "[Rn] 5f14 6d7 7s2",
+  "oxidation_states": [
+    "+1",
+    "+3*"
+  ],
+  "density_g_cm3": 37.4,
+  "discovered": {
+    "year": 1982,
+    "by": "Peter Armbruster and Gottfried Munzenberg's GSI team",
+    "origin": "Lise Meitner, co-discoverer of nuclear fission"
+  },
+  "uses": [
+    "Research only"
+  ]
+}

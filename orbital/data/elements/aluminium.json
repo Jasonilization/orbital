@@ -1,0 +1,42 @@
+{
+  "number": 13,
+  "symbol": "Al",
+  "name": "Aluminium",
+  "atomic_mass": 26.982,
+  "group": 13,
+  "period": 3,
+  "block": "p",
+  "category": "post-transition metal",
+  "state": "solid",
+  "electron_configuration": "[Ne] 3s2 3p1",
+  "oxidation_states": [
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.61,
+  "ionization_energy_kj": 578,
+  "atomic_radius_pm": 125,
+  "melt_k": 933.47,
+  "boil_k": 2792,
+  "density_g_cm3": 2.7,
+  "abundance_ppm": 82300,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1825,
+    "by": "Hans Christian Orsted",
+    "origin": "Latin alumen 'alum'"
+  },
+  "uses": [
+    "Drink cans, foil and lightweight castings",
+    "Aircraft and vehicle alloys",
+    "Power transmission lines",
+    "Reflective coatings and paint"
+  ],
+  "compounds": [
+    "Al2O3 \u2014 aluminium oxide (corundum)",
+    "Al(OH)3 \u2014 aluminium hydroxide (antacid)",
+    "KAl(SO4)2\u00b712H2O \u2014 potash alum"
+  ]
+}

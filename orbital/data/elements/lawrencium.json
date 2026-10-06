@@ -1,0 +1,35 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": true,
+  "group": null,
+  "number": 103,
+  "symbol": "Lr",
+  "name": "Lawrencium",
+  "atomic_mass": 266,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 5f14 7s2 7p1",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": null,
+  "ionization_energy_kj": 479,
+  "melt_k": 1900,
+  "discovered": {
+    "year": 1961,
+    "by": "Albert Ghiorso, Torbjorn Sikkeland, Almon Larsh and Robert Latimer",
+    "origin": "Ernest Lawrence, inventor of the cyclotron"
+  },
+  "uses": [
+    "Research only \u2014 last of the actinides"
+  ],
+  "compounds": [
+    "LrCl3 \u2014 lawrencium chloride (tracer-scale studies)"
+  ]
+}

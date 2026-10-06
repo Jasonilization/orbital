@@ -1,0 +1,43 @@
+{
+  "number": 30,
+  "symbol": "Zn",
+  "name": "Zinc",
+  "atomic_mass": 65.38,
+  "group": 12,
+  "period": 4,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Ar] 3d10 4s2",
+  "oxidation_states": [
+    "-2",
+    "0",
+    "+1",
+    "+2*"
+  ],
+  "electronegativity": 1.65,
+  "ionization_energy_kj": 906,
+  "atomic_radius_pm": 135,
+  "melt_k": 692.68,
+  "boil_k": 1180,
+  "density_g_cm3": 7.14,
+  "abundance_ppm": 70,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1746,
+    "by": "Andreas Sigismund Marggraf (isolated)",
+    "origin": "German Zink"
+  },
+  "uses": [
+    "Galvanising steel against rust",
+    "Brass and die-cast alloys",
+    "Batteries (zinc-carbon, alkaline)",
+    "Essential dietary trace metal"
+  ],
+  "compounds": [
+    "ZnO \u2014 zinc oxide (sunscreen, calamine)",
+    "ZnSO4 \u2014 zinc sulfate (fertiliser)",
+    "ZnCl2 \u2014 zinc chloride (soldering flux)"
+  ]
+}

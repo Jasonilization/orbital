@@ -1,0 +1,43 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 64,
+  "symbol": "Gd",
+  "name": "Gadolinium",
+  "atomic_mass": 157.25,
+  "electron_configuration": "[Xe] 4f7 5d1 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.2,
+  "ionization_energy_kj": 593,
+  "atomic_radius_pm": 180,
+  "melt_k": 1585,
+  "boil_k": 3546,
+  "density_g_cm3": 7.9,
+  "abundance_ppm": 6.2,
+  "discovered": {
+    "year": 1880,
+    "by": "Jean Charles Galissard de Marignac",
+    "origin": "The mineral gadolinite (after Johan Gadolin)"
+  },
+  "uses": [
+    "MRI contrast agents (Gd chelates)",
+    "Neutron shielding in reactors",
+    "Green CRT phosphors",
+    "Magnetic refrigeration research"
+  ],
+  "compounds": [
+    "Gd2O3 \u2014 gadolinium oxide",
+    "GdCl3 \u2014 gadolinium chloride",
+    "Gd-DTPA \u2014 MRI contrast agent"
+  ]
+}

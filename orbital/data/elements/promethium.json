@@ -1,0 +1,41 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": true,
+  "group": null,
+  "number": 61,
+  "symbol": "Pm",
+  "name": "Promethium",
+  "atomic_mass": 145,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Xe] 4f5 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.13,
+  "ionization_energy_kj": 540,
+  "atomic_radius_pm": 185,
+  "melt_k": 1315,
+  "boil_k": 3273,
+  "density_g_cm3": 7.26,
+  "discovered": {
+    "year": 1945,
+    "by": "Jacob A. Marinsky, Lawrence E. Glendenin and Charles D. Coryell",
+    "origin": "Prometheus, who stole fire from the gods"
+  },
+  "uses": [
+    "Luminous paint (Pm-147, replaced tritium in watches and signs)",
+    "Nuclear batteries (Pm-147 betavoltaics)",
+    "Laser material research"
+  ],
+  "compounds": [
+    "Pm2O3 \u2014 promethium oxide",
+    "PmCl3 \u2014 promethium chloride"
+  ]
+}

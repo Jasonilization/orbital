@@ -1,0 +1,41 @@
+{
+  "number": 38,
+  "symbol": "Sr",
+  "name": "Strontium",
+  "atomic_mass": 87.62,
+  "group": 2,
+  "period": 5,
+  "block": "s",
+  "category": "alkaline earth metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 5s2",
+  "oxidation_states": [
+    "+1",
+    "+2*"
+  ],
+  "electronegativity": 0.95,
+  "ionization_energy_kj": 550,
+  "atomic_radius_pm": 200,
+  "melt_k": 1050,
+  "boil_k": 1655,
+  "density_g_cm3": 2.64,
+  "abundance_ppm": 370,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1790,
+    "by": "Adair Crawford",
+    "origin": "Strontian, a Scottish village"
+  },
+  "uses": [
+    "Bright red in fireworks and flares",
+    "Permanent ceramic magnets (strontium ferrite)",
+    "Glow-in-the-dark strontium aluminate",
+    "Desilvering lead in refining"
+  ],
+  "compounds": [
+    "SrCO3 \u2014 strontium carbonate",
+    "Sr(NO3)2 \u2014 strontium nitrate (red flares)",
+    "SrSO4 \u2014 celestine (main ore)"
+  ]
+}

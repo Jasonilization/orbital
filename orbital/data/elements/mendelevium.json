@@ -1,0 +1,36 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": true,
+  "group": null,
+  "number": 101,
+  "symbol": "Md",
+  "name": "Mendelevium",
+  "atomic_mass": 258,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 5f13 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.3,
+  "ionization_energy_kj": 635,
+  "atomic_radius_pm": 186,
+  "melt_k": 1100,
+  "discovered": {
+    "year": 1955,
+    "by": "Albert Ghiorso, Bernard Harvey, Gregory Choppin, Stanley Thompson and Glenn Seaborg",
+    "origin": "Dmitri Mendeleev \u2014 the periodic table's author"
+  },
+  "uses": [
+    "Research only \u2014 named after the man who predicted it all"
+  ],
+  "compounds": [
+    "Md2O3 \u2014 mendelevium(III) oxide (tracer scale)"
+  ]
+}

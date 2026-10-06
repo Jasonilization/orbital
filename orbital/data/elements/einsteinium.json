@@ -1,0 +1,41 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": true,
+  "group": null,
+  "number": 99,
+  "symbol": "Es",
+  "name": "Einsteinium",
+  "atomic_mass": 252,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 5f11 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4"
+  ],
+  "electronegativity": 1.3,
+  "ionization_energy_kj": 619,
+  "atomic_radius_pm": 186,
+  "melt_k": 1133,
+  "boil_k": 1269,
+  "density_g_cm3": 8.84,
+  "discovered": {
+    "year": 1952,
+    "by": "Albert Ghiorso and colleagues, in the debris of the 'Ivy Mike' thermonuclear test",
+    "origin": "Albert Einstein"
+  },
+  "uses": [
+    "Es-254 targets for producing mendelevium",
+    "Research only"
+  ],
+  "compounds": [
+    "Es2O3 \u2014 einsteinium(III) oxide",
+    "EsCl3 \u2014 einsteinium chloride (tracer scale)"
+  ]
+}

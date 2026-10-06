@@ -1,0 +1,48 @@
+{
+  "number": 33,
+  "symbol": "As",
+  "name": "Arsenic",
+  "atomic_mass": 74.922,
+  "group": 15,
+  "period": 4,
+  "block": "p",
+  "category": "metalloid",
+  "state": "solid",
+  "electron_configuration": "[Ar] 3d10 4s2 4p3",
+  "oxidation_states": [
+    "-3*",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4",
+    "+5*"
+  ],
+  "electronegativity": 2.18,
+  "ionization_energy_kj": 947,
+  "atomic_radius_pm": 115,
+  "melt_k": 1090,
+  "boil_k": 887,
+  "density_g_cm3": 5.727,
+  "abundance_ppm": 1.8,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1250,
+    "by": "Albertus Magnus (documented isolation)",
+    "origin": "Greek arsenikon, the arsenic mineral orpiment"
+  },
+  "uses": [
+    "Semiconductor dopant (GaAs circuits)",
+    "Wood preservative (chromated copper arsenate)",
+    "Alloying lead (shot, batteries)",
+    "Historically pesticides and warfare"
+  ],
+  "compounds": [
+    "As2O3 \u2014 arsenic trioxide",
+    "AsH3 \u2014 arsine",
+    "GaAs \u2014 gallium arsenide"
+  ]
+}

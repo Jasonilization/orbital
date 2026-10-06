@@ -1,0 +1,30 @@
+{
+  "period": 7,
+  "block": "p",
+  "radioactive": true,
+  "synthetic": true,
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 114,
+  "symbol": "Fl",
+  "name": "Flerovium",
+  "atomic_mass": 289,
+  "atomic_mass_type": "isotope",
+  "group": 14,
+  "category": "post-transition metal",
+  "electron_configuration": "[Rn] 5f14 6d10 7s2 7p2",
+  "oxidation_states": [
+    "+2*"
+  ],
+  "melt_k": 340,
+  "boil_k": 380,
+  "density_g_cm3": 14,
+  "discovered": {
+    "year": 1999,
+    "by": "Yuri Oganessian's JINR team, with Lawrence Livermore",
+    "origin": "Georgy Flyorov, founder of the Dubna Flerov Laboratory"
+  },
+  "uses": [
+    "Research only \u2014 relativistic effects may make it surprisingly volatile"
+  ]
+}

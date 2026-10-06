@@ -1,0 +1,29 @@
+{
+  "period": 7,
+  "radioactive": true,
+  "synthetic": true,
+  "category": "transition metal",
+  "block": "d",
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 111,
+  "symbol": "Rg",
+  "name": "Roentgenium",
+  "atomic_mass": 282,
+  "atomic_mass_type": "isotope",
+  "group": 11,
+  "electron_configuration": "[Rn] 5f14 6d9 7s2",
+  "oxidation_states": [
+    "+1*",
+    "+3*"
+  ],
+  "density_g_cm3": 28.7,
+  "discovered": {
+    "year": 1994,
+    "by": "Sigurd Hofmann's GSI team",
+    "origin": "Wilhelm Roentgen, discoverer of X-rays"
+  },
+  "uses": [
+    "Research only \u2014 predicted to behave like an even nobler gold"
+  ]
+}

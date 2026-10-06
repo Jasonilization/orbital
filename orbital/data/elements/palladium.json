@@ -1,0 +1,46 @@
+{
+  "number": 46,
+  "symbol": "Pd",
+  "name": "Palladium",
+  "atomic_mass": 106.42,
+  "group": 10,
+  "period": 5,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d10",
+  "oxidation_states": [
+    "0*",
+    "+1",
+    "+2*",
+    "+3",
+    "+4*",
+    "+5",
+    "+6"
+  ],
+  "electronegativity": 2.2,
+  "ionization_energy_kj": 804,
+  "atomic_radius_pm": 140,
+  "melt_k": 1828.05,
+  "boil_k": 3236,
+  "density_g_cm3": 12.023,
+  "abundance_ppm": 0.015,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1803,
+    "by": "William Hyde Wollaston",
+    "origin": "The asteroid Pallas (discovered 1802)"
+  },
+  "uses": [
+    "Catalytic converters",
+    "Absorbs 900x its volume of hydrogen \u2014 purification",
+    "Electronics: ceramic capacitors, connectors",
+    "White-gold jewellery"
+  ],
+  "compounds": [
+    "PdO \u2014 palladium(II) oxide",
+    "PdCl2 \u2014 palladium chloride",
+    "K2PdCl4 \u2014 potassium tetrachloropalladate"
+  ]
+}

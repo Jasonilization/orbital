@@ -1,0 +1,36 @@
+{
+  "block": "s",
+  "period": 7,
+  "category": "alkali metal",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": false,
+  "group": 1,
+  "number": 87,
+  "symbol": "Fr",
+  "name": "Francium",
+  "atomic_mass": 223,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 7s1",
+  "oxidation_states": [
+    "-1",
+    "+1*"
+  ],
+  "electronegativity": 0.7,
+  "ionization_energy_kj": 380,
+  "melt_k": 300,
+  "boil_k": 950,
+  "density_g_cm3": 1.87,
+  "discovered": {
+    "year": 1939,
+    "by": "Marguerite Perey",
+    "origin": "France"
+  },
+  "uses": [
+    "Most unstable of the first 101 elements \u2014 never seen in bulk, ever",
+    "Research into atomic structure (heavy-atom spectroscopy)"
+  ],
+  "compounds": [
+    "FrCl \u2014 francium chloride (tracer studies)"
+  ]
+}

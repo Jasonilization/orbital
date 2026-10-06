@@ -1,0 +1,36 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": true,
+  "group": null,
+  "number": 100,
+  "symbol": "Fm",
+  "name": "Fermium",
+  "atomic_mass": 257,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 5f12 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.3,
+  "ionization_energy_kj": 627,
+  "atomic_radius_pm": 186,
+  "melt_k": 1800,
+  "discovered": {
+    "year": 1952,
+    "by": "Albert Ghiorso and colleagues, in 'Ivy Mike' thermonuclear debris",
+    "origin": "Enrico Fermi"
+  },
+  "uses": [
+    "Research only \u2014 the heaviest element that can be made by neutron capture"
+  ],
+  "compounds": [
+    "Fm2O3 \u2014 fermium(III) oxide (tracer scale)"
+  ]
+}

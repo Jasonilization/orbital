@@ -1,0 +1,44 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": true,
+  "group": null,
+  "number": 93,
+  "symbol": "Np",
+  "name": "Neptunium",
+  "atomic_mass": 237,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 5f4 6d1 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4",
+    "+5",
+    "+6*",
+    "+7"
+  ],
+  "electronegativity": 1.36,
+  "ionization_energy_kj": 604,
+  "atomic_radius_pm": 175,
+  "melt_k": 917,
+  "boil_k": 4273,
+  "density_g_cm3": 20.45,
+  "discovered": {
+    "year": 1940,
+    "by": "Edwin McMillan and Philip Abelson",
+    "origin": "The planet Neptune \u2014 next after uranium"
+  },
+  "uses": [
+    "Research; Np-237 is a long-lived waste product in spent reactor fuel",
+    "Neutron detection instruments"
+  ],
+  "compounds": [
+    "NpO2 \u2014 neptunium dioxide",
+    "NpF6 \u2014 neptunium hexafluoride"
+  ]
+}

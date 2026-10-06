@@ -1,0 +1,41 @@
+{
+  "number": 85,
+  "symbol": "At",
+  "name": "Astatine",
+  "atomic_mass": 210,
+  "atomic_mass_type": "isotope",
+  "group": 17,
+  "period": 6,
+  "block": "p",
+  "category": "halogen",
+  "state": "solid",
+  "electron_configuration": "[Xe] 4f14 5d10 6s2 6p5",
+  "oxidation_states": [
+    "-1*",
+    "0",
+    "+1",
+    "+3",
+    "+5"
+  ],
+  "electronegativity": 2.2,
+  "ionization_energy_kj": 890,
+  "melt_k": 575,
+  "boil_k": 610,
+  "density_g_cm3": 7,
+  "radioactive": true,
+  "synthetic": false,
+  "discovered": {
+    "year": 1940,
+    "by": "Dale Corson, Kenneth Ross MacKenzie and Emilio Segre",
+    "origin": "Greek astatos 'unstable'"
+  },
+  "uses": [
+    "Rarest naturally occurring element \u2014 a few grams exist in Earth's whole crust at any moment",
+    "At-211 targeted alpha therapy \u2014 an active cancer research frontier",
+    "Produced only in research quantities"
+  ],
+  "compounds": [
+    "NaAt \u2014 sodium astatide (tracer studies)",
+    "At2 \u2014 diatomic astatine (trace)"
+  ]
+}

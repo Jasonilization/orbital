@@ -1,0 +1,44 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 58,
+  "symbol": "Ce",
+  "name": "Cerium",
+  "atomic_mass": 140.12,
+  "electron_configuration": "[Xe] 4f1 5d1 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4*"
+  ],
+  "electronegativity": 1.12,
+  "ionization_energy_kj": 534,
+  "atomic_radius_pm": 185,
+  "melt_k": 1068,
+  "boil_k": 3737,
+  "density_g_cm3": 6.77,
+  "abundance_ppm": 66,
+  "discovered": {
+    "year": 1803,
+    "by": "Martin Heinrich Klaproth, Wilhelm Hisinger and Jons Jacob Berzelius",
+    "origin": "The asteroid Ceres (discovered 1801)"
+  },
+  "uses": [
+    "Catalytic converters (CeO2 stores and releases oxygen)",
+    "Glass polishing powder (cerium oxide)",
+    "Lighter flints",
+    "UV-blocking glass"
+  ],
+  "compounds": [
+    "CeO2 \u2014 cerium dioxide (polishing powder)",
+    "Ce2O3 \u2014 cerium(III) oxide",
+    "CeCl3 \u2014 cerium chloride"
+  ]
+}

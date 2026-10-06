@@ -1,0 +1,41 @@
+{
+  "number": 20,
+  "symbol": "Ca",
+  "name": "Calcium",
+  "atomic_mass": 40.078,
+  "group": 2,
+  "period": 4,
+  "block": "s",
+  "category": "alkaline earth metal",
+  "state": "solid",
+  "electron_configuration": "[Ar] 4s2",
+  "oxidation_states": [
+    "+1",
+    "+2*"
+  ],
+  "electronegativity": 1.0,
+  "ionization_energy_kj": 590,
+  "atomic_radius_pm": 180,
+  "melt_k": 1115,
+  "boil_k": 1757,
+  "density_g_cm3": 1.55,
+  "abundance_ppm": 41500,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1808,
+    "by": "Humphry Davy",
+    "origin": "Latin calx 'lime'"
+  },
+  "uses": [
+    "Cement, mortar and concrete",
+    "Bones and teeth (calcium phosphate)",
+    "Steel deoxidiser",
+    "Plaster and gypsum"
+  ],
+  "compounds": [
+    "CaCO3 \u2014 calcium carbonate (limestone, chalk)",
+    "CaSO4\u00b72H2O \u2014 gypsum (plaster of Paris)",
+    "Ca(OH)2 \u2014 calcium hydroxide (slaked lime)"
+  ]
+}

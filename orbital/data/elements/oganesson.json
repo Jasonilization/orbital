@@ -1,0 +1,31 @@
+{
+  "period": 7,
+  "block": "p",
+  "radioactive": true,
+  "synthetic": true,
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 118,
+  "symbol": "Og",
+  "name": "Oganesson",
+  "atomic_mass": 294,
+  "atomic_mass_type": "isotope",
+  "group": 18,
+  "category": "noble gas",
+  "electron_configuration": "[Rn] 5f14 6d10 7s2 7p6",
+  "oxidation_states": [
+    "0*",
+    "+2*"
+  ],
+  "melt_k": 325,
+  "boil_k": 450,
+  "density_g_cm3": 5.0,
+  "discovered": {
+    "year": 2002,
+    "by": "Yuri Oganessian's JINR team, with Lawrence Livermore",
+    "origin": "Yuri Oganessian \u2014 the only element named after a living scientist"
+  },
+  "uses": [
+    "Research only \u2014 predicted to be a reactive, solid 'noble' gas"
+  ]
+}

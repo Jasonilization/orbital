@@ -1,0 +1,43 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 62,
+  "symbol": "Sm",
+  "name": "Samarium",
+  "atomic_mass": 150.36,
+  "electron_configuration": "[Xe] 4f6 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.17,
+  "ionization_energy_kj": 545,
+  "atomic_radius_pm": 185,
+  "melt_k": 1345,
+  "boil_k": 2067,
+  "density_g_cm3": 7.52,
+  "abundance_ppm": 7.05,
+  "discovered": {
+    "year": 1879,
+    "by": "Paul-Emile Lecoq de Boisbaudran",
+    "origin": "Vasili Samarsky-Bykhovets \u2014 the first element named after a person"
+  },
+  "uses": [
+    "Samarium-cobalt magnets (stable to 300 C)",
+    "Neutron capture in reactors (Sm-149)",
+    "Cancer therapy (Sm-153)",
+    "Infrared-absorbing glass"
+  ],
+  "compounds": [
+    "Sm2O3 \u2014 samarium oxide",
+    "SmCo5 \u2014 samarium-cobalt magnet",
+    "SmCl3 \u2014 samarium chloride"
+  ]
+}

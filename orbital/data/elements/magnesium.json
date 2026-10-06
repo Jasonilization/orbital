@@ -1,0 +1,41 @@
+{
+  "number": 12,
+  "symbol": "Mg",
+  "name": "Magnesium",
+  "atomic_mass": 24.305,
+  "group": 2,
+  "period": 3,
+  "block": "s",
+  "category": "alkaline earth metal",
+  "state": "solid",
+  "electron_configuration": "[Ne] 3s2",
+  "oxidation_states": [
+    "+1",
+    "+2*"
+  ],
+  "electronegativity": 1.31,
+  "ionization_energy_kj": 738,
+  "atomic_radius_pm": 150,
+  "melt_k": 923,
+  "boil_k": 1363,
+  "density_g_cm3": 1.738,
+  "abundance_ppm": 23300,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1755,
+    "by": "Joseph Black",
+    "origin": "Greek Magnesia, a district in Thessaly"
+  },
+  "uses": [
+    "Lightweight alloys for cars and aircraft",
+    "Flares and fireworks",
+    "Central atom of chlorophyll",
+    "Epsom salts"
+  ],
+  "compounds": [
+    "MgO \u2014 magnesium oxide",
+    "MgSO4 \u2014 Epsom salt",
+    "Mg(OH)2 \u2014 magnesium hydroxide (milk of magnesia)"
+  ]
+}

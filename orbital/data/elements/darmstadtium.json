@@ -1,0 +1,28 @@
+{
+  "period": 7,
+  "radioactive": true,
+  "synthetic": true,
+  "category": "transition metal",
+  "block": "d",
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 110,
+  "symbol": "Ds",
+  "name": "Darmstadtium",
+  "atomic_mass": 281,
+  "atomic_mass_type": "isotope",
+  "group": 10,
+  "electron_configuration": "[Rn] 5f14 6d8 7s2",
+  "oxidation_states": [
+    "+6*"
+  ],
+  "density_g_cm3": 34.8,
+  "discovered": {
+    "year": 1994,
+    "by": "Sigurd Hofmann's GSI team",
+    "origin": "Darmstadt, the city"
+  },
+  "uses": [
+    "Research only"
+  ]
+}

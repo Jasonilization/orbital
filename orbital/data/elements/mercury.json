@@ -1,0 +1,43 @@
+{
+  "number": 80,
+  "symbol": "Hg",
+  "name": "Mercury",
+  "atomic_mass": 200.59,
+  "group": 12,
+  "period": 6,
+  "block": "d",
+  "category": "transition metal",
+  "state": "liquid",
+  "electron_configuration": "[Xe] 4f14 5d10 6s2",
+  "oxidation_states": [
+    "-2",
+    "0",
+    "+1",
+    "+2*"
+  ],
+  "electronegativity": 2.0,
+  "ionization_energy_kj": 1007,
+  "atomic_radius_pm": 150,
+  "melt_k": 234.32,
+  "boil_k": 629.88,
+  "density_g_cm3": 13.534,
+  "abundance_ppm": 0.067,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": "ancient",
+    "by": "Known since prehistory",
+    "origin": "Latin hydragyrum 'water-silver'; symbol Hg"
+  },
+  "uses": [
+    "The only metal liquid at room temperature",
+    "Fluorescent and energy-saving lamps (mercury vapour)",
+    "Thermometers, barometers (legacy \u2014 toxic, being phased out)",
+    "Amalgam dental fillings (being phased down)"
+  ],
+  "compounds": [
+    "HgS \u2014 mercury sulfide (cinnabar, vermilion pigment)",
+    "HgCl2 \u2014 mercury(II) chloride",
+    "Hg2Cl2 \u2014 calomel"
+  ]
+}

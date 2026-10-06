@@ -1,0 +1,45 @@
+{
+  "number": 54,
+  "symbol": "Xe",
+  "name": "Xenon",
+  "atomic_mass": 131.29,
+  "group": 18,
+  "period": 5,
+  "block": "p",
+  "category": "noble gas",
+  "state": "gas",
+  "electron_configuration": "[Kr] 4d10 5s2 5p6",
+  "oxidation_states": [
+    "0*",
+    "+1",
+    "+2*",
+    "+4*",
+    "+6*",
+    "+8*"
+  ],
+  "electronegativity": 2.6,
+  "ionization_energy_kj": 1170,
+  "atomic_radius_pm": 108,
+  "melt_k": 161.4,
+  "boil_k": 165.03,
+  "density_g_cm3": 0.005894,
+  "abundance_ppm": 3e-05,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1898,
+    "by": "William Ramsay and Morris Travers",
+    "origin": "Greek xenos 'stranger'"
+  },
+  "uses": [
+    "Xenon arc headlights and cinema projectors",
+    "Ion thrusters on spacecraft",
+    "General anaesthetic",
+    "High-speed camera flash"
+  ],
+  "compounds": [
+    "XeF2 \u2014 xenon difluoride",
+    "XeF4 \u2014 xenon tetrafluoride",
+    "XeO3 \u2014 xenon trioxide"
+  ]
+}

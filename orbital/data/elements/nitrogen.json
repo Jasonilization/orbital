@@ -1,0 +1,48 @@
+{
+  "number": 7,
+  "symbol": "N",
+  "name": "Nitrogen",
+  "atomic_mass": 14.007,
+  "group": 15,
+  "period": 2,
+  "block": "p",
+  "category": "nonmetal",
+  "state": "gas",
+  "electron_configuration": "[He] 2s2 2p3",
+  "oxidation_states": [
+    "-3*",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4",
+    "+5*"
+  ],
+  "electronegativity": 3.04,
+  "ionization_energy_kj": 1402,
+  "atomic_radius_pm": 65,
+  "melt_k": 63.15,
+  "boil_k": 77.36,
+  "density_g_cm3": 0.0012506,
+  "abundance_ppm": 19,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1772,
+    "by": "Daniel Rutherford",
+    "origin": "Greek nitron 'natron' + -genes 'forming'"
+  },
+  "uses": [
+    "Fertiliser production (ammonia, nitrates)",
+    "Inert packaging atmosphere",
+    "Liquid nitrogen coolant",
+    "Explosives and propellants"
+  ],
+  "compounds": [
+    "NH3 \u2014 ammonia",
+    "HNO3 \u2014 nitric acid",
+    "NO2 \u2014 nitrogen dioxide"
+  ]
+}

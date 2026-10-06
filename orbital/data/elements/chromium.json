@@ -1,0 +1,49 @@
+{
+  "number": 24,
+  "symbol": "Cr",
+  "name": "Chromium",
+  "atomic_mass": 51.996,
+  "group": 6,
+  "period": 4,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Ar] 3d5 4s1",
+  "oxidation_states": [
+    "-4",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2*",
+    "+3*",
+    "+4",
+    "+5",
+    "+6*"
+  ],
+  "electronegativity": 1.66,
+  "ionization_energy_kj": 653,
+  "atomic_radius_pm": 140,
+  "melt_k": 2180,
+  "boil_k": 2944,
+  "density_g_cm3": 7.19,
+  "abundance_ppm": 102,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1797,
+    "by": "Louis-Nicolas Vauquelin",
+    "origin": "Greek chroma 'colour'"
+  },
+  "uses": [
+    "Stainless steel",
+    "Chrome plating and pigments",
+    "Leather tanning (chromium(III) salts)",
+    "Refractory bricks (chromite)"
+  ],
+  "compounds": [
+    "Cr2O3 \u2014 chromium(III) oxide (green pigment)",
+    "K2Cr2O7 \u2014 potassium dichromate",
+    "PbCrO4 \u2014 lead chromate (chrome yellow)"
+  ]
+}

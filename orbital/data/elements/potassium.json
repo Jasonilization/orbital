@@ -1,0 +1,41 @@
+{
+  "number": 19,
+  "symbol": "K",
+  "name": "Potassium",
+  "atomic_mass": 39.098,
+  "group": 1,
+  "period": 4,
+  "block": "s",
+  "category": "alkali metal",
+  "state": "solid",
+  "electron_configuration": "[Ar] 4s1",
+  "oxidation_states": [
+    "-1",
+    "+1*"
+  ],
+  "electronegativity": 0.82,
+  "ionization_energy_kj": 419,
+  "atomic_radius_pm": 220,
+  "melt_k": 336.53,
+  "boil_k": 1032,
+  "density_g_cm3": 0.862,
+  "abundance_ppm": 20900,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1807,
+    "by": "Humphry Davy",
+    "origin": "English potash 'pot ash'"
+  },
+  "uses": [
+    "Fertilisers (potash salts)",
+    "Electrolyte \u2014 essential to nerve signalling",
+    "Glass manufacture (potassium carbonate)",
+    "Saltpetre for gunpowder"
+  ],
+  "compounds": [
+    "KCl \u2014 potassium chloride",
+    "KOH \u2014 potassium hydroxide",
+    "KNO3 \u2014 potassium nitrate (saltpetre)"
+  ]
+}

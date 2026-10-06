@@ -1,0 +1,46 @@
+{
+  "number": 81,
+  "symbol": "Tl",
+  "name": "Thallium",
+  "atomic_mass": 204.38,
+  "group": 13,
+  "period": 6,
+  "block": "p",
+  "category": "post-transition metal",
+  "state": "solid",
+  "electron_configuration": "[Xe] 4f14 5d10 6s2 6p1",
+  "oxidation_states": [
+    "-5",
+    "-2",
+    "-1",
+    "0",
+    "+1*",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.62,
+  "ionization_energy_kj": 590,
+  "atomic_radius_pm": 190,
+  "melt_k": 577,
+  "boil_k": 1746,
+  "density_g_cm3": 11.85,
+  "abundance_ppm": 0.85,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1861,
+    "by": "William Crookes",
+    "origin": "Greek thallos 'green shoot' (brilliant green spectral line)"
+  },
+  "uses": [
+    "Infrared detectors and optics (TlBr-TlI)",
+    "Thallium-201 heart stress scans (historical)",
+    "Formerly rat poison \u2014 the 'poisoner's poison', now strictly controlled",
+    "Semiconductor research"
+  ],
+  "compounds": [
+    "TlCl \u2014 thallium(I) chloride",
+    "Tl2O3 \u2014 thallium(III) oxide",
+    "TlBr \u2014 thallium(I) bromide (infrared optics)"
+  ]
+}

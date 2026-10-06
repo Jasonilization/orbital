@@ -1,0 +1,46 @@
+{
+  "number": 41,
+  "symbol": "Nb",
+  "name": "Niobium",
+  "atomic_mass": 92.906,
+  "group": 5,
+  "period": 5,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d4 5s1",
+  "oxidation_states": [
+    "-3",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4",
+    "+5*"
+  ],
+  "electronegativity": 1.6,
+  "ionization_energy_kj": 652,
+  "atomic_radius_pm": 145,
+  "melt_k": 2750,
+  "boil_k": 5017,
+  "density_g_cm3": 8.57,
+  "abundance_ppm": 20,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1801,
+    "by": "Charles Hatchett",
+    "origin": "Niobe, daughter of Tantalus (tantalum's 'sister')"
+  },
+  "uses": [
+    "Superalloys for jet engines",
+    "Superconducting magnets (Nb-Ti wire in MRI machines)",
+    "Capacitors in phones",
+    "Hypoallergenic jewellery"
+  ],
+  "compounds": [
+    "Nb2O5 \u2014 niobium pentoxide",
+    "NbCl5 \u2014 niobium pentachloride"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "number": 56,
+  "symbol": "Ba",
+  "name": "Barium",
+  "atomic_mass": 137.33,
+  "group": 2,
+  "period": 6,
+  "block": "s",
+  "category": "alkaline earth metal",
+  "state": "solid",
+  "electron_configuration": "[Xe] 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2*"
+  ],
+  "electronegativity": 0.89,
+  "ionization_energy_kj": 503,
+  "atomic_radius_pm": 215,
+  "melt_k": 1000,
+  "boil_k": 2170,
+  "density_g_cm3": 3.51,
+  "abundance_ppm": 425,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1808,
+    "by": "Humphry Davy (isolated)",
+    "origin": "Greek barys 'heavy'"
+  },
+  "uses": [
+    "Barium meal \u2014 X-ray imaging of the gut (BaSO4)",
+    "Barite drilling mud (oil wells)",
+    "Green fireworks",
+    "Phosphors in fluorescent lamps"
+  ],
+  "compounds": [
+    "BaSO4 \u2014 barium sulfate (barite, X-ray contrast)",
+    "BaCO3 \u2014 barium carbonate (rat poison, glassmaking)",
+    "Ba(NO3)2 \u2014 barium nitrate (green flares)"
+  ]
+}

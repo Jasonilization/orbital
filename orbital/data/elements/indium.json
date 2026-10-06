@@ -1,0 +1,46 @@
+{
+  "number": 49,
+  "symbol": "In",
+  "name": "Indium",
+  "atomic_mass": 114.82,
+  "group": 13,
+  "period": 5,
+  "block": "p",
+  "category": "post-transition metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d10 5s2 5p1",
+  "oxidation_states": [
+    "-5",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2*",
+    "+3*"
+  ],
+  "electronegativity": 1.78,
+  "ionization_energy_kj": 558,
+  "atomic_radius_pm": 155,
+  "melt_k": 429.75,
+  "boil_k": 2345,
+  "density_g_cm3": 7.31,
+  "abundance_ppm": 0.25,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1863,
+    "by": "Ferdinand Reich and Hieronymous Theodor Richter",
+    "origin": "Indigo-blue line in its spectrum"
+  },
+  "uses": [
+    "Touchscreens and LCDs (indium tin oxide)",
+    "Low-melting-point solders",
+    "Semiconductors (InP, InGaN in LEDs)",
+    "Bearings and low-friction alloys"
+  ],
+  "compounds": [
+    "In2O3 \u2014 indium oxide",
+    "InAs \u2014 indium arsenide",
+    "InSb \u2014 indium antimonide (infrared detectors)"
+  ]
+}

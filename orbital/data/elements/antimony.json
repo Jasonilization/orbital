@@ -1,0 +1,48 @@
+{
+  "number": 51,
+  "symbol": "Sb",
+  "name": "Antimony",
+  "atomic_mass": 121.76,
+  "group": 15,
+  "period": 5,
+  "block": "p",
+  "category": "metalloid",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d10 5s2 5p3",
+  "oxidation_states": [
+    "-3*",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4",
+    "+5*"
+  ],
+  "electronegativity": 2.05,
+  "ionization_energy_kj": 834,
+  "atomic_radius_pm": 145,
+  "melt_k": 903.78,
+  "boil_k": 1860,
+  "density_g_cm3": 6.697,
+  "abundance_ppm": 0.2,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": "ancient",
+    "by": "Known since antiquity",
+    "origin": "Greek anti monos 'not alone'; symbol from Latin stibium"
+  },
+  "uses": [
+    "Flame retardants (antimony trioxide)",
+    "Hardening lead (batteries, solder)",
+    "Semiconductors (GaSb infrared detectors)",
+    "Historic type metal for printing"
+  ],
+  "compounds": [
+    "Sb2O3 \u2014 antimony trioxide",
+    "Sb2S3 \u2014 stibnite (main ore)",
+    "SbCl3 \u2014 antimony trichloride"
+  ]
+}

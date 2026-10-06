@@ -1,0 +1,47 @@
+{
+  "number": 32,
+  "symbol": "Ge",
+  "name": "Germanium",
+  "atomic_mass": 72.63,
+  "group": 14,
+  "period": 4,
+  "block": "p",
+  "category": "metalloid",
+  "state": "solid",
+  "electron_configuration": "[Ar] 3d10 4s2 4p2",
+  "oxidation_states": [
+    "-4*",
+    "-3",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2*",
+    "+3",
+    "+4*"
+  ],
+  "electronegativity": 2.01,
+  "ionization_energy_kj": 762,
+  "atomic_radius_pm": 125,
+  "melt_k": 1211.4,
+  "boil_k": 3106,
+  "density_g_cm3": 5.323,
+  "abundance_ppm": 1.5,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1886,
+    "by": "Clemens Winkler",
+    "origin": "Latin Germania 'Germany'"
+  },
+  "uses": [
+    "Fibre-optic cable cores and infrared lenses",
+    "First transistors (1947)",
+    "Silicon-germanium fast chips",
+    "Polymerisation catalysts"
+  ],
+  "compounds": [
+    "GeO2 \u2014 germanium dioxide",
+    "GeCl4 \u2014 germanium tetrachloride"
+  ]
+}

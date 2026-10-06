@@ -1,0 +1,45 @@
+{
+  "number": 40,
+  "symbol": "Zr",
+  "name": "Zirconium",
+  "atomic_mass": 91.224,
+  "group": 4,
+  "period": 5,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d2 5s2",
+  "oxidation_states": [
+    "-2",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4*"
+  ],
+  "electronegativity": 1.33,
+  "ionization_energy_kj": 640,
+  "atomic_radius_pm": 155,
+  "melt_k": 2128,
+  "boil_k": 4682,
+  "density_g_cm3": 6.52,
+  "abundance_ppm": 165,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1789,
+    "by": "Martin Heinrich Klaproth",
+    "origin": "Persian zargun 'gold-coloured'"
+  },
+  "uses": [
+    "Nuclear fuel-rod cladding (low neutron capture)",
+    "Laboratory crucibles and ceramics",
+    "Cubic zirconia gemstones",
+    "Corrosion-resistant alloys"
+  ],
+  "compounds": [
+    "ZrO2 \u2014 zirconia (cubic zirconia)",
+    "ZrSiO4 \u2014 zircon (main ore)",
+    "ZrCl4 \u2014 zirconium tetrachloride"
+  ]
+}

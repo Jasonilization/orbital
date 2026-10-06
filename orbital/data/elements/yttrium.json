@@ -1,0 +1,43 @@
+{
+  "number": 39,
+  "symbol": "Y",
+  "name": "Yttrium",
+  "atomic_mass": 88.906,
+  "group": 3,
+  "period": 5,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d1 5s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.22,
+  "ionization_energy_kj": 600,
+  "atomic_radius_pm": 180,
+  "melt_k": 1799,
+  "boil_k": 3609,
+  "density_g_cm3": 4.472,
+  "abundance_ppm": 33,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1794,
+    "by": "Johan Gadolin (in a mineral from Ytterby, Sweden)",
+    "origin": "Ytterby, a Swedish village"
+  },
+  "uses": [
+    "YAG lasers and CRT phosphors (red)",
+    "High-temperature superconductors (YBCO)",
+    "Camera-lens glass (yttria)",
+    "Synthetic garnets"
+  ],
+  "compounds": [
+    "Y2O3 \u2014 yttrium oxide (yttria)",
+    "Y3Al5O12 \u2014 yttrium-aluminium garnet (YAG)",
+    "YBa2Cu3O7 \u2014 YBCO superconductor"
+  ]
+}

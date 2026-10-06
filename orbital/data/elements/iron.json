@@ -1,0 +1,50 @@
+{
+  "number": 26,
+  "symbol": "Fe",
+  "name": "Iron",
+  "atomic_mass": 55.845,
+  "group": 8,
+  "period": 4,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Ar] 3d6 4s2",
+  "oxidation_states": [
+    "-4",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2*",
+    "+3*",
+    "+4",
+    "+5",
+    "+6",
+    "+7"
+  ],
+  "electronegativity": 1.83,
+  "ionization_energy_kj": 763,
+  "atomic_radius_pm": 140,
+  "melt_k": 1811,
+  "boil_k": 3134,
+  "density_g_cm3": 7.874,
+  "abundance_ppm": 56300,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": "ancient",
+    "by": "Known since prehistory",
+    "origin": "English iron; symbol from Latin ferrum"
+  },
+  "uses": [
+    "Steel and cast iron \u2014 civilisation's structural metal",
+    "Haemoglobin (carries oxygen in blood)",
+    "Magnets and transformers",
+    "Tools and machinery"
+  ],
+  "compounds": [
+    "Fe2O3 \u2014 iron(III) oxide (rust, haematite)",
+    "Fe3O4 \u2014 magnetite",
+    "FeS2 \u2014 iron disulfide (fool's gold)"
+  ]
+}

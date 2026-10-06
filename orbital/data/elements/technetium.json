@@ -1,0 +1,47 @@
+{
+  "number": 43,
+  "symbol": "Tc",
+  "name": "Technetium",
+  "atomic_mass": 98,
+  "atomic_mass_type": "isotope",
+  "group": 7,
+  "period": 5,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d5 5s2",
+  "oxidation_states": [
+    "-3",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4*",
+    "+5",
+    "+6",
+    "+7"
+  ],
+  "electronegativity": 1.9,
+  "ionization_energy_kj": 702,
+  "atomic_radius_pm": 135,
+  "melt_k": 2430,
+  "boil_k": 4538,
+  "density_g_cm3": 11,
+  "radioactive": true,
+  "synthetic": true,
+  "discovered": {
+    "year": 1937,
+    "by": "Carlo Perrier and Emilio Segre",
+    "origin": "Greek technetos 'artificial' \u2014 the first element made synthetically"
+  },
+  "uses": [
+    "Tc-99m \u2014 the most-used medical imaging tracer (bone and organ scans)",
+    "Corrosion inhibitors (small-scale research use)"
+  ],
+  "compounds": [
+    "NaTcO4 \u2014 sodium pertechnetate (medical tracer)",
+    "TcO2 \u2014 technetium dioxide",
+    "Tc2O7 \u2014 technetium(VII) oxide"
+  ]
+}

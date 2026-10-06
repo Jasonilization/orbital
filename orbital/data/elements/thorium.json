@@ -1,0 +1,43 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": false,
+  "group": null,
+  "number": 90,
+  "symbol": "Th",
+  "name": "Thorium",
+  "atomic_mass": 232.04,
+  "electron_configuration": "[Rn] 6d2 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4*"
+  ],
+  "electronegativity": 1.3,
+  "ionization_energy_kj": 587,
+  "atomic_radius_pm": 180,
+  "melt_k": 2115,
+  "boil_k": 5061,
+  "density_g_cm3": 11.72,
+  "abundance_ppm": 9.6,
+  "discovered": {
+    "year": 1829,
+    "by": "Jons Jacob Berzelius",
+    "origin": "Thor, the Norse thunder god"
+  },
+  "uses": [
+    "Candidate nuclear fuel \u2014 thorium reactors breed uranium-233",
+    "Heat-resistant magnesium alloys",
+    "Historic gas-mantle lanterns (ThO2)",
+    "Uranium-thorium dating of sediments"
+  ],
+  "compounds": [
+    "ThO2 \u2014 thorium dioxide (thoria)",
+    "Th(NO3)4 \u2014 thorium nitrate"
+  ]
+}

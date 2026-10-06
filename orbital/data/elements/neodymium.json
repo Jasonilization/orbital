@@ -1,0 +1,44 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 60,
+  "symbol": "Nd",
+  "name": "Neodymium",
+  "atomic_mass": 144.24,
+  "electron_configuration": "[Xe] 4f4 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4"
+  ],
+  "electronegativity": 1.14,
+  "ionization_energy_kj": 533,
+  "atomic_radius_pm": 185,
+  "melt_k": 1297,
+  "boil_k": 3347,
+  "density_g_cm3": 7.01,
+  "abundance_ppm": 41,
+  "discovered": {
+    "year": 1885,
+    "by": "Carl Auer von Welsbach",
+    "origin": "Greek neos 'new' + didymos 'twin'"
+  },
+  "uses": [
+    "Neodymium magnets \u2014 strongest permanent magnets (headphones, EV motors, wind turbines)",
+    "Nd:YAG lasers",
+    "Glass colouring (violet)",
+    "Cryocoolers"
+  ],
+  "compounds": [
+    "Nd2O3 \u2014 neodymium oxide",
+    "Nd2Fe14B \u2014 the neodymium magnet",
+    "Nd:YAG \u2014 laser crystal"
+  ]
+}

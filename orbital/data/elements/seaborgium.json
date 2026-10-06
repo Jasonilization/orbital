@@ -1,0 +1,31 @@
+{
+  "period": 7,
+  "radioactive": true,
+  "synthetic": true,
+  "category": "transition metal",
+  "block": "d",
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 106,
+  "symbol": "Sg",
+  "name": "Seaborgium",
+  "atomic_mass": 269,
+  "atomic_mass_type": "isotope",
+  "group": 6,
+  "electron_configuration": "[Rn] 5f14 6d4 7s2",
+  "oxidation_states": [
+    "+3",
+    "+4",
+    "+5",
+    "+6*"
+  ],
+  "density_g_cm3": 35.0,
+  "discovered": {
+    "year": 1974,
+    "by": "Joint Institute for Nuclear Research and Lawrence Livermore teams",
+    "origin": "Glenn Seaborg \u2014 named while he was still alive (his suggestion)"
+  },
+  "uses": [
+    "Research only"
+  ]
+}

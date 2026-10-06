@@ -1,0 +1,41 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": false,
+  "group": null,
+  "number": 89,
+  "symbol": "Ac",
+  "name": "Actinium",
+  "atomic_mass": 227,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 6d1 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.1,
+  "ionization_energy_kj": 499,
+  "atomic_radius_pm": 195,
+  "melt_k": 1323,
+  "boil_k": 3471,
+  "density_g_cm3": 10.07,
+  "discovered": {
+    "year": 1899,
+    "by": "Andre-Louis Debierne",
+    "origin": "Greek aktis 'ray'"
+  },
+  "uses": [
+    "Research only \u2014 glows pale blue in the dark",
+    "Ac-227 / Be neutron sources (historical)",
+    "Studied for targeted alpha cancer therapy (Ac-225)"
+  ],
+  "compounds": [
+    "Ac2O3 \u2014 actinium(III) oxide",
+    "AcCl3 \u2014 actinium chloride"
+  ]
+}

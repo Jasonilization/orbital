@@ -1,0 +1,49 @@
+{
+  "number": 8,
+  "symbol": "O",
+  "name": "Oxygen",
+  "atomic_mass": 15.999,
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    15.99903,
+    15.99977
+  ],
+  "group": 16,
+  "period": 2,
+  "block": "p",
+  "category": "nonmetal",
+  "state": "gas",
+  "electron_configuration": "[He] 2s2 2p4",
+  "oxidation_states": [
+    "-2*",
+    "-1",
+    "0",
+    "+1",
+    "+2"
+  ],
+  "electronegativity": 3.44,
+  "ionization_energy_kj": 1314,
+  "atomic_radius_pm": 60,
+  "melt_k": 54.36,
+  "boil_k": 90.19,
+  "density_g_cm3": 0.001429,
+  "abundance_ppm": 461000,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1772,
+    "by": "Carl Wilhelm Scheele (independently by Joseph Priestley, 1774)",
+    "origin": "Greek oxys 'acid' + -genes 'forming'"
+  },
+  "uses": [
+    "Breathing gas and medicine",
+    "Steelmaking",
+    "Oxy-fuel welding and cutting",
+    "Water treatment"
+  ],
+  "compounds": [
+    "H2O \u2014 water",
+    "CO2 \u2014 carbon dioxide",
+    "Fe2O3 \u2014 iron(III) oxide (rust)"
+  ]
+}

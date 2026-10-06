@@ -1,0 +1,47 @@
+{
+  "number": 82,
+  "symbol": "Pb",
+  "name": "Lead",
+  "atomic_mass": 207.2,
+  "group": 14,
+  "period": 6,
+  "block": "p",
+  "category": "post-transition metal",
+  "state": "solid",
+  "electron_configuration": "[Xe] 4f14 5d10 6s2 6p2",
+  "oxidation_states": [
+    "-4",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2*",
+    "+3",
+    "+4*"
+  ],
+  "electronegativity": 2.33,
+  "ionization_energy_kj": 716,
+  "atomic_radius_pm": 180,
+  "melt_k": 600.61,
+  "boil_k": 2022,
+  "density_g_cm3": 11.34,
+  "abundance_ppm": 14,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": "ancient",
+    "by": "Known since prehistory",
+    "origin": "English lead; symbol from Latin plumbum (hence 'plumber')"
+  },
+  "uses": [
+    "Lead-acid car batteries (the main modern use)",
+    "Radiation shielding \u2014 X-ray aprons",
+    "Cable sheathing (legacy)",
+    "Being phased out everywhere else \u2014 toxic"
+  ],
+  "compounds": [
+    "PbO2 \u2014 lead dioxide (battery electrode)",
+    "PbSO4 \u2014 lead sulfate",
+    "PbCrO4 \u2014 lead chromate (chrome yellow pigment)"
+  ]
+}

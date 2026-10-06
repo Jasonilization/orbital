@@ -1,0 +1,49 @@
+{
+  "number": 76,
+  "symbol": "Os",
+  "name": "Osmium",
+  "atomic_mass": 190.23,
+  "group": 8,
+  "period": 6,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Xe] 4f14 5d6 6s2",
+  "oxidation_states": [
+    "-4",
+    "-2",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4",
+    "+5",
+    "+6",
+    "+7",
+    "+8*"
+  ],
+  "electronegativity": 2.2,
+  "ionization_energy_kj": 840,
+  "atomic_radius_pm": 130,
+  "melt_k": 3306,
+  "boil_k": 5285,
+  "density_g_cm3": 22.59,
+  "abundance_ppm": 0.001,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1803,
+    "by": "Smithson Tennant",
+    "origin": "Greek osme 'smell' (its volatile oxide reeks)"
+  },
+  "uses": [
+    "Densest naturally occurring element",
+    "Fountain-pen nib tips and electrical contacts",
+    "Instrument pivots and needles",
+    "Osmium tetroxide stains tissue for electron microscopy"
+  ],
+  "compounds": [
+    "OsO4 \u2014 osmium tetroxide (oxidant and microscopy stain)",
+    "OsO2 \u2014 osmium dioxide"
+  ]
+}

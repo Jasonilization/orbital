@@ -1,0 +1,31 @@
+{
+  "period": 7,
+  "block": "p",
+  "radioactive": true,
+  "synthetic": true,
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 117,
+  "symbol": "Ts",
+  "name": "Tennessine",
+  "atomic_mass": 294,
+  "atomic_mass_type": "isotope",
+  "group": 17,
+  "category": "halogen",
+  "electron_configuration": "[Rn] 5f14 6d10 7s2 7p5",
+  "oxidation_states": [
+    "-1*",
+    "+1"
+  ],
+  "melt_k": 723,
+  "boil_k": 883,
+  "density_g_cm3": 7.2,
+  "discovered": {
+    "year": 2010,
+    "by": "JINR Dubna with Oak Ridge National Laboratory and Vanderbilt University",
+    "origin": "Tennessee"
+  },
+  "uses": [
+    "Research only"
+  ]
+}

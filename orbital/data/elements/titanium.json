@@ -1,0 +1,46 @@
+{
+  "number": 22,
+  "symbol": "Ti",
+  "name": "Titanium",
+  "atomic_mass": 47.867,
+  "group": 4,
+  "period": 4,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Ar] 3d2 4s2",
+  "oxidation_states": [
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4*"
+  ],
+  "electronegativity": 1.54,
+  "ionization_energy_kj": 658,
+  "atomic_radius_pm": 140,
+  "melt_k": 1941,
+  "boil_k": 3560,
+  "density_g_cm3": 4.506,
+  "abundance_ppm": 5650,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1791,
+    "by": "William Gregor",
+    "origin": "Greek Titans"
+  },
+  "uses": [
+    "Aircraft and jet-engine alloys",
+    "Medical implants (bio-inert)",
+    "White paint pigment (titanium dioxide)",
+    "Seawater-resistant marine hardware"
+  ],
+  "compounds": [
+    "TiO2 \u2014 titanium dioxide (white pigment)",
+    "FeTiO3 \u2014 ilmenite (main ore)",
+    "TiCl4 \u2014 titanium tetrachloride"
+  ]
+}

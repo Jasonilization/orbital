@@ -1,0 +1,42 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 70,
+  "symbol": "Yb",
+  "name": "Ytterbium",
+  "atomic_mass": 173.05,
+  "electron_configuration": "[Xe] 4f14 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2*",
+    "+3*"
+  ],
+  "electronegativity": 1.1,
+  "ionization_energy_kj": 603,
+  "atomic_radius_pm": 175,
+  "melt_k": 1097,
+  "boil_k": 1469,
+  "density_g_cm3": 6.9,
+  "abundance_ppm": 2.8,
+  "discovered": {
+    "year": 1878,
+    "by": "Jean Charles Galissard de Marignac",
+    "origin": "Ytterby, a Swedish village"
+  },
+  "uses": [
+    "Yb optical atomic clocks \u2014 among the most accurate ever built",
+    "Grain-refiner in stainless steel",
+    "Yb:YAG high-power lasers",
+    "Gamma-ray source (Yb-169 radiography)"
+  ],
+  "compounds": [
+    "Yb2O3 \u2014 ytterbium oxide",
+    "YbCl3 \u2014 ytterbium chloride"
+  ]
+}

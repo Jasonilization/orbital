@@ -1,0 +1,41 @@
+{
+  "block": "s",
+  "period": 7,
+  "category": "alkaline earth metal",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": false,
+  "group": 2,
+  "number": 88,
+  "symbol": "Ra",
+  "name": "Radium",
+  "atomic_mass": 226,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2*"
+  ],
+  "electronegativity": 0.9,
+  "ionization_energy_kj": 509,
+  "atomic_radius_pm": 215,
+  "melt_k": 973,
+  "boil_k": 2010,
+  "density_g_cm3": 5.5,
+  "abundance_ppm": 9e-07,
+  "discovered": {
+    "year": 1898,
+    "by": "Marie and Pierre Curie",
+    "origin": "Latin radius 'ray' \u2014 it glows in the dark"
+  },
+  "uses": [
+    "Luminous watch-dial paint \u2014 until the Radium Girls tragedy ended it",
+    "Radiotherapy seeds (historical)",
+    "Taught the world what radioactivity was"
+  ],
+  "compounds": [
+    "RaCl2 \u2014 radium chloride",
+    "RaSO4 \u2014 radium sulfate (extremely insoluble)"
+  ]
+}

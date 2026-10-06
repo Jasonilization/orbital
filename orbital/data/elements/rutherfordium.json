@@ -1,0 +1,31 @@
+{
+  "period": 7,
+  "radioactive": true,
+  "synthetic": true,
+  "category": "transition metal",
+  "block": "d",
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 104,
+  "symbol": "Rf",
+  "name": "Rutherfordium",
+  "atomic_mass": 267,
+  "atomic_mass_type": "isotope",
+  "group": 4,
+  "electron_configuration": "[Rn] 5f14 6d2 7s2",
+  "oxidation_states": [
+    "+3",
+    "+4*"
+  ],
+  "melt_k": 2400,
+  "boil_k": 5800,
+  "density_g_cm3": 23.2,
+  "discovered": {
+    "year": 1964,
+    "by": "Joint Institute for Nuclear Research, Dubna (confirmed at Berkeley, 1969)",
+    "origin": "Ernest Rutherford (Dubna first proposed 'kurchatovium')"
+  },
+  "uses": [
+    "Research only \u2014 a few atoms have ever existed"
+  ]
+}

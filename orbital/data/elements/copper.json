@@ -1,0 +1,45 @@
+{
+  "number": 29,
+  "symbol": "Cu",
+  "name": "Copper",
+  "atomic_mass": 63.546,
+  "group": 11,
+  "period": 4,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Ar] 3d10 4s1",
+  "oxidation_states": [
+    "-2",
+    "0",
+    "+1*",
+    "+2*",
+    "+3",
+    "+4"
+  ],
+  "electronegativity": 1.9,
+  "ionization_energy_kj": 745,
+  "atomic_radius_pm": 135,
+  "melt_k": 1357.77,
+  "boil_k": 2835,
+  "density_g_cm3": 8.96,
+  "abundance_ppm": 60,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": "ancient",
+    "by": "Known since prehistory",
+    "origin": "Latin cuprum, after the island of Cyprus"
+  },
+  "uses": [
+    "Electrical wiring \u2014 the standard conductor",
+    "Plumbing and heat exchangers",
+    "Brass and bronze alloys",
+    "Naturally antimicrobial surfaces"
+  ],
+  "compounds": [
+    "CuSO4\u00b75H2O \u2014 copper sulfate (blue vitriol, fungicide)",
+    "Cu2O \u2014 copper(I) oxide (cuprite)",
+    "Cu(OH)2 \u2014 copper hydroxide (fungicide)"
+  ]
+}

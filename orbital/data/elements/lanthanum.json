@@ -1,0 +1,43 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 57,
+  "symbol": "La",
+  "name": "Lanthanum",
+  "atomic_mass": 138.91,
+  "electron_configuration": "[Xe] 5d1 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.1,
+  "ionization_energy_kj": 538,
+  "atomic_radius_pm": 195,
+  "melt_k": 1193,
+  "boil_k": 3737,
+  "density_g_cm3": 6.162,
+  "abundance_ppm": 39,
+  "discovered": {
+    "year": 1839,
+    "by": "Carl Gustaf Mosander",
+    "origin": "Greek lanthanein 'to lie hidden'"
+  },
+  "uses": [
+    "Camera-lens glass (high refractive index)",
+    "Hydrogen-storage alloys (LaNi5)",
+    "Petroleum-cracking catalysts",
+    "Lighter flints (mischmetal)"
+  ],
+  "compounds": [
+    "La2O3 \u2014 lanthanum oxide",
+    "LaNi5 \u2014 hydrogen-storage alloy",
+    "LaCl3 \u2014 lanthanum chloride"
+  ]
+}

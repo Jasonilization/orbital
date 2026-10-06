@@ -1,0 +1,42 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": false,
+  "group": null,
+  "number": 91,
+  "symbol": "Pa",
+  "name": "Protactinium",
+  "atomic_mass": 231.036,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 5f2 6d1 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4*",
+    "+5"
+  ],
+  "electronegativity": 1.5,
+  "ionization_energy_kj": 568,
+  "atomic_radius_pm": 180,
+  "melt_k": 1841,
+  "boil_k": 4300,
+  "density_g_cm3": 15.37,
+  "discovered": {
+    "year": 1913,
+    "by": "Kasimir Fajans and Oswald Helmuth Gohring",
+    "origin": "Greek protos 'first' \u2014 the parent of actinium"
+  },
+  "uses": [
+    "Research only \u2014 scarce, radioactive, and extracted from nuclear waste in gram lots",
+    "Used to date deep-sea sediments"
+  ],
+  "compounds": [
+    "Pa2O5 \u2014 protactinium(V) oxide",
+    "PaCl4 \u2014 protactinium(IV) chloride"
+  ]
+}

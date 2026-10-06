@@ -1,0 +1,30 @@
+{
+  "period": 7,
+  "radioactive": true,
+  "synthetic": true,
+  "category": "transition metal",
+  "block": "d",
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 105,
+  "symbol": "Db",
+  "name": "Dubnium",
+  "atomic_mass": 268,
+  "atomic_mass_type": "isotope",
+  "group": 5,
+  "electron_configuration": "[Rn] 5f14 6d3 7s2",
+  "oxidation_states": [
+    "+3",
+    "+4",
+    "+5*"
+  ],
+  "density_g_cm3": 29.3,
+  "discovered": {
+    "year": 1968,
+    "by": "Joint Institute for Nuclear Research (confirmed at Berkeley, 1970)",
+    "origin": "Dubna, the Russian research city"
+  },
+  "uses": [
+    "Research only"
+  ]
+}

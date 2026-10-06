@@ -1,0 +1,53 @@
+{
+  "number": 17,
+  "symbol": "Cl",
+  "name": "Chlorine",
+  "atomic_mass": 35.45,
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    35.446,
+    35.457
+  ],
+  "group": 17,
+  "period": 3,
+  "block": "p",
+  "category": "halogen",
+  "state": "gas",
+  "electron_configuration": "[Ne] 3s2 3p5",
+  "oxidation_states": [
+    "-1*",
+    "0",
+    "+1*",
+    "+2",
+    "+3",
+    "+4",
+    "+5*",
+    "+6",
+    "+7*"
+  ],
+  "electronegativity": 3.16,
+  "ionization_energy_kj": 1251,
+  "atomic_radius_pm": 100,
+  "melt_k": 171.6,
+  "boil_k": 239.11,
+  "density_g_cm3": 0.003214,
+  "abundance_ppm": 145,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1774,
+    "by": "Carl Wilhelm Scheele",
+    "origin": "Greek chloros 'pale green'"
+  },
+  "uses": [
+    "Water disinfection (chlorination)",
+    "PVC plastic",
+    "Household bleach",
+    "Hydrochloric acid production"
+  ],
+  "compounds": [
+    "NaCl \u2014 sodium chloride",
+    "HCl \u2014 hydrochloric acid",
+    "NaOCl \u2014 sodium hypochlorite (bleach)"
+  ]
+}

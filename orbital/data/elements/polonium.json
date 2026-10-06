@@ -1,0 +1,44 @@
+{
+  "number": 84,
+  "symbol": "Po",
+  "name": "Polonium",
+  "atomic_mass": 209,
+  "atomic_mass_type": "isotope",
+  "group": 16,
+  "period": 6,
+  "block": "p",
+  "category": "post-transition metal",
+  "state": "solid",
+  "electron_configuration": "[Xe] 4f14 5d10 6s2 6p4",
+  "oxidation_states": [
+    "-2",
+    "0",
+    "+2",
+    "+4*",
+    "+5",
+    "+6"
+  ],
+  "electronegativity": 2.0,
+  "ionization_energy_kj": 812,
+  "atomic_radius_pm": 190,
+  "melt_k": 527,
+  "boil_k": 1235,
+  "density_g_cm3": 9.196,
+  "radioactive": true,
+  "synthetic": false,
+  "discovered": {
+    "year": 1898,
+    "by": "Marie and Pierre Curie",
+    "origin": "Poland, Marie Curie's homeland"
+  },
+  "uses": [
+    "Alpha-particle sources for research and antistatic brushes",
+    "Heat sources (legacy Soviet lunar rovers)",
+    "Neutron initiators (with beryllium)",
+    "Famously the poison in the Litvinenko assassination, 2006"
+  ],
+  "compounds": [
+    "PoO2 \u2014 polonium dioxide",
+    "PoS \u2014 polonium sulfide"
+  ]
+}

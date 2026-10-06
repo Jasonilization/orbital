@@ -1,0 +1,47 @@
+{
+  "number": 73,
+  "symbol": "Ta",
+  "name": "Tantalum",
+  "atomic_mass": 180.95,
+  "group": 5,
+  "period": 6,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Xe] 4f14 5d3 6s2",
+  "oxidation_states": [
+    "-3",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4",
+    "+5*"
+  ],
+  "electronegativity": 1.5,
+  "ionization_energy_kj": 761,
+  "atomic_radius_pm": 145,
+  "melt_k": 3290,
+  "boil_k": 5731,
+  "density_g_cm3": 16.69,
+  "abundance_ppm": 2.0,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1802,
+    "by": "Anders Gustaf Ekeberg",
+    "origin": "King Tantalus of Greek myth (the metal 'tantalises' by resisting acid)"
+  },
+  "uses": [
+    "Tantalum capacitors \u2014 in every phone and laptop",
+    "Surgical implants and instruments (bio-inert)",
+    "Chemical process equipment",
+    "Camera-lens anti-reflection coatings"
+  ],
+  "compounds": [
+    "Ta2O5 \u2014 tantalum pentoxide",
+    "TaC \u2014 tantalum carbide",
+    "TaCl5 \u2014 tantalum pentachloride"
+  ]
+}

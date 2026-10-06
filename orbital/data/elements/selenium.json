@@ -1,0 +1,48 @@
+{
+  "number": 34,
+  "symbol": "Se",
+  "name": "Selenium",
+  "atomic_mass": 78.971,
+  "group": 16,
+  "period": 4,
+  "block": "p",
+  "category": "nonmetal",
+  "state": "solid",
+  "electron_configuration": "[Ar] 3d10 4s2 4p4",
+  "oxidation_states": [
+    "-2*",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4*",
+    "+5",
+    "+6*"
+  ],
+  "electronegativity": 2.55,
+  "ionization_energy_kj": 941,
+  "atomic_radius_pm": 140,
+  "melt_k": 494,
+  "boil_k": 958,
+  "density_g_cm3": 4.81,
+  "abundance_ppm": 0.05,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1817,
+    "by": "Jons Jacob Berzelius",
+    "origin": "Greek selene 'moon'"
+  },
+  "uses": [
+    "Photocopier drums (photoconductor)",
+    "Glass decolourising and red glass",
+    "Anti-dandruff shampoo (selenium disulfide)",
+    "Thin-film solar cells"
+  ],
+  "compounds": [
+    "SeO2 \u2014 selenium dioxide",
+    "SeS2 \u2014 selenium disulfide",
+    "H2Se \u2014 hydrogen selenide"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": true,
+  "group": null,
+  "number": 95,
+  "symbol": "Am",
+  "name": "Americium",
+  "atomic_mass": 243,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 5f7 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4",
+    "+5",
+    "+6",
+    "+7"
+  ],
+  "electronegativity": 1.13,
+  "ionization_energy_kj": 578,
+  "atomic_radius_pm": 175,
+  "melt_k": 1449,
+  "boil_k": 2880,
+  "density_g_cm3": 12,
+  "discovered": {
+    "year": 1944,
+    "by": "Glenn Seaborg, Ralph James, Leon Morgan and Albert Ghiorso",
+    "origin": "The Americas \u2014 analogue to europium"
+  },
+  "uses": [
+    "Inside almost every household smoke detector (Am-241 ionisation chamber)",
+    "Neutron sources (with beryllium)",
+    "Glass research"
+  ],
+  "compounds": [
+    "AmO2 \u2014 americium dioxide",
+    "AmCl3 \u2014 americium chloride"
+  ]
+}

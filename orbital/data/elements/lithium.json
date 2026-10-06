@@ -1,0 +1,40 @@
+{
+  "number": 3,
+  "symbol": "Li",
+  "name": "Lithium",
+  "atomic_mass": 6.94,
+  "group": 1,
+  "period": 2,
+  "block": "s",
+  "category": "alkali metal",
+  "state": "solid",
+  "electron_configuration": "[He] 2s1",
+  "oxidation_states": [
+    "+1*"
+  ],
+  "electronegativity": 0.98,
+  "ionization_energy_kj": 520,
+  "atomic_radius_pm": 145,
+  "melt_k": 453.65,
+  "boil_k": 1613,
+  "density_g_cm3": 0.534,
+  "abundance_ppm": 20,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1817,
+    "by": "Johan August Arfwedson",
+    "origin": "Greek lithos 'stone'"
+  },
+  "uses": [
+    "Lithium-ion batteries",
+    "Mood-stabilising medication (lithium carbonate)",
+    "Ceramics and heat-resistant glass",
+    "Lightweight alloys"
+  ],
+  "compounds": [
+    "Li2CO3 \u2014 lithium carbonate",
+    "LiOH \u2014 lithium hydroxide",
+    "Li2O \u2014 lithium oxide"
+  ]
+}

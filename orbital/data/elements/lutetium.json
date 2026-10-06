@@ -1,0 +1,42 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 71,
+  "symbol": "Lu",
+  "name": "Lutetium",
+  "atomic_mass": 174.97,
+  "electron_configuration": "[Xe] 4f14 5d1 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.27,
+  "ionization_energy_kj": 524,
+  "atomic_radius_pm": 175,
+  "melt_k": 1925,
+  "boil_k": 3675,
+  "density_g_cm3": 9.841,
+  "abundance_ppm": 0.8,
+  "discovered": {
+    "year": 1907,
+    "by": "Georges Urbain and Carl Auer von Welsbach (independently)",
+    "origin": "Lutetia, Latin for Paris"
+  },
+  "uses": [
+    "PET scanner detector crystals (LSO)",
+    "Petroleum-cracking catalysts",
+    "High-refractive-index lens glass research"
+  ],
+  "compounds": [
+    "Lu2O3 \u2014 lutetium oxide",
+    "Lu2SiO5 \u2014 LSO (PET scanner crystals)",
+    "LuCl3 \u2014 lutetium chloride"
+  ]
+}

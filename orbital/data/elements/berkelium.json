@@ -1,0 +1,41 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": true,
+  "group": null,
+  "number": 97,
+  "symbol": "Bk",
+  "name": "Berkelium",
+  "atomic_mass": 247,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 5f9 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4"
+  ],
+  "electronegativity": 1.3,
+  "ionization_energy_kj": 601,
+  "atomic_radius_pm": 170,
+  "melt_k": 1259,
+  "boil_k": 2900,
+  "density_g_cm3": 14.78,
+  "discovered": {
+    "year": 1949,
+    "by": "Stanley Thompson, Albert Ghiorso and Glenn Seaborg",
+    "origin": "Berkeley, California"
+  },
+  "uses": [
+    "Bk-249 targets were the key to synthesising tennessine and other superheavies",
+    "Research only"
+  ],
+  "compounds": [
+    "BkO2 \u2014 berkelium dioxide",
+    "Bk2O3 \u2014 berkelium(III) oxide"
+  ]
+}

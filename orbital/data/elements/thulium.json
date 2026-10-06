@@ -1,0 +1,41 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 69,
+  "symbol": "Tm",
+  "name": "Thulium",
+  "atomic_mass": 168.93,
+  "electron_configuration": "[Xe] 4f13 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.25,
+  "ionization_energy_kj": 597,
+  "atomic_radius_pm": 175,
+  "melt_k": 1818,
+  "boil_k": 2223,
+  "density_g_cm3": 9.32,
+  "abundance_ppm": 0.5,
+  "discovered": {
+    "year": 1879,
+    "by": "Per Teodor Cleve",
+    "origin": "Thule, the mythical far north"
+  },
+  "uses": [
+    "Portable X-ray sources (Tm-170)",
+    "Surgical lasers (Tm-doped)",
+    "Doping garnet crystals research"
+  ],
+  "compounds": [
+    "Tm2O3 \u2014 thulium oxide",
+    "TmCl3 \u2014 thulium chloride"
+  ]
+}

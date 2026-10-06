@@ -1,0 +1,42 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": true,
+  "group": null,
+  "number": 96,
+  "symbol": "Cm",
+  "name": "Curium",
+  "atomic_mass": 247,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 5f7 6d1 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4"
+  ],
+  "electronegativity": 1.28,
+  "ionization_energy_kj": 581,
+  "atomic_radius_pm": 174,
+  "melt_k": 1613,
+  "boil_k": 3383,
+  "density_g_cm3": 13.51,
+  "discovered": {
+    "year": 1944,
+    "by": "Glenn Seaborg, Ralph James and Albert Ghiorso",
+    "origin": "Pierre and Marie Curie"
+  },
+  "uses": [
+    "Cm-244 radioisotope generators (space probes)",
+    "Alpha-particle sources on Mars rovers' rock spectrometers",
+    "Research"
+  ],
+  "compounds": [
+    "CmO2 \u2014 curium dioxide",
+    "Cm2O3 \u2014 curium(III) oxide"
+  ]
+}

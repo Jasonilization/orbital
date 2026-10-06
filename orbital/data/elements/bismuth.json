@@ -1,0 +1,48 @@
+{
+  "number": 83,
+  "symbol": "Bi",
+  "name": "Bismuth",
+  "atomic_mass": 208.98,
+  "group": 15,
+  "period": 6,
+  "block": "p",
+  "category": "post-transition metal",
+  "state": "solid",
+  "electron_configuration": "[Xe] 4f14 5d10 6s2 6p3",
+  "oxidation_states": [
+    "-3*",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4",
+    "+5"
+  ],
+  "electronegativity": 2.02,
+  "ionization_energy_kj": 703,
+  "atomic_radius_pm": 160,
+  "melt_k": 544.7,
+  "boil_k": 1837,
+  "density_g_cm3": 9.78,
+  "abundance_ppm": 0.048,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1753,
+    "by": "Claude Geoffroy (distinguished it from lead; known since antiquity)",
+    "origin": "German Weisse Masse 'white mass', latinised to bisemutum"
+  },
+  "uses": [
+    "Pepto-Bismol (bismuth subsalicylate)",
+    "Lead-free solder, shot and plumbing",
+    "Fire sprinklers and safety plugs (low-melting alloys)",
+    "Bismuth oxychloride \u2014 pearlescent cosmetics"
+  ],
+  "compounds": [
+    "C7H5BiO4 \u2014 bismuth subsalicylate (Pepto-Bismol)",
+    "Bi2O3 \u2014 bismuth(III) oxide",
+    "BiCl3 \u2014 bismuth trichloride"
+  ]
+}

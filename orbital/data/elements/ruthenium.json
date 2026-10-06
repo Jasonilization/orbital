@@ -1,0 +1,50 @@
+{
+  "number": 44,
+  "symbol": "Ru",
+  "name": "Ruthenium",
+  "atomic_mass": 101.07,
+  "group": 8,
+  "period": 5,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d7 5s1",
+  "oxidation_states": [
+    "-4",
+    "-2",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4",
+    "+5",
+    "+6",
+    "+7",
+    "+8*"
+  ],
+  "electronegativity": 2.2,
+  "ionization_energy_kj": 710,
+  "atomic_radius_pm": 130,
+  "melt_k": 2607,
+  "boil_k": 4423,
+  "density_g_cm3": 12.45,
+  "abundance_ppm": 0.001,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1844,
+    "by": "Karl Ernst Claus",
+    "origin": "Latin Ruthenia 'Russia'"
+  },
+  "uses": [
+    "Thick-film chip resistors (ruthenium oxide)",
+    "Ammonia-synthesis and other catalysts",
+    "Wear-resistant electrical contacts and pen-nib tips",
+    "Hard-drive read layers"
+  ],
+  "compounds": [
+    "RuO2 \u2014 ruthenium oxide",
+    "RuCl3 \u2014 ruthenium chloride",
+    "KRuO4 \u2014 potassium perruthenate"
+  ]
+}

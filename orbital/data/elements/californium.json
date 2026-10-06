@@ -1,0 +1,42 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": true,
+  "group": null,
+  "number": 98,
+  "symbol": "Cf",
+  "name": "Californium",
+  "atomic_mass": 251,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 5f10 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4"
+  ],
+  "electronegativity": 1.3,
+  "ionization_energy_kj": 608,
+  "atomic_radius_pm": 186,
+  "melt_k": 1173,
+  "boil_k": 1743,
+  "density_g_cm3": 15.1,
+  "discovered": {
+    "year": 1950,
+    "by": "Stanley Thompson, Kenneth Street Jr., Albert Ghiorso and Glenn Seaborg",
+    "origin": "California \u2014 the state and the university"
+  },
+  "uses": [
+    "Cf-252 neutron start-up sources for nuclear reactors",
+    "Neutron activation analysis (detecting gold, silver, oil in wells)",
+    "Well-logging and material scanning"
+  ],
+  "compounds": [
+    "Cf2O3 \u2014 californium(III) oxide",
+    "CfO2 \u2014 californium dioxide"
+  ]
+}

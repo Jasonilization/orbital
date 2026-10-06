@@ -1,0 +1,47 @@
+{
+  "number": 53,
+  "symbol": "I",
+  "name": "Iodine",
+  "atomic_mass": 126.9,
+  "group": 17,
+  "period": 5,
+  "block": "p",
+  "category": "halogen",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d10 5s2 5p5",
+  "oxidation_states": [
+    "-1*",
+    "0",
+    "+1*",
+    "+3*",
+    "+4",
+    "+5*",
+    "+6",
+    "+7*"
+  ],
+  "electronegativity": 2.66,
+  "ionization_energy_kj": 1008,
+  "atomic_radius_pm": 140,
+  "melt_k": 386.85,
+  "boil_k": 457.4,
+  "density_g_cm3": 4.933,
+  "abundance_ppm": 0.45,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1811,
+    "by": "Bernard Courtois",
+    "origin": "Greek iodes 'violet'"
+  },
+  "uses": [
+    "Iodised salt \u2014 thyroid health",
+    "Antiseptics (tincture of iodine)",
+    "Medical X-ray contrast agents",
+    "Pharmaceutical synthesis"
+  ],
+  "compounds": [
+    "KI \u2014 potassium iodide (iodised salt)",
+    "KIO3 \u2014 potassium iodate",
+    "I2 \u2014 iodine (antiseptic solution)"
+  ]
+}

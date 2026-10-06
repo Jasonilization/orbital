@@ -1,0 +1,44 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 65,
+  "symbol": "Tb",
+  "name": "Terbium",
+  "atomic_mass": 158.93,
+  "electron_configuration": "[Xe] 4f9 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4"
+  ],
+  "electronegativity": 1.2,
+  "ionization_energy_kj": 566,
+  "atomic_radius_pm": 175,
+  "melt_k": 1629,
+  "boil_k": 3503,
+  "density_g_cm3": 8.23,
+  "abundance_ppm": 1.2,
+  "discovered": {
+    "year": 1843,
+    "by": "Carl Gustaf Mosander",
+    "origin": "Ytterby, a Swedish village"
+  },
+  "uses": [
+    "Green phosphors in fluorescent lamps",
+    "Terfenol-D sonar (changes shape in magnetic fields)",
+    "Solid-state devices (doping)",
+    "Naval sonar systems"
+  ],
+  "compounds": [
+    "Tb2O3 \u2014 terbium oxide",
+    "TbCl3 \u2014 terbium chloride",
+    "Terfenol-D \u2014 magnetostrictive alloy"
+  ]
+}

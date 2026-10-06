@@ -1,0 +1,45 @@
+{
+  "number": 5,
+  "symbol": "B",
+  "name": "Boron",
+  "atomic_mass": 10.81,
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    10.806,
+    10.821
+  ],
+  "group": 13,
+  "period": 2,
+  "block": "p",
+  "category": "metalloid",
+  "state": "solid",
+  "electron_configuration": "[He] 2s2 2p1",
+  "oxidation_states": [
+    "+3*"
+  ],
+  "electronegativity": 2.04,
+  "ionization_energy_kj": 801,
+  "atomic_radius_pm": 85,
+  "melt_k": 2349,
+  "boil_k": 4200,
+  "density_g_cm3": 2.34,
+  "abundance_ppm": 10,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1808,
+    "by": "Humphry Davy, Joseph Gay-Lussac and Louis Thenard",
+    "origin": "Arabic buraq, the mineral borax"
+  },
+  "uses": [
+    "Borosilicate heat-resistant glass",
+    "Detergents (perborates)",
+    "Boron neutron-capture shielding",
+    "Essential plant micronutrient"
+  ],
+  "compounds": [
+    "H3BO3 \u2014 boric acid",
+    "Na2B4O7\u00b710H2O \u2014 borax",
+    "B2O3 \u2014 boron trioxide"
+  ]
+}

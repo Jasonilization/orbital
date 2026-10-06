@@ -1,0 +1,36 @@
+{
+  "number": 10,
+  "symbol": "Ne",
+  "name": "Neon",
+  "atomic_mass": 20.18,
+  "group": 18,
+  "period": 2,
+  "block": "p",
+  "category": "noble gas",
+  "state": "gas",
+  "electron_configuration": "[He] 2s2 2p6",
+  "oxidation_states": [
+    "0*"
+  ],
+  "electronegativity": null,
+  "ionization_energy_kj": 2081,
+  "atomic_radius_pm": 38,
+  "melt_k": 24.56,
+  "boil_k": 27.07,
+  "density_g_cm3": 0.0008999,
+  "abundance_ppm": 0.005,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1898,
+    "by": "William Ramsay and Morris Travers",
+    "origin": "Greek neos 'new'"
+  },
+  "uses": [
+    "Neon signage",
+    "Helium-neon lasers",
+    "Cryogenic refrigerant",
+    "High-voltage indicators"
+  ],
+  "compounds": []
+}

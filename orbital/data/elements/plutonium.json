@@ -1,0 +1,46 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": true,
+  "group": null,
+  "number": 94,
+  "symbol": "Pu",
+  "name": "Plutonium",
+  "atomic_mass": 244,
+  "atomic_mass_type": "isotope",
+  "electron_configuration": "[Rn] 5f6 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4*",
+    "+5",
+    "+6*",
+    "+7",
+    "+8"
+  ],
+  "electronegativity": 1.28,
+  "ionization_energy_kj": 585,
+  "atomic_radius_pm": 175,
+  "melt_k": 912.5,
+  "boil_k": 3505,
+  "density_g_cm3": 19.85,
+  "discovered": {
+    "year": 1940,
+    "by": "Glenn Seaborg, Arthur Wahl, Joseph Kennedy and Edwin McMillan",
+    "origin": "The planet Pluto \u2014 next after neptunium"
+  },
+  "uses": [
+    "Deep-space power: Pu-238 radioisotope generators run Voyager, Curiosity and New Horizons",
+    "Nuclear weapons cores (the Nagasaki bomb)",
+    "Mixed-oxide (MOX) reactor fuel"
+  ],
+  "compounds": [
+    "PuO2 \u2014 plutonium dioxide",
+    "PuF4 \u2014 plutonium tetrafluoride"
+  ]
+}

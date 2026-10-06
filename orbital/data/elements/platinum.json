@@ -1,0 +1,50 @@
+{
+  "number": 78,
+  "symbol": "Pt",
+  "name": "Platinum",
+  "atomic_mass": 195.08,
+  "group": 10,
+  "period": 6,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Xe] 4f14 5d9 6s1",
+  "oxidation_states": [
+    "-3",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2*",
+    "+3",
+    "+4*",
+    "+5",
+    "+6"
+  ],
+  "electronegativity": 2.28,
+  "ionization_energy_kj": 870,
+  "atomic_radius_pm": 135,
+  "melt_k": 2041.4,
+  "boil_k": 4098,
+  "density_g_cm3": 21.45,
+  "abundance_ppm": 0.005,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1735,
+    "by": "Antonio de Ulloa (already known to pre-Columbian South Americans)",
+    "origin": "Spanish platina, 'little silver'"
+  },
+  "uses": [
+    "Catalytic converters",
+    "Jewellery (95% platinum 'PT950')",
+    "Lab crucibles and electrodes",
+    "Cisplatin chemotherapy",
+    "Nitric-acid production catalysts (Ostwald process)"
+  ],
+  "compounds": [
+    "Cisplatin \u2014 Pt(NH3)2Cl2 (cancer drug)",
+    "PtO2 \u2014 platinum dioxide (Adams catalyst)",
+    "H2PtCl6 \u2014 chloroplatinic acid (platinum plating)"
+  ]
+}

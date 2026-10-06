@@ -1,0 +1,43 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 63,
+  "symbol": "Eu",
+  "name": "Europium",
+  "atomic_mass": 151.96,
+  "electron_configuration": "[Xe] 4f7 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2*",
+    "+3*"
+  ],
+  "electronegativity": 1.2,
+  "ionization_energy_kj": 547,
+  "atomic_radius_pm": 185,
+  "melt_k": 1099,
+  "boil_k": 1802,
+  "density_g_cm3": 5.244,
+  "abundance_ppm": 2.1,
+  "discovered": {
+    "year": 1901,
+    "by": "Eugene-Anatole Demarcay",
+    "origin": "Europe"
+  },
+  "uses": [
+    "Red and blue phosphors in screens and lamps",
+    "Anti-counterfeit glow in euro banknotes",
+    "Fluorescent glass and lamps",
+    "Lasers and phosphors research"
+  ],
+  "compounds": [
+    "Y2O3:Eu \u2014 europium-doped red phosphor",
+    "Eu2O3 \u2014 europium oxide",
+    "EuCl3 \u2014 europium chloride"
+  ]
+}

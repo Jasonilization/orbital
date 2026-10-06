@@ -1,0 +1,49 @@
+{
+  "number": 74,
+  "symbol": "W",
+  "name": "Tungsten",
+  "atomic_mass": 183.84,
+  "group": 6,
+  "period": 6,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Xe] 4f14 5d4 6s2",
+  "oxidation_states": [
+    "-4",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4*",
+    "+5",
+    "+6*"
+  ],
+  "electronegativity": 2.36,
+  "ionization_energy_kj": 770,
+  "atomic_radius_pm": 135,
+  "melt_k": 3695,
+  "boil_k": 5828,
+  "density_g_cm3": 19.25,
+  "abundance_ppm": 1.25,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1783,
+    "by": "Juan Jose and Fausto Elhuyar",
+    "origin": "Swedish tung sten 'heavy stone'; symbol from Wolfram, wolframite ore"
+  },
+  "uses": [
+    "Highest melting point of any metal \u2014 lightbulb filaments",
+    "Tungsten carbide drill bits and saws",
+    "Military armour and penetrators",
+    "X-ray tube targets"
+  ],
+  "compounds": [
+    "WC \u2014 tungsten carbide (cutting tools)",
+    "WO3 \u2014 tungsten trioxide",
+    "CaWO4 \u2014 scheelite (main ore)"
+  ]
+}

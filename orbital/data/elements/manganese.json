@@ -1,0 +1,50 @@
+{
+  "number": 25,
+  "symbol": "Mn",
+  "name": "Manganese",
+  "atomic_mass": 54.938,
+  "group": 7,
+  "period": 4,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Ar] 3d5 4s2",
+  "oxidation_states": [
+    "-3",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2*",
+    "+3*",
+    "+4*",
+    "+5",
+    "+6*",
+    "+7*"
+  ],
+  "electronegativity": 1.55,
+  "ionization_energy_kj": 717,
+  "atomic_radius_pm": 140,
+  "melt_k": 1519,
+  "boil_k": 2334,
+  "density_g_cm3": 7.21,
+  "abundance_ppm": 950,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1774,
+    "by": "Johan Gottlieb Gahn",
+    "origin": "Neo-Latin manganese, ultimately from Greek magnesia"
+  },
+  "uses": [
+    "Hardening steel (rail tracks, safes, helmets)",
+    "Dry-cell batteries (MnO2)",
+    "Aluminium alloys (drink cans)",
+    "Potassium permanganate disinfectant"
+  ],
+  "compounds": [
+    "MnO2 \u2014 manganese dioxide",
+    "KMnO4 \u2014 potassium permanganate",
+    "MnSO4 \u2014 manganese(II) sulfate"
+  ]
+}

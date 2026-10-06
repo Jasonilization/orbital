@@ -1,0 +1,48 @@
+{
+  "number": 52,
+  "symbol": "Te",
+  "name": "Tellurium",
+  "atomic_mass": 127.6,
+  "group": 16,
+  "period": 5,
+  "block": "p",
+  "category": "metalloid",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d10 5s2 5p4",
+  "oxidation_states": [
+    "-2*",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4*",
+    "+5",
+    "+6*"
+  ],
+  "electronegativity": 2.1,
+  "ionization_energy_kj": 869,
+  "atomic_radius_pm": 140,
+  "melt_k": 722.66,
+  "boil_k": 1261,
+  "density_g_cm3": 6.24,
+  "abundance_ppm": 0.001,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1782,
+    "by": "Franz-Joseph Muller von Reichenstein",
+    "origin": "Latin tellus 'earth'"
+  },
+  "uses": [
+    "Thin-film solar cells (CdTe)",
+    "Thermoelectric coolers and generators (Bi2Te3)",
+    "Alloying steel and copper",
+    "Vulcanising rubber"
+  ],
+  "compounds": [
+    "TeO2 \u2014 tellurium dioxide",
+    "H2Te \u2014 hydrogen telluride",
+    "Bi2Te3 \u2014 bismuth telluride (thermoelectrics)"
+  ]
+}

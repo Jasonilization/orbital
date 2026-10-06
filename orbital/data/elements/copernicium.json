@@ -1,0 +1,30 @@
+{
+  "period": 7,
+  "radioactive": true,
+  "synthetic": true,
+  "category": "transition metal",
+  "block": "d",
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 112,
+  "symbol": "Cn",
+  "name": "Copernicium",
+  "atomic_mass": 285,
+  "atomic_mass_type": "isotope",
+  "group": 12,
+  "electron_configuration": "[Rn] 5f14 6d10 7s2",
+  "oxidation_states": [
+    "+2*"
+  ],
+  "melt_k": 283,
+  "boil_k": 340,
+  "density_g_cm3": 23.7,
+  "discovered": {
+    "year": 1996,
+    "by": "Sigurd Hofmann's GSI team",
+    "origin": "Nicolaus Copernicus"
+  },
+  "uses": [
+    "Research only \u2014 predicted to be a volatile liquid metal near room temperature"
+  ]
+}

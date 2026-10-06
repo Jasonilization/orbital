@@ -1,0 +1,31 @@
+{
+  "period": 7,
+  "block": "p",
+  "radioactive": true,
+  "synthetic": true,
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 116,
+  "symbol": "Lv",
+  "name": "Livermorium",
+  "atomic_mass": 293,
+  "atomic_mass_type": "isotope",
+  "group": 16,
+  "category": "post-transition metal",
+  "electron_configuration": "[Rn] 5f14 6d10 7s2 7p4",
+  "oxidation_states": [
+    "+2*",
+    "+4*"
+  ],
+  "melt_k": 709,
+  "boil_k": 1429,
+  "density_g_cm3": 12.9,
+  "discovered": {
+    "year": 2000,
+    "by": "Yuri Oganessian's JINR team, with Lawrence Livermore",
+    "origin": "Lawrence Livermore National Laboratory"
+  },
+  "uses": [
+    "Research only"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 67,
+  "symbol": "Ho",
+  "name": "Holmium",
+  "atomic_mass": 164.93,
+  "electron_configuration": "[Xe] 4f11 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*"
+  ],
+  "electronegativity": 1.23,
+  "ionization_energy_kj": 581,
+  "atomic_radius_pm": 175,
+  "melt_k": 1734,
+  "boil_k": 2993,
+  "density_g_cm3": 8.79,
+  "abundance_ppm": 1.3,
+  "discovered": {
+    "year": 1878,
+    "by": "Marc Delafontaine, Jacques-Louis Soret and Per Teodor Cleve",
+    "origin": "Holmia, Latin for Stockholm"
+  },
+  "uses": [
+    "Strongest magnetic moment of any element \u2014 flux concentrators in high-field magnets",
+    "Ho:YAG lasers (surgery)",
+    "Yellow glass and glazes",
+    "NMR calibration standards"
+  ],
+  "compounds": [
+    "Ho2O3 \u2014 holmium oxide",
+    "HoCl3 \u2014 holmium chloride",
+    "Ho:YAG \u2014 surgical laser crystal"
+  ]
+}

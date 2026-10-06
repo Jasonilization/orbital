@@ -1,0 +1,34 @@
+{
+  "period": 7,
+  "radioactive": true,
+  "synthetic": true,
+  "category": "transition metal",
+  "block": "d",
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 108,
+  "symbol": "Hs",
+  "name": "Hassium",
+  "atomic_mass": 269,
+  "atomic_mass_type": "isotope",
+  "group": 8,
+  "electron_configuration": "[Rn] 5f14 6d6 7s2",
+  "oxidation_states": [
+    "+3",
+    "+4",
+    "+6*",
+    "+8*"
+  ],
+  "density_g_cm3": 40.7,
+  "discovered": {
+    "year": 1984,
+    "by": "Peter Armbruster and Gottfried Munzenberg's GSI team",
+    "origin": "Latin Hassias \u2014 Hesse, the German state"
+  },
+  "uses": [
+    "Research only \u2014 HsO4 was the first superheavy compound studied chemically"
+  ],
+  "compounds": [
+    "HsO4 \u2014 hassium tetroxide (chemically compared with OsO4)"
+  ]
+}

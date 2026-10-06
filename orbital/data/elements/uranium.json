@@ -1,0 +1,46 @@
+{
+  "block": "f",
+  "period": 7,
+  "category": "actinide",
+  "state": "solid",
+  "radioactive": true,
+  "synthetic": false,
+  "group": null,
+  "number": 92,
+  "symbol": "U",
+  "name": "Uranium",
+  "atomic_mass": 238.03,
+  "electron_configuration": "[Rn] 5f3 6d1 7s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4*",
+    "+5",
+    "+6*"
+  ],
+  "electronegativity": 1.38,
+  "ionization_energy_kj": 598,
+  "atomic_radius_pm": 175,
+  "melt_k": 1405.3,
+  "boil_k": 4404,
+  "density_g_cm3": 19.1,
+  "abundance_ppm": 2.7,
+  "discovered": {
+    "year": 1789,
+    "by": "Martin Heinrich Klaproth",
+    "origin": "The planet Uranus (discovered eight years earlier)"
+  },
+  "uses": [
+    "Reactor fuel \u2014 nuclear power plants and submarines",
+    "Weapons-grade U-235 (0.7% of natural uranium, separated by centrifuges)",
+    "Depleted-uranium armour and counterweights",
+    "Uranium-lead dating \u2014 how we know Earth's age"
+  ],
+  "compounds": [
+    "UO2 \u2014 uranium dioxide (fuel pellets)",
+    "UF6 \u2014 uranium hexafluoride (enrichment)",
+    "U3O8 \u2014 yellowcake (the trade form)"
+  ]
+}

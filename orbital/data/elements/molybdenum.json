@@ -1,0 +1,49 @@
+{
+  "number": 42,
+  "symbol": "Mo",
+  "name": "Molybdenum",
+  "atomic_mass": 95.95,
+  "group": 6,
+  "period": 5,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d5 5s1",
+  "oxidation_states": [
+    "-4",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4",
+    "+5*",
+    "+6*"
+  ],
+  "electronegativity": 2.16,
+  "ionization_energy_kj": 684,
+  "atomic_radius_pm": 145,
+  "melt_k": 2896,
+  "boil_k": 4912,
+  "density_g_cm3": 10.28,
+  "abundance_ppm": 1.2,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1778,
+    "by": "Carl Wilhelm Scheele",
+    "origin": "Greek molybdos 'lead' (minerals were confused)"
+  },
+  "uses": [
+    "Strengthening stainless and tool steels",
+    "MoS2 dry lubricant",
+    "Catalysts (petroleum desulfurisation)",
+    "Essential trace element (nitrogenase)"
+  ],
+  "compounds": [
+    "MoS2 \u2014 molybdenum disulfide (molybdenite)",
+    "MoO3 \u2014 molybdenum trioxide",
+    "H2MoO4 \u2014 molybdic acid"
+  ]
+}

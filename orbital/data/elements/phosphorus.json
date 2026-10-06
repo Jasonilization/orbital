@@ -1,0 +1,48 @@
+{
+  "number": 15,
+  "symbol": "P",
+  "name": "Phosphorus",
+  "atomic_mass": 30.974,
+  "group": 15,
+  "period": 3,
+  "block": "p",
+  "category": "nonmetal",
+  "state": "solid",
+  "electron_configuration": "[Ne] 3s2 3p3",
+  "oxidation_states": [
+    "-3*",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4",
+    "+5*"
+  ],
+  "electronegativity": 2.19,
+  "ionization_energy_kj": 1012,
+  "atomic_radius_pm": 100,
+  "melt_k": 317.3,
+  "boil_k": 553.7,
+  "density_g_cm3": 1.823,
+  "abundance_ppm": 1050,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1669,
+    "by": "Hennig Brand",
+    "origin": "Greek phosphoros 'light-bringing'"
+  },
+  "uses": [
+    "Fertilisers (phosphates)",
+    "Matches and pyrotechnics",
+    "Detergents (phosphates)",
+    "Pesticides"
+  ],
+  "compounds": [
+    "Ca3(PO4)2 \u2014 calcium phosphate",
+    "H3PO4 \u2014 phosphoric acid",
+    "P4O10 \u2014 phosphorus pentoxide"
+  ]
+}

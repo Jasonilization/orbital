@@ -1,0 +1,47 @@
+{
+  "number": 50,
+  "symbol": "Sn",
+  "name": "Tin",
+  "atomic_mass": 118.71,
+  "group": 14,
+  "period": 5,
+  "block": "p",
+  "category": "post-transition metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d10 5s2 5p2",
+  "oxidation_states": [
+    "-4",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2*",
+    "+3",
+    "+4*"
+  ],
+  "electronegativity": 1.96,
+  "ionization_energy_kj": 709,
+  "atomic_radius_pm": 145,
+  "melt_k": 505.08,
+  "boil_k": 2875,
+  "density_g_cm3": 7.31,
+  "abundance_ppm": 2.3,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": "ancient",
+    "by": "Known since prehistory",
+    "origin": "Latin stannum"
+  },
+  "uses": [
+    "Solder for electronics",
+    "Tin-plated steel cans",
+    "Bronze (with copper)",
+    "Pewter; molten-tin bath for float glass"
+  ],
+  "compounds": [
+    "SnO2 \u2014 tin dioxide (cassiterite, the main ore)",
+    "SnCl2 \u2014 tin(II) chloride (tin plating)",
+    "SnS \u2014 tin sulfide"
+  ]
+}

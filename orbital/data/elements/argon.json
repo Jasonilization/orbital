@@ -1,0 +1,36 @@
+{
+  "number": 18,
+  "symbol": "Ar",
+  "name": "Argon",
+  "atomic_mass": 39.948,
+  "group": 18,
+  "period": 3,
+  "block": "p",
+  "category": "noble gas",
+  "state": "gas",
+  "electron_configuration": "[Ne] 3s2 3p6",
+  "oxidation_states": [
+    "0*"
+  ],
+  "electronegativity": null,
+  "ionization_energy_kj": 1521,
+  "atomic_radius_pm": 71,
+  "melt_k": 83.8,
+  "boil_k": 87.3,
+  "density_g_cm3": 0.0017837,
+  "abundance_ppm": 3.5,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1894,
+    "by": "Lord Rayleigh and William Ramsay",
+    "origin": "Greek argos 'idle, lazy' (because unreactive)"
+  },
+  "uses": [
+    "Shield gas in welding",
+    "Fill gas for incandescent bulbs and double glazing",
+    "Argon-ion lasers",
+    "Protecting wine in open bottles"
+  ],
+  "compounds": []
+}

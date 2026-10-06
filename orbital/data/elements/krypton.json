@@ -1,0 +1,40 @@
+{
+  "number": 36,
+  "symbol": "Kr",
+  "name": "Krypton",
+  "atomic_mass": 83.798,
+  "group": 18,
+  "period": 4,
+  "block": "p",
+  "category": "noble gas",
+  "state": "gas",
+  "electron_configuration": "[Ar] 3d10 4s2 4p6",
+  "oxidation_states": [
+    "0*",
+    "+1",
+    "+2*"
+  ],
+  "electronegativity": 3.0,
+  "ionization_energy_kj": 1351,
+  "atomic_radius_pm": 88,
+  "melt_k": 115.79,
+  "boil_k": 119.93,
+  "density_g_cm3": 0.003749,
+  "abundance_ppm": 0.0001,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1898,
+    "by": "William Ramsay and Morris Travers",
+    "origin": "Greek kryptos 'hidden'"
+  },
+  "uses": [
+    "High-speed photographic flash lamps",
+    "Krypton-fluoride excimer lasers",
+    "Insulating fill for double-glazed windows",
+    "Formerly defined the metre (1960-1983)"
+  ],
+  "compounds": [
+    "KrF2 \u2014 krypton difluoride"
+  ]
+}

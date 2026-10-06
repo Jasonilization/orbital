@@ -1,0 +1,53 @@
+{
+  "number": 14,
+  "symbol": "Si",
+  "name": "Silicon",
+  "atomic_mass": 28.085,
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    28.084,
+    28.086
+  ],
+  "group": 14,
+  "period": 3,
+  "block": "p",
+  "category": "metalloid",
+  "state": "solid",
+  "electron_configuration": "[Ne] 3s2 3p2",
+  "oxidation_states": [
+    "-4*",
+    "-3",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4*"
+  ],
+  "electronegativity": 1.9,
+  "ionization_energy_kj": 787,
+  "atomic_radius_pm": 110,
+  "melt_k": 1687,
+  "boil_k": 3538,
+  "density_g_cm3": 2.329,
+  "abundance_ppm": 282000,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1824,
+    "by": "Jons Jacob Berzelius",
+    "origin": "Latin silex 'flint'"
+  },
+  "uses": [
+    "Semiconductor chips and solar cells",
+    "Glass and ceramics",
+    "Silicone polymers and sealants",
+    "Alloying steel"
+  ],
+  "compounds": [
+    "SiO2 \u2014 silicon dioxide (quartz)",
+    "Na2SiO3 \u2014 water glass",
+    "SiC \u2014 silicon carbide (carborundum)"
+  ]
+}

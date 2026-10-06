@@ -1,0 +1,32 @@
+{
+  "period": 7,
+  "radioactive": true,
+  "synthetic": true,
+  "category": "transition metal",
+  "block": "d",
+  "state": "solid",
+  "abundance_ppm": null,
+  "number": 107,
+  "symbol": "Bh",
+  "name": "Bohrium",
+  "atomic_mass": 270,
+  "atomic_mass_type": "isotope",
+  "group": 7,
+  "electron_configuration": "[Rn] 5f14 6d5 7s2",
+  "oxidation_states": [
+    "+3",
+    "+4",
+    "+5",
+    "+6",
+    "+7*"
+  ],
+  "density_g_cm3": 37.1,
+  "discovered": {
+    "year": 1981,
+    "by": "Gesellschaft fur Schwerionenforschung (GSI), Darmstadt",
+    "origin": "Niels Bohr"
+  },
+  "uses": [
+    "Research only"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "number": 2,
+  "symbol": "He",
+  "name": "Helium",
+  "atomic_mass": 4.0026,
+  "group": 18,
+  "period": 1,
+  "block": "s",
+  "category": "noble gas",
+  "state": "gas",
+  "electron_configuration": "1s2",
+  "oxidation_states": [
+    "0*"
+  ],
+  "electronegativity": null,
+  "ionization_energy_kj": 2372,
+  "atomic_radius_pm": 31,
+  "melt_k": 0.95,
+  "boil_k": 4.22,
+  "density_g_cm3": 0.0001785,
+  "abundance_ppm": 0.008,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1868,
+    "by": "Pierre Janssen and Norman Lockyer (in the Sun's spectrum); isolated on Earth by William Ramsay, 1895",
+    "origin": "Greek helios 'sun'"
+  },
+  "uses": [
+    "Balloons and airships",
+    "Cooling superconducting MRI magnets",
+    "Deep-sea breathing mixtures (heliox)",
+    "Leak detection"
+  ],
+  "compounds": []
+}

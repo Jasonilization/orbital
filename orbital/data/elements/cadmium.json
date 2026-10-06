@@ -1,0 +1,43 @@
+{
+  "number": 48,
+  "symbol": "Cd",
+  "name": "Cadmium",
+  "atomic_mass": 112.41,
+  "group": 12,
+  "period": 5,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d10 5s2",
+  "oxidation_states": [
+    "-2",
+    "0",
+    "+1",
+    "+2*"
+  ],
+  "electronegativity": 1.69,
+  "ionization_energy_kj": 868,
+  "atomic_radius_pm": 155,
+  "melt_k": 594.22,
+  "boil_k": 1040,
+  "density_g_cm3": 8.65,
+  "abundance_ppm": 0.15,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1817,
+    "by": "Friedrich Stromeyer and Karl Samuel Leberecht Hermann",
+    "origin": "Latin cadmia, Greek kadmeia (calamine ore)"
+  },
+  "uses": [
+    "Ni-Cd rechargeable batteries",
+    "Yellow and red artists' pigments",
+    "Thin-film solar cells (CdTe)",
+    "Quantum dots \u2014 toxic, now largely phased out"
+  ],
+  "compounds": [
+    "CdS \u2014 cadmium sulfide (cadmium yellow)",
+    "CdO \u2014 cadmium oxide",
+    "CdTe \u2014 cadmium telluride (solar cells)"
+  ]
+}

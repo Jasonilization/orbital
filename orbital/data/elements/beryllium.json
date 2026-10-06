@@ -1,0 +1,39 @@
+{
+  "number": 4,
+  "symbol": "Be",
+  "name": "Beryllium",
+  "atomic_mass": 9.0122,
+  "group": 2,
+  "period": 2,
+  "block": "s",
+  "category": "alkaline earth metal",
+  "state": "solid",
+  "electron_configuration": "[He] 2s2",
+  "oxidation_states": [
+    "+2*"
+  ],
+  "electronegativity": 1.57,
+  "ionization_energy_kj": 900,
+  "atomic_radius_pm": 105,
+  "melt_k": 1560,
+  "boil_k": 2742,
+  "density_g_cm3": 1.85,
+  "abundance_ppm": 2.6,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1798,
+    "by": "Louis-Nicolas Vauquelin",
+    "origin": "Greek beryllos, the mineral beryl"
+  },
+  "uses": [
+    "X-ray tube windows",
+    "Aerospace structures and satellite mirrors",
+    "Copper-beryllium springs and contacts",
+    "Nuclear reactor reflectors"
+  ],
+  "compounds": [
+    "BeO \u2014 beryllium oxide",
+    "Be3Al2Si6O18 \u2014 beryl (emerald's mineral)"
+  ]
+}

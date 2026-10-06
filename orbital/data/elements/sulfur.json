@@ -1,0 +1,53 @@
+{
+  "number": 16,
+  "symbol": "S",
+  "name": "Sulfur",
+  "atomic_mass": 32.06,
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    32.059,
+    32.076
+  ],
+  "group": 16,
+  "period": 3,
+  "block": "p",
+  "category": "nonmetal",
+  "state": "solid",
+  "electron_configuration": "[Ne] 3s2 3p4",
+  "oxidation_states": [
+    "-2*",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3",
+    "+4*",
+    "+5",
+    "+6*"
+  ],
+  "electronegativity": 2.58,
+  "ionization_energy_kj": 1000,
+  "atomic_radius_pm": 100,
+  "melt_k": 388.36,
+  "boil_k": 717.87,
+  "density_g_cm3": 2.07,
+  "abundance_ppm": 350,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": "ancient",
+    "by": "Known since prehistory",
+    "origin": "Latin sulfur"
+  },
+  "uses": [
+    "Sulfuric acid \u2014 the world's most-produced chemical",
+    "Vulcanising rubber",
+    "Fungicides and sulfide drugs",
+    "Gunpowder and matches"
+  ],
+  "compounds": [
+    "H2SO4 \u2014 sulfuric acid",
+    "SO2 \u2014 sulfur dioxide",
+    "FeS2 \u2014 iron disulfide (pyrite)"
+  ]
+}

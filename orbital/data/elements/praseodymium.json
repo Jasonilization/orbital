@@ -1,0 +1,45 @@
+{
+  "category": "lanthanide",
+  "period": 6,
+  "block": "f",
+  "state": "solid",
+  "radioactive": false,
+  "synthetic": false,
+  "group": null,
+  "number": 59,
+  "symbol": "Pr",
+  "name": "Praseodymium",
+  "atomic_mass": 140.91,
+  "electron_configuration": "[Xe] 4f3 6s2",
+  "oxidation_states": [
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4",
+    "+5"
+  ],
+  "electronegativity": 1.13,
+  "ionization_energy_kj": 527,
+  "atomic_radius_pm": 185,
+  "melt_k": 1208,
+  "boil_k": 3793,
+  "density_g_cm3": 6.77,
+  "abundance_ppm": 8.7,
+  "discovered": {
+    "year": 1885,
+    "by": "Carl Auer von Welsbach",
+    "origin": "Greek prasios 'green' + didymos 'twin'"
+  },
+  "uses": [
+    "Didymium welding goggles (filters glare)",
+    "Aircraft-alloy strengthening",
+    "Yellow ceramics and glass colouring",
+    "High-strength magnets (with neodymium)"
+  ],
+  "compounds": [
+    "Pr6O11 \u2014 praseodymium oxide",
+    "Pr2O3 \u2014 praseodymium(III) oxide",
+    "PrCl3 \u2014 praseodymium chloride"
+  ]
+}

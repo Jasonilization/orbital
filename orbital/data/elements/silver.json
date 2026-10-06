@@ -1,0 +1,45 @@
+{
+  "number": 47,
+  "symbol": "Ag",
+  "name": "Silver",
+  "atomic_mass": 107.87,
+  "group": 11,
+  "period": 5,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 4d10 5s1",
+  "oxidation_states": [
+    "-2",
+    "-1",
+    "0",
+    "+1*",
+    "+2*",
+    "+3"
+  ],
+  "electronegativity": 1.93,
+  "ionization_energy_kj": 731,
+  "atomic_radius_pm": 160,
+  "melt_k": 1234.93,
+  "boil_k": 2435,
+  "density_g_cm3": 10.49,
+  "abundance_ppm": 0.075,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": "ancient",
+    "by": "Known since prehistory",
+    "origin": "English silver; symbol from Latin argentum"
+  },
+  "uses": [
+    "Best electrical conductor \u2014 contacts and wiring",
+    "Jewellery and silverware",
+    "Photography (silver halides)",
+    "Antibacterial coatings and wound dressings"
+  ],
+  "compounds": [
+    "AgNO3 \u2014 silver nitrate",
+    "AgBr \u2014 silver bromide (photographic film)",
+    "AgCl \u2014 silver chloride"
+  ]
+}

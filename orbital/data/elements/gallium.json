@@ -1,0 +1,47 @@
+{
+  "number": 31,
+  "symbol": "Ga",
+  "name": "Gallium",
+  "atomic_mass": 69.723,
+  "group": 13,
+  "period": 4,
+  "block": "p",
+  "category": "post-transition metal",
+  "state": "solid",
+  "electron_configuration": "[Ar] 3d10 4s2 4p1",
+  "oxidation_states": [
+    "-5",
+    "-4",
+    "-2",
+    "-1",
+    "0",
+    "+1",
+    "+2*",
+    "+3*"
+  ],
+  "electronegativity": 1.81,
+  "ionization_energy_kj": 579,
+  "atomic_radius_pm": 130,
+  "melt_k": 302.91,
+  "boil_k": 2676,
+  "density_g_cm3": 5.91,
+  "abundance_ppm": 19,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1875,
+    "by": "Paul-Emile Lecoq de Boisbaudran",
+    "origin": "Latin Gallia 'France'"
+  },
+  "uses": [
+    "LEDs and laser diodes (GaAs, GaN)",
+    "Fast radio-frequency semiconductors",
+    "Melts in your hand (29.8 C) \u2014 low-melt alloys and jokes",
+    "Thin-film solar cells (CIGS)"
+  ],
+  "compounds": [
+    "GaAs \u2014 gallium arsenide",
+    "GaN \u2014 gallium nitride (blue LEDs)",
+    "Ga2O3 \u2014 gallium oxide"
+  ]
+}

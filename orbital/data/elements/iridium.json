@@ -1,0 +1,50 @@
+{
+  "number": 77,
+  "symbol": "Ir",
+  "name": "Iridium",
+  "atomic_mass": 192.22,
+  "group": 9,
+  "period": 6,
+  "block": "d",
+  "category": "transition metal",
+  "state": "solid",
+  "electron_configuration": "[Xe] 4f14 5d7 6s2",
+  "oxidation_states": [
+    "-3",
+    "-1",
+    "0",
+    "+1",
+    "+2",
+    "+3*",
+    "+4",
+    "+5",
+    "+6",
+    "+8",
+    "+9"
+  ],
+  "electronegativity": 2.2,
+  "ionization_energy_kj": 880,
+  "atomic_radius_pm": 135,
+  "melt_k": 2719,
+  "boil_k": 4403,
+  "density_g_cm3": 22.56,
+  "abundance_ppm": 0.001,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1803,
+    "by": "Smithson Tennant",
+    "origin": "Latin iris 'rainbow' (its salts are colourful)"
+  },
+  "uses": [
+    "Spark plugs (iridium electrodes last 100,000+ km)",
+    "Crucibles that grow sapphire for LED production",
+    "The K-T boundary iridium layer \u2014 evidence for the dinosaur-killing asteroid",
+    "Pivot bearings, pen nibs"
+  ],
+  "compounds": [
+    "IrO2 \u2014 iridium dioxide",
+    "IrCl3 \u2014 iridium chloride",
+    "IrF6 \u2014 iridium hexafluoride"
+  ]
+}

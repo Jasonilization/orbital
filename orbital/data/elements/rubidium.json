@@ -1,0 +1,40 @@
+{
+  "number": 37,
+  "symbol": "Rb",
+  "name": "Rubidium",
+  "atomic_mass": 85.468,
+  "group": 1,
+  "period": 5,
+  "block": "s",
+  "category": "alkali metal",
+  "state": "solid",
+  "electron_configuration": "[Kr] 5s1",
+  "oxidation_states": [
+    "-1",
+    "+1*"
+  ],
+  "electronegativity": 0.82,
+  "ionization_energy_kj": 403,
+  "atomic_radius_pm": 235,
+  "melt_k": 312.46,
+  "boil_k": 961,
+  "density_g_cm3": 1.532,
+  "abundance_ppm": 90,
+  "radioactive": false,
+  "synthetic": false,
+  "discovered": {
+    "year": 1861,
+    "by": "Robert Bunsen and Gustav Kirchhoff",
+    "origin": "Latin rubidus 'deep red' (its spectral lines)"
+  },
+  "uses": [
+    "Rubidium atomic clocks in GPS satellites and telecom",
+    "Photocells and night-vision devices",
+    "Vacuum-tube getter"
+  ],
+  "compounds": [
+    "RbCl \u2014 rubidium chloride",
+    "RbOH \u2014 rubidium hydroxide",
+    "Rb2CO3 \u2014 rubidium carbonate"
+  ]
+}
