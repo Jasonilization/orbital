@@ -288,9 +288,19 @@ class MainWindow(QMainWindow):
     def _on_color_combo(self, index):
         self._set_color_mode(self.color_combo.itemData(index))
 
+    @staticmethod
+    def _block(widget, fn):
+        """Run fn with the widget's signals blocked (prevents UI echo loops)."""
+        widget.blockSignals(True)
+        try:
+            fn()
+        finally:
+            widget.blockSignals(False)
+
     def _set_level(self, level_id):
         self.settings.set("education_level", level_id)
-        self.level_combo.setCurrentText(EDUCATION_LEVELS[level_id]["label"])
+        self._block(self.level_combo,
+                    lambda: self.level_combo.setCurrentText(EDUCATION_LEVELS[level_id]["label"]))
         for act in self._level_actions:
             act.setChecked(act.data() == level_id)
         if self.current_element():
@@ -298,7 +308,8 @@ class MainWindow(QMainWindow):
 
     def _set_layout(self, layout_id):
         self.settings.set("layout", layout_id)
-        self.layout_combo.setCurrentText(layout_id.title())
+        self._block(self.layout_combo,
+                    lambda: self.layout_combo.setCurrentText(layout_id.title()))
         for act in self._layout_actions:
             act.setChecked(act.data() == layout_id)
         self.table.rebuild()
@@ -307,7 +318,8 @@ class MainWindow(QMainWindow):
 
     def _set_color_mode(self, mode_id):
         self.settings.set("color_mode", mode_id)
-        self.color_combo.setCurrentText(self.color_modes[mode_id].name)
+        self._block(self.color_combo,
+                    lambda: self.color_combo.setCurrentText(self.color_modes[mode_id].name))
         for act in self._color_actions:
             act.setChecked(act.data() == mode_id)
         self.table.refresh_colors()
@@ -482,14 +494,16 @@ class MainWindow(QMainWindow):
             self.sidebar._build()
         elif key == "layout":
             self.table.rebuild()
-            self.layout_combo.setCurrentText(self.settings.get("layout").title())
+            self._block(self.layout_combo,
+                        lambda: self.layout_combo.setCurrentText(self.settings.get("layout").title()))
         elif key in ("tile_preset", "tile_fields", "tile_scale"):
             self.table.rebuild()
         elif key == "color_mode":
             self._set_color_mode(self.settings.get("color_mode"))
         elif key == "education_level":
             level = self.settings.education_level()
-            self.level_combo.setCurrentText(EDUCATION_LEVELS[level]["label"])
+            self._block(self.level_combo,
+                        lambda: self.level_combo.setCurrentText(EDUCATION_LEVELS[level]["label"]))
             for act in self._level_actions:
                 act.setChecked(act.data() == level)
             if self.current_element():

@@ -83,6 +83,13 @@ class Settings(QObject):
         return value
 
     def set(self, key, value):
+        # No-op on unchanged values: this is what breaks signal feedback
+        # loops between settings -> UI widgets -> setters.
+        try:
+            if self.get(key) == value:
+                return
+        except Exception:
+            pass
         if key == "tile_fields" and isinstance(value, list):
             import json
             self._qs.setValue(key, json.dumps(value))

@@ -96,14 +96,18 @@ class TableView(QWidget):
         """(Re)create the grid for the current layout."""
         self.layout_obj = self.settings_layout()
         layout = self.layout_obj
+        # Detach synchronously: deleteLater alone leaves orphaned children
+        # painting over the fresh grid until the event loop reaps them.
         for tile in list(self.tiles.values()):
             self._grid.removeWidget(tile)
+            tile.setParent(None)
             tile.deleteLater()
         self.tiles.clear()
         while self._grid.count():
             item = self._grid.takeAt(0)
             w = item.widget()
             if w is not None:
+                w.setParent(None)
                 w.deleteLater()
         self.positions = {}
         self.cells = {}

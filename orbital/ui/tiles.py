@@ -7,7 +7,7 @@ one pass; 118 of these render instantly.
 from __future__ import annotations
 
 from PySide6.QtCore import Qt, QRectF, Signal, QSize
-from PySide6.QtGui import QColor, QPainter, QFont, QPen
+from PySide6.QtGui import QColor, QPainter, QFont, QPen, QPalette
 from PySide6.QtWidgets import QWidget
 
 from orbital.ui.theme import is_dark_theme, readable_text_on
@@ -119,15 +119,20 @@ class ElementTile(QWidget):
         if self._hover:
             base = base.lighter(106) if not is_dark_theme() else base.lighter(112)
 
-        # fill
+        # fill — dimmed tiles blend toward the window colour and paint
+        # opaque, so nothing underneath can ever bleed through
         rect = QRectF(1.0, 1.0, w - 2.0, h - 2.0)
-        p.fillRect(rect, base)
-
         if self._dimmed:
-            p.setOpacity(0.16)
-        else:
-            p.setOpacity(1.0)
-
+            pal = self.palette()
+            win_c = pal.color(QPalette.Window)
+            base = QColor(
+                int(base.red() * 0.14 + win_c.red() * 0.86),
+                int(base.green() * 0.14 + win_c.green() * 0.86),
+                int(base.blue() * 0.14 + win_c.blue() * 0.86),
+            )
+        p.fillRect(rect, base)
+        if self._dimmed:
+            p.setOpacity(0.38)
         text = readable_text_on(base)
         p.setPen(text)
 
@@ -180,7 +185,7 @@ class ElementTile(QWidget):
                        Qt.AlignHCenter | Qt.AlignBottom | Qt.TextSingleLine,
                        e.name)
 
-        p.setOpacity(1.0)
+        p.setOpacity(1.0 if not self._dimmed else 0.45)
 
         # borders: structure over decoration
         pen = QPen(QColor("#8a8a85") if not is_dark_theme() else QColor("#54575e"))
