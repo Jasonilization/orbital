@@ -27,7 +27,9 @@ DEFAULTS = {
     "show_legend": True,
     "remember_layout": True,      # restore last layout at startup
     "open_details_on_select": True,
-    "panel_fields_shown": None,    # dict field_id -> bool (JSON); None = follow level defaults
+    "igcse_focus": True,            # highlight only IGCSE data-sheet elements
+    "panel_fields_shown": None,      # dict field_id -> bool (JSON); None = follow level defaults
+    "setup_done": False,             # first-run setup completed
 }
 
 _ACCENTS = {

@@ -39,6 +39,7 @@ def check(name, fn):
 
 app = QApplication([])
 settings = Settings(ini_path=os.path.join(tempfile.mkdtemp(), "audit.ini"))
+settings.set("setup_done", True)
 apply_theme("light", settings.accent_hex())
 win = MainWindow(settings)
 win.resize(1440, 860)

@@ -274,6 +274,21 @@ class DetailPanel(QWidget):
         divider.setFrameShape(QFrame.HLine)
         lay.addWidget(divider)
 
+        # compact facts strip replaces the old Essentials section:
+        # "Group 16  ·  Period 3  ·  State Solid  ·  Mass 32.06"
+        facts = self._facts_strip(element, fields.get("essentials", []), level)
+        if facts:
+            strip = QLabel(facts)
+            strip.setTextFormat(Qt.RichText)
+            strip.setWordWrap(True)
+            f = QFont(strip.font())
+            f.setPointSizeF(f.pointSizeF() * 0.95)
+            strip.setFont(f)
+            lay.addWidget(strip)
+            thin = QFrame()
+            thin.setFrameShape(QFrame.HLine)
+            lay.addWidget(thin)
+
         # detail toggles — visible, persistent, one click
         lay.addWidget(self._chips(effective))
 
@@ -287,6 +302,8 @@ class DetailPanel(QWidget):
             collapsed.discard("history")
 
         for section_id in sections:
+            if section_id == "essentials":
+                continue  # rendered as the facts strip
             section_fields = fields.get(section_id, [])
             if not section_fields:
                 continue
@@ -298,6 +315,7 @@ class DetailPanel(QWidget):
                     element, fid, config_style=config_style,
                     ox_common_only=(fid == "oxidation_states" and common_ox),
                     mass_precision=mass_precision,
+                    igcse=(level == "igcse"),
                 )
                 sect.body_lay.addLayout(self._field_row(field_label(fid), value, fid))
             sect._set_open(section_id not in collapsed)
@@ -306,6 +324,22 @@ class DetailPanel(QWidget):
         lay.addStretch(1)
         page.adjustSize()
         self._swap(page)
+
+    def _facts_strip(self, element, essentials, level):
+        order = ["group", "period", "state", "atomic_mass", "block", "category"]
+        include = [f for f in order if f in essentials]
+        if not include:
+            return ""
+        parts = []
+        for fid in include:
+            value = field_value(element, fid, igcse=(level == "igcse"))
+            if value in (None, ""):
+                continue
+            label = field_label(fid)
+            parts.append(
+                '<span style="color:palette(mid);">%s</span> <b>%s</b>'
+                % (label, value))
+        return "  \u00b7  ".join(parts)
 
     def _field_row(self, label, value, fid):
         row = QHBoxLayout()

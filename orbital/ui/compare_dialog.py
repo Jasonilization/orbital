@@ -49,7 +49,8 @@ class CompareDialog(QDialog):
             self.table.clear()
             self.label.setText("Pick at least two elements to compare.")
             return
-        rows = compare_rows(els, mass_precision=self.settings.get("mass_precision"))
+        rows = compare_rows(els, mass_precision=self.settings.get("mass_precision"),
+                           igcse=(self.settings.education_level() == "igcse"))
         self.label.setText(
             "%s" % "  vs  ".join(e.name for e in els))
         self.table.setRowCount(len(rows))

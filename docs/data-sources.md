@@ -20,6 +20,15 @@ unknown or only estimated, the data says so rather than pretending.
 | Discovery year/attribution | Standard historical attributions; "ancient" for the nine elements known since prehistory |
 | Categories, blocks, groups | IUPAC conventions (La/Ac placed in the group-3 column in the extended layout) |
 
+## IGCSE assessment mode
+
+At the IGCSE education level the app displays the simplified relative
+atomic masses used by the Cambridge IGCSE Chemistry (0620) data sheet
+(1, 4, 7, … 16, 35.5, 63.5 … 238) for the 46 elements that sheet lists,
+and de-emphasises the rest when *Syllabus only* is on. The underlying
+database is untouched — switch level and the IUPAC values return.
+Elements outside the data sheet fall back to bracketed or 1-d.p. values.
+
 ## Derived values
 
 - **Shell arrangements** (e.g. Fe = 2, 8, 14, 2) are derived at load time

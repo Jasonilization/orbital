@@ -8,7 +8,7 @@ from orbital.formatting import field_value, field_label
 MAX_COMPARE = 4
 
 
-def compare_rows(elements, *, mass_precision: int = 3):
+def compare_rows(elements, *, mass_precision: int = 3, igcse: bool = False):
     """Return (field_id, label, [values...]) rows for the selected elements."""
     if not 2 <= len(elements) <= MAX_COMPARE:
         raise ValueError("compare needs 2-%d elements, got %d"
@@ -17,7 +17,7 @@ def compare_rows(elements, *, mass_precision: int = 3):
     for field_id in COMPARE_FIELDS:
         values = []
         for e in elements:
-            v = field_value(e, field_id, mass_precision=mass_precision)
+            v = field_value(e, field_id, mass_precision=mass_precision, igcse=igcse)
             if isinstance(v, tuple):
                 v = "; ".join(v) if v else None
             values.append(v)

@@ -29,6 +29,7 @@ class Sidebar(QWidget):
         self.elements = elements
         self.color_modes = color_modes
         self._item_numbers = {}
+        self._filter_numbers = None  # set of visible atomic numbers, or None
 
         lay = QVBoxLayout(self)
         lay.setContentsMargins(0, 0, 0, 0)
@@ -52,12 +53,19 @@ class Sidebar(QWidget):
         self.tree.itemClicked.connect(self._on_click)
         self._build()
 
+    def set_filter(self, numbers):
+        """Restrict the list to these atomic numbers (None = all 118)."""
+        self._filter_numbers = numbers
+        self._build()
+
     def _build(self):
         mode = self.color_modes.get("category")
         self.tree.clear()
         self._item_numbers = {}
         by_cat = {}
         for e in self.elements:
+            if self._filter_numbers is not None and e.number not in self._filter_numbers:
+                continue
             by_cat.setdefault(e.category, []).append(e)
 
         for cat in CATEGORY_ORDER:

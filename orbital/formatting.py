@@ -57,7 +57,18 @@ def discovery_string(element):
     return "%d \u2014 %s" % (y, element.discovery.by)
 
 
-def mass_string(element, precision: int = 3):
+def mass_string(element, precision: int = 3, igcse: bool = False):
+    """Display string for the atomic mass. IGCSE mode uses the simple
+    data-sheet values (O 16, Cl 35.5, Cu 63.5…) that exams expect."""
+    if igcse:
+        from orbital.profiles import IGCSE_MASSES
+        simple = IGCSE_MASSES.get(element.number)
+        if simple is not None:
+            return "%g" % simple
+        # not on the data sheet: fall back to one decimal
+        if element.atomic_mass_type == "isotope":
+            return "[%g]" % round(element.atomic_mass)
+        return "%.1f" % element.atomic_mass
     if element.atomic_mass_type == "isotope":
         return "[%g]" % round(element.atomic_mass)
     text = "%.*f" % (max(precision, 1), element.atomic_mass)
@@ -76,7 +87,8 @@ def mass_note(element):
 
 
 def field_value(element, field_id: str, *, config_style: str = "short",
-                ox_common_only: bool = False, mass_precision: int = 3):
+                ox_common_only: bool = False, mass_precision: int = 3,
+                igcse: bool = False):
     """Return the display value for a field: a string, a tuple of strings,
     or None when unknown (the UI shows an em dash)."""
     if field_id == "number":
@@ -86,7 +98,7 @@ def field_value(element, field_id: str, *, config_style: str = "short",
     if field_id == "name":
         return element.name
     if field_id == "atomic_mass":
-        return mass_string(element, mass_precision)
+        return mass_string(element, mass_precision, igcse=igcse)
     if field_id == "group":
         return group_string(element)
     if field_id == "period":

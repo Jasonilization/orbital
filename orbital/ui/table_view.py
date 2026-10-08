@@ -148,11 +148,12 @@ class TableView(QWidget):
                                     self.color_modes["category"])
         size = self._tile_size()
         fields = self.settings.tile_fields()
+        mass_igcse = self.settings.education_level() == "igcse"
 
         for cell in layout.cells:
             e = self.by_number[cell.number]
             color = mode.fn(e) if mode.fn else "#c9c7c2"
-            tile = ElementTile(e, fields, color)
+            tile = ElementTile(e, fields, color, mass_igcse=mass_igcse)
             tile.setFixedSize(size)
             tile.setAccessibleName(tile.accessible_name())
             tile.clicked.connect(self._on_tile_clicked)

@@ -17,7 +17,9 @@ def qapp():
 @pytest.fixture()
 def settings(tmp_path):
     from orbital.settings import Settings
-    return Settings(ini_path=str(tmp_path / "settings.ini"))
+    s = Settings(ini_path=str(tmp_path / "settings.ini"))
+    s.set("setup_done", True)   # keep the first-run dialog out of UI tests
+    return s
 
 
 @pytest.fixture()

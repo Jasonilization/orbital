@@ -38,6 +38,7 @@ def render(name):
 app = QApplication([])
 QGuiApplication.primaryScreen()  # warm the screen object offscreen
 settings = Settings(ini_path=os.path.join(tempfile.mkdtemp(), "shots.ini"))
+settings.set("setup_done", True)
 
 apply_theme("light", settings.accent_hex())
 win = MainWindow(settings)
@@ -74,7 +75,16 @@ win._on_search_query("iron")
 app.processEvents()
 render("search-highlight.png")
 
-# 5. Compare dialog
+# 5. IGCSE assessment view: simple masses, syllabus focus
+win._clear_search()
+win._set_level("igcse")
+win._set_layout("standard")
+win._set_color_mode("category")
+win.select_element(17)  # chlorine - the 35.5 classic
+app.processEvents()
+render("igcse-focus.png")
+
+# 6. Compare dialog
 win._clear_search()
 win._add_to_compare(8)
 win._add_to_compare(16)

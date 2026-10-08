@@ -228,3 +228,61 @@ def test_legend_wraps(win, qapp):
     width = win.legend.width() or 600
     h = win.legend._lay.heightForWidth(width)
     assert h >= 18
+
+
+def test_first_run_setup_dialog(qapp, settings, tmp_path):
+    from orbital.ui.main_window import MainWindow
+    from orbital.ui.theme import apply_theme
+    from orbital.settings import Settings as S
+    fresh = S(ini_path=str(tmp_path / "setup.ini"))
+    fresh.set("setup_done", False)
+    assert fresh.get("setup_done") is False
+    apply_theme("light", fresh.accent_hex())
+    w = MainWindow(fresh)
+    w.show()
+    qapp.processEvents()
+    # the first-run dialog was scheduled; find it among children
+    from orbital.ui.setup_dialog import SetupDialog as D
+    dlg = w.findChild(D)
+    assert dlg is not None and dlg.isVisible()
+    dlg.radios["igcse"].setChecked(True)
+    dlg.accept()
+    qapp.processEvents()
+    assert fresh.education_level() == "igcse"
+    assert fresh.get("igcse_focus") is True
+    assert fresh.get("tile_preset") == "school"
+    assert fresh.get("setup_done") is True
+    assert w.focus_button.isVisible()
+    w.close()
+
+
+def test_igcse_level_simplifies_masses(win, qapp):
+    win._set_level("igcse")
+    qapp.processEvents()
+    # tile for oxygen shows the data-sheet value 16
+    o = win.table.tiles[8]
+    assert o._field_text("mass") == "16"
+    assert win.table.tiles[17]._field_text("mass") == "35.5"
+    # not on the data sheet: bracketed isotope mass stays honest
+    assert win.table.tiles[43]._field_text("mass") == "[98]"
+    win._set_level("general")
+
+
+def test_igcse_focus_highlights_syllabus_elements(win, qapp):
+    win._set_level("igcse")
+    qapp.processEvents()
+    assert win.focus_button.isVisible()
+    # iron is on the data sheet, radon is not
+    assert not win.table.tiles[26]._dimmed
+    assert win.table.tiles[86]._dimmed
+    # sidebar filtered to syllabus elements
+    # alkali metals on the data sheet: Li, Na, K (Rb/Cs/Fr are not listed)
+    assert win.sidebar.tree.topLevelItem(0).childCount() == 3
+    # toggle off: everything returns
+    win.focus_button.setChecked(False)
+    qapp.processEvents()
+    assert not win.table.tiles[86]._dimmed
+    assert win.sidebar.tree.topLevelItem(0).childCount() == 6  # all six alkalis
+    win._set_level("general")
+    qapp.processEvents()
+    assert not win.focus_button.isVisibleTo(win)

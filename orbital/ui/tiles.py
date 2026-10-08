@@ -96,10 +96,11 @@ class ElementTile(QWidget):
     context = Signal(int)          # context menu requested
     move_requested = Signal(object, int, int)  # tile, dx, dy
 
-    def __init__(self, element, fields, color, parent=None):
+    def __init__(self, element, fields, color, mass_igcse=False, parent=None):
         super().__init__(parent)
         self.element = element
         self.fields = list(fields)
+        self._mass_igcse = mass_igcse
         self._color = color
         self._selected = False
         self._dimmed = False
@@ -128,7 +129,8 @@ class ElementTile(QWidget):
         e = self.element
         parts = ["%d. %s (%s)" % (e.number, e.name, e.symbol)]
         parts.append(e.category.title())
-        parts.append("A\u1d63 = %s" % e.mass_string())
+        from orbital.formatting import mass_string
+        parts.append("A\u1d63 = %s" % mass_string(e, igcse=self._mass_igcse))
         parts.append(e.state_string().lower())
         return "\n".join(parts)
 
@@ -257,7 +259,8 @@ class ElementTile(QWidget):
         if field == "symbol":
             return e.symbol
         if field == "mass":
-            return e.mass_string()
+            from orbital.formatting import mass_string
+            return mass_string(e, igcse=self._mass_igcse)
         if field == "state":
             return e.state_string()[0]
         if field == "name":

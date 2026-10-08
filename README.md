@@ -66,8 +66,12 @@ The element database is always complete — a level only changes what's *shown b
 
 | Level | By default you get |
 |---|---|
-| **General** | Everyday info: essentials, key chemistry (config, shells, oxidation states, electronegativity, melt/boil/density), uses, compounds. History collapsed. |
-| **IGCSE** | Syllabus-shaped: group, period, state, shell arrangement (2, 8, 1…), common oxidation states only, melt/boil, density, uses, compounds. No history section, no ionisation energies. |
+| **General** | A compact facts line (group, period, state, mass) plus key chemistry (shells, melt/boil/density), uses and compounds. Everything else is a toggle-chip away. |
+| **IGCSE** | Built for assessment: the 46 **data-sheet elements highlighted** (the rest dimmed but findable), **simple atomic masses** exactly as the Cambridge 0620 data sheet prints them (O 16, Cl 35.5, Cu 63.5), shells as 2, 8, 1, common oxidation states, melt/boil, density, uses, compounds. |
+| **A Level** | Adds full electron configuration, all oxidation states, electronegativity, atomic radius; history available (collapsed). |
+| **Advanced** | Everything: ionisation energies, crustal abundance, atomic-weight intervals, discovery details — nothing hidden. |
+
+On first launch a one-question setup picks your level (also in Help → First-time setup). At IGCSE a **Syllabus only** toggle appears in the toolbar; masses switch to the exam data-sheet values automatically and switch back when you do.
 | **A Level** | Adds full electron configuration, all oxidation states, electronegativity, atomic radius; history available (collapsed). |
 | **Advanced** | Everything: ionisation energies, crustal abundance, atomic-weight intervals, discovery details — nothing hidden. |
 

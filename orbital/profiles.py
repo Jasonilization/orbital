@@ -18,37 +18,37 @@ FIELDS = {
     # essentials
     "number":            ("essentials", "Atomic number"),
     "symbol":            ("essentials", "Symbol"),
-    "atomic_mass":       ("essentials", "Relative atomic mass"),
+    "atomic_mass":       ("essentials", "Atomic mass"),
     "group":             ("essentials", "Group"),
     "period":            ("essentials", "Period"),
     "block":             ("essentials", "Block"),
     "category":          ("essentials", "Category"),
-    "state":             ("essentials", "State at room temp."),
+    "state":             ("essentials", "State"),
     # chemistry
-    "configuration":     ("chemistry", "Electron configuration"),
+    "configuration":     ("chemistry", "Electron config."),
     "shells":            ("chemistry", "Shell arrangement"),
     "oxidation_states":  ("chemistry", "Oxidation states"),
-    "electronegativity": ("chemistry", "Electronegativity (Pauling)"),
-    "ionization":        ("chemistry", "1st ionisation energy"),
+    "electronegativity": ("chemistry", "Electronegativity"),
+    "ionization":        ("chemistry", "Ionisation energy"),
     "radius":            ("chemistry", "Atomic radius"),
     "melt":              ("chemistry", "Melting point"),
     "boil":              ("chemistry", "Boiling point"),
     "density":           ("chemistry", "Density"),
     # practical
-    "uses":              ("practical", "Common uses"),
-    "compounds":         ("practical", "Important compounds"),
+    "uses":              ("practical", "Uses"),
+    "compounds":         ("practical", "Compounds"),
     # history
     "discovered":        ("history", "Discovery"),
-    "origin":            ("history", "Origin of the name"),
+    "origin":            ("history", "Name origin"),
     # advanced-only extras
-    "abundance":         ("advanced", "Crustal abundance"),
-    "mass_note":          ("advanced", "Atomic mass note"),
+    "abundance":         ("advanced", "Abundance"),
+    "mass_note":          ("advanced", "Mass note"),
 }
 
 SECTION_TITLES = {
     "essentials": "Essentials",
     "chemistry": "Chemistry",
-    "practical": "Practical",
+    "practical": "Uses",
     "advanced": "More detail",
     "history": "History",
 }
@@ -145,6 +145,25 @@ EDUCATION_LEVELS = {
 TOGGLEABLE_SECTION = {fid: "chemistry" for fid in TOGGLEABLE_FIELDS}
 
 DEFAULT_LEVEL = "general"
+
+# ---------------------------------------------------------------------------
+# IGCSE assessment data. The Cambridge IGCSE Chemistry (0620) data sheet
+# lists relative atomic masses for the elements below as simple values
+# (mostly integers; Cl 35.5 and Cu 63.5 are the classic halves). When the
+# IGCSE level is active, masses render from this table; every element not
+# listed here can be de-emphasised via syllabus focus.
+# ---------------------------------------------------------------------------
+
+IGCSE_MASSES = {
+    1: 1, 2: 4, 3: 7, 4: 9, 5: 11, 6: 12, 7: 14, 8: 16, 9: 19, 10: 20,
+    11: 23, 12: 24, 13: 27, 14: 28, 15: 31, 16: 32, 17: 35.5, 18: 40,
+    19: 39, 20: 40, 21: 45, 22: 48, 23: 51, 24: 52, 25: 55, 26: 56,
+    27: 59, 28: 59, 29: 63.5, 30: 65, 31: 70, 32: 73, 33: 75, 34: 79,
+    35: 80, 36: 84, 47: 108, 50: 119, 53: 127, 56: 137, 74: 184, 78: 195,
+    79: 197, 80: 201, 82: 207, 92: 238,
+}
+
+IGCSE_ELEMENTS = frozenset(IGCSE_MASSES)
 
 # --------------------------------------------------------------------------
 # Tile presets: which fields render inside each element tile.

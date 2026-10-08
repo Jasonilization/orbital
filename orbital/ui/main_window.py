@@ -13,7 +13,7 @@ from PySide6.QtWidgets import (
 from orbital.data import load_elements, by_number
 from orbital.filters import FilterSpec, apply_filter, matching_numbers
 from orbital.layouts import LAYOUTS
-from orbital.profiles import EDUCATION_LEVELS
+from orbital.profiles import EDUCATION_LEVELS, IGCSE_ELEMENTS
 from orbital.search import search as do_search
 from orbital.ui.colors import build_color_modes, DEFAULT_MODE
 from orbital.ui.detail_panel import DetailPanel
@@ -26,6 +26,7 @@ from orbital.ui.compare_dialog import CompareDialog
 from orbital.ui.legend import LegendBar
 from orbital.ui.search_box import SearchBox
 from orbital.ui.settings_dialog import SettingsDialog
+from orbital.ui.setup_dialog import SetupDialog
 from orbital.ui.sidebar import Sidebar
 from orbital.ui.table_view import TableView
 from orbital.ui.theme import apply_theme
@@ -52,6 +53,8 @@ class MainWindow(QMainWindow):
         self._build_menus()
         self._apply_state()
         self.settings.changed.connect(self._on_setting_changed)
+        if not self.settings.get("setup_done"):
+            QTimer.singleShot(100, self._show_setup)
 
     # ------------------------------------------------------------------ ui
 
@@ -110,6 +113,16 @@ class MainWindow(QMainWindow):
         self.filter_button.setToolTip("Show only elements matching…")
         self.filter_button.clicked.connect(self._toggle_filter_dialog)
         self.toolbar.addWidget(self.filter_button)
+
+        self.focus_button = QPushButton("Syllabus only")
+        self.focus_button.setCheckable(True)
+        self.focus_button.setToolTip(
+            "Highlight the 46 elements on the IGCSE data sheet; the rest stay "
+            "findable but dimmed")
+        self.focus_button.toggled.connect(self._on_focus_toggled)
+        # the toolbar's layout re-shows plain child widgets when it relayouts;
+        # hiding the ACTION is the supported way to hide a toolbar item
+        self.focus_action = self.toolbar.addWidget(self.focus_button)
 
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
@@ -301,6 +314,10 @@ class MainWindow(QMainWindow):
             self.current_element().number if self.current_element() else 1))
 
         help_menu = mb.addMenu("Help")
+        setup_action = QAction("First-time setup\u2026", self)
+        setup_action.triggered.connect(self._show_setup)
+        help_menu.addAction(setup_action)
+        help_menu.addSeparator()
         shortcuts_action = QAction("Keyboard shortcuts", self)
         shortcuts_action.setShortcut("Ctrl+/")
         shortcuts_action.triggered.connect(self._show_shortcuts)
@@ -319,6 +336,29 @@ class MainWindow(QMainWindow):
         self.legend.setVisible(bool(self.settings.get("show_legend")))
         apply_theme(self.settings.get("theme"), self.settings.accent_hex())
         self._refresh_icons()
+        self._refresh_focus_button()
+
+    def _refresh_focus_button(self):
+        """The syllabus toggle only exists at IGCSE level."""
+        at_igcse = self.settings.education_level() == "igcse"
+        self.focus_action.setVisible(at_igcse)
+        self._block(self.focus_button,
+                    lambda: self.focus_button.setChecked(
+                        bool(self.settings.get("igcse_focus")) and at_igcse))
+
+    def _on_focus_toggled(self, on):
+        self.settings.set("igcse_focus", on)
+        self._update_highlight()
+        self._refresh_status()
+        self._sync_sidebar_filter()
+
+    def _sync_sidebar_filter(self):
+        from orbital.profiles import IGCSE_ELEMENTS
+        if (self.settings.education_level() == "igcse"
+                and self.settings.get("igcse_focus")):
+            self.sidebar.set_filter(IGCSE_ELEMENTS)
+        else:
+            self.sidebar.set_filter(None)
 
     def _refresh_icons(self):
         """Icons are drawn from the palette text colour — redraw on theme change."""
@@ -336,9 +376,12 @@ class MainWindow(QMainWindow):
         e = by_number(self.elements, number)
         if self.settings.get("open_details_on_select"):
             self.panel.show_element(e)
+        from orbital.formatting import mass_string
         self.status_left.setText(
             "%d \u00b7 %s (%s) \u00b7 A\u1d63 %s \u00b7 %s"
-            % (e.number, e.name, e.symbol, e.mass_string(), e.category.title()))
+            % (e.number, e.name, e.symbol,
+               mass_string(e, igcse=(self.settings.education_level() == "igcse")),
+               e.category.title()))
 
     # -- toolbar handlers ----------------------------------------------------
 
@@ -378,6 +421,11 @@ class MainWindow(QMainWindow):
                     lambda: self.level_combo.setCurrentText(EDUCATION_LEVELS[level_id]["label"]))
         for act in self._level_actions:
             act.setChecked(act.data() == level_id)
+        self.table.rebuild()          # tiles re-render masses per level
+        self._refresh_focus_button()
+        self._sync_sidebar_filter()
+        self._update_highlight()
+        self._refresh_status()
         if self.current_element():
             self.panel.show_element(self.current_element())
 
@@ -468,10 +516,20 @@ class MainWindow(QMainWindow):
         if self._search_text:
             results = {e.number for e in do_search(self._search_text, self.elements)}
             numbers = results if numbers is None else (numbers & results)
+        if (self.settings.education_level() == "igcse"
+                and self.settings.get("igcse_focus")):
+            numbers = IGCSE_ELEMENTS if numbers is None else (numbers & IGCSE_ELEMENTS)
         self.table.set_highlight(numbers)
 
     def _refresh_status(self):
         """One place computes the right-hand status text."""
+        if (self.settings.education_level() == "igcse"
+                and self.settings.get("igcse_focus")):
+            self.status_filter.setText(
+                "IGCSE syllabus elements highlighted \u2014 clear" if not self.filter_spec.is_active()
+                else "IGCSE focus active \u2014 clear filters")
+            self.status_filter.setVisible(True)
+            return
         shown = matching_numbers(self.elements, self.filter_spec)
         if self._search_text:
             results = {e.number for e in do_search(self._search_text, self.elements)}
@@ -590,14 +648,40 @@ class MainWindow(QMainWindow):
                         lambda: self.level_combo.setCurrentText(EDUCATION_LEVELS[level]["label"]))
             for act in self._level_actions:
                 act.setChecked(act.data() == level)
+            self.table.rebuild()
+            self._refresh_focus_button()
+            self._sync_sidebar_filter()
+            self._update_highlight()
+            self._refresh_status()
             if self.current_element():
                 self.panel.show_element(self.current_element())
+        elif key == "igcse_focus":
+            self._update_highlight()
+            self._refresh_status()
+            self._sync_sidebar_filter()
         elif key == "show_legend":
             self.legend.setVisible(bool(self.settings.get("show_legend")))
             self.legend_action.setChecked(bool(self.settings.get("show_legend")))
         elif key == "mass_precision":
             if self.current_element():
                 self.panel.show_element(self.current_element())
+
+    def _show_setup(self):
+        dlg = SetupDialog(self, self.settings,
+                          first_run=not self.settings.get("setup_done"))
+        # non-modal: the table stays usable; Start applies and closes
+        dlg.accepted.connect(self._on_setup_accepted)
+        dlg.show()
+
+    def _on_setup_accepted(self):
+        self._apply_state()
+        self.table.rebuild()
+        self._refresh_focus_button()
+        self._sync_sidebar_filter()
+        self._update_highlight()
+        self._refresh_status()
+        if self.current_element():
+            self.panel.show_element(self.current_element())
 
     def _show_shortcuts(self):
         QMessageBox.information(
