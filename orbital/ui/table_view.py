@@ -1,15 +1,16 @@
 """The periodic table canvas: grid of element tiles with headers, markers,
-keyboard grid navigation, highlighting and layout switching."""
+keyboard grid navigation, highlighting, layout switching, drag-to-pan
+and zoom."""
 from __future__ import annotations
 
-from PySide6.QtCore import Qt, Signal, QSize
+from PySide6.QtCore import Qt, Signal, QSize, QEvent, QPoint
 from PySide6.QtGui import QFont
 from PySide6.QtWidgets import (
     QWidget, QGridLayout, QSizePolicy, QScrollArea, QPushButton, QLabel,
     QFrame,
 )
 
-from orbital.ui.tiles import ElementTile
+from orbital.ui.tiles import ElementTile, BASE_SIZE, MIN_SCALE
 from orbital.ui.theme import is_dark_theme
 
 
@@ -73,17 +74,48 @@ class TableView(QWidget):
         outer.addWidget(self._scroll)
         self._apply_tile_scale()
 
+        # drag-to-pan on empty table background
+        self._panning = False
+        self._scroll.viewport().installEventFilter(self)
+
+    def eventFilter(self, obj, event):
+        if obj is self._scroll.viewport():
+            et = event.type()
+            if et == QEvent.MouseButtonPress and event.button() == Qt.LeftButton:
+                if obj.childAt(event.position().toPoint()) is None:
+                    self._panning = True
+                    self._pan_pos = event.globalPosition().toPoint()
+                    h = self._scroll.horizontalScrollBar()
+                    v = self._scroll.verticalScrollBar()
+                    self._pan_h, self._pan_v = h.value(), v.value()
+                    obj.setCursor(Qt.ClosedHandCursor)
+                    return True
+            elif et == QEvent.MouseButtonRelease and self._panning:
+                self._panning = False
+                obj.setCursor(Qt.ArrowCursor)
+                return True
+            elif et == QEvent.MouseMove and self._panning:
+                pos = event.globalPosition().toPoint()
+                dx = pos.x() - self._pan_pos.x()
+                dy = pos.y() - self._pan_pos.y()
+                h = self._scroll.horizontalScrollBar()
+                v = self._scroll.verticalScrollBar()
+                h.setValue(self._pan_h - dx)
+                v.setValue(self._pan_v - dy)
+                return True
+        return super().eventFilter(obj, event)
+
     # ------------------------------------------------------------------ build
 
     def _tile_size(self) -> QSize:
-        scale = self.settings.get("tile_scale") or 1.0
+        scale = max(MIN_SCALE, self.settings.get("tile_scale") or 1.0)
         layout_id = self.layout_obj.id if self.layout_obj else "standard"
         if layout_id == "extended":
-            base = QSize(58, 52)
+            base = QSize(60, 52)   # 32 columns stay compact
         elif layout_id == "compact":
-            base = QSize(66, 56)
+            base = QSize(72, 62)
         else:
-            base = QSize(78, 66)
+            base = BASE_SIZE      # 86 x 74
         return QSize(int(base.width() * scale), int(base.height() * scale))
 
     def _apply_tile_scale(self):

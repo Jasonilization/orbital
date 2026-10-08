@@ -27,6 +27,7 @@ DEFAULTS = {
     "show_legend": True,
     "remember_layout": True,      # restore last layout at startup
     "open_details_on_select": True,
+    "panel_fields_shown": None,    # dict field_id -> bool (JSON); None = follow level defaults
 }
 
 _ACCENTS = {
@@ -89,7 +90,7 @@ class Settings(QObject):
                 return
         except Exception:
             pass
-        if key == "tile_fields" and isinstance(value, list):
+        if isinstance(value, (list, dict)):
             import json
             self._qs.setValue(key, json.dumps(value))
         else:
@@ -98,6 +99,23 @@ class Settings(QObject):
 
     def has(self, key) -> bool:
         return self._qs.contains(key)
+
+    def panel_overrides(self) -> dict:
+        """Per-user display toggles for detail-panel fields: field_id -> bool.
+        Absent key = follow the education level's default."""
+        value = self.get("panel_fields_shown")
+        if isinstance(value, str):
+            import json
+            try:
+                value = json.loads(value)
+            except ValueError:
+                return {}
+        return dict(value) if isinstance(value, dict) else {}
+
+    def set_panel_override(self, field_id: str, shown: bool):
+        overrides = self.panel_overrides()
+        overrides[field_id] = bool(shown)
+        self.set("panel_fields_shown", overrides)
 
     def reset(self):
         for key in DEFAULTS:

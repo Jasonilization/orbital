@@ -1,22 +1,100 @@
 """The element tile: a small custom widget painting the configured fields.
 
-Fields (top to bottom): number, symbol, mass, name, state — the tile
-preset decides which appear and in what order. The tile paints itself in
-one pass; 118 of these render instantly.
+Layout is *measured*, never guessed: each row's position is the previous
+row's bottom edge, so text can never overlap. If a configuration doesn't
+fit the tile, optional fields are dropped in a defined priority order
+instead of colliding. This module deliberately keeps the layout logic
+pure so it can be tested without a GUI.
 """
 from __future__ import annotations
 
 from PySide6.QtCore import Qt, QRectF, Signal, QSize
-from PySide6.QtGui import QColor, QPainter, QFont, QPen, QPalette
+from PySide6.QtGui import QColor, QPainter, QFont, QPen, QFontMetrics, QPalette
 from PySide6.QtWidgets import QWidget
 
 from orbital.ui.theme import is_dark_theme, readable_text_on
+
+# The order in which fields get sacrificed when space runs out
+# (most expendable first).
+_FIELD_PRIORITY = ["config", "state", "name", "mass", "symbol", "number"]
+
+BASE_SIZE = QSize(86, 74)
+MIN_SCALE = 0.8
+
+
+def layout_fields(width, height, fields, font_scale=1.0):
+    """Compute the row stack for a tile. Returns a list of
+    (field_id, x, y, font_point_size, elide_width) with strictly
+    non-overlapping rows, or drops fields that don't fit.
+
+    Pure geometry + the standard Qt font metrics convention: callers pass
+    a metrics-like object with height(). Unit tests use a fake.
+    """
+    fields = [f for f in fields if f]
+    small_pt = max(7.0, 8.5 * font_scale)
+    name_pt = max(6.5, 8.0 * font_scale)
+    pad = 3.5
+
+    def pt2px(pt):
+        # point size to pixel height (macOS/Qt convention ~1.33, generous)
+        return pt * 1.45
+
+    rows = []
+    if "number" in fields:
+        rows.append(("number", small_pt))
+    rows.append(("symbol", 0))  # placeholder, sized after we know the room
+    if "mass" in fields:
+        rows.append(("mass", small_pt))
+    if "state" in fields:
+        rows.append(("state", small_pt))
+    if "config" in fields:
+        rows.append(("config", small_pt))
+    if "name" in fields:
+        rows.append(("name", name_pt))
+
+    # available vertical space for the stack (name pins to the bottom)
+    name_h = pt2px(name_pt) if "name" in fields else 0
+    available = height - 2 * pad - name_h - 2
+
+    # fixed rows are everything except the symbol
+    fixed = [(f, pt) for f, pt in rows if f != "symbol"]
+    fixed_h = sum(pt2px(pt) for _f, pt in fixed)
+
+    # symbol takes what's left, clamped
+    symbol_room = available - fixed_h
+    symbol_pt = max(8.0, min(17.0 * font_scale, symbol_room / 1.45 * 0.92))
+    if symbol_pt < 8.0:
+        # nothing fits: drop the most expendable fields and retry once
+        for drop in _FIELD_PRIORITY:
+            if drop == "symbol":
+                break
+            if drop in fields and drop != "number":
+                fields = [f for f in fields if f != drop]
+                return layout_fields(width, height, fields, font_scale)
+        symbol_pt = 8.0
+
+    y = pad
+    out = []
+    for f, pt in rows:
+        if f == "symbol":
+            pt = symbol_pt
+        if f == "name":
+            continue  # pinned to the bottom separately
+        h = pt2px(pt)
+        if y + h > height - name_h - pad:
+            break  # extra safety; geometry above should prevent this
+        out.append((f, pad + 1, y, pt, width - 2 * (pad + 1)))
+        y += h + 1
+    if "name" in fields:
+        out.append(("name", pad, height - name_h - pad, name_pt,
+                    width - 2 * pad))
+    return out
 
 
 class ElementTile(QWidget):
     clicked = Signal(int)          # atomic number, left click / Enter
     context = Signal(int)          # context menu requested
-    move_requested = Signal(object, int, int)  # tile, dx, dy — grid navigation
+    move_requested = Signal(object, int, int)  # tile, dx, dy
 
     def __init__(self, element, fields, color, parent=None):
         super().__init__(parent)
@@ -28,7 +106,6 @@ class ElementTile(QWidget):
         self._hover = False
         self.setFocusPolicy(Qt.StrongFocus)
         self.setCursor(Qt.PointingHandCursor)
-        self.setMouseTracking(True)
         self.setToolTip(self._tooltip())
 
     # -- state ---------------------------------------------------------------
@@ -50,10 +127,8 @@ class ElementTile(QWidget):
     def _tooltip(self):
         e = self.element
         parts = ["%d. %s (%s)" % (e.number, e.name, e.symbol)]
-        if e.category:
-            parts.append(e.category.title())
-        if e.atomic_mass:
-            parts.append("A\u1d63 = %s" % e.mass_string())
+        parts.append(e.category.title())
+        parts.append("A\u1d63 = %s" % e.mass_string())
         parts.append(e.state_string().lower())
         return "\n".join(parts)
 
@@ -65,10 +140,11 @@ class ElementTile(QWidget):
                                          e.state_string().lower())
 
     def sizeHint(self):
-        return QSize(78, 66)
+        return BASE_SIZE
 
     def minimumSizeHint(self):
-        return QSize(46, 40)
+        return QSize(int(BASE_SIZE.width() * MIN_SCALE),
+                     int(BASE_SIZE.height() * MIN_SCALE))
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
@@ -110,17 +186,14 @@ class ElementTile(QWidget):
         e = self.element
         w, h = self.width(), self.height()
         p = QPainter(self)
-        p.setRenderHint(QPainter.Antialiasing, False)
         p.setRenderHint(QPainter.TextAntialiasing, True)
 
         base = QColor(self._color)
-        if base.lightness() > 250:  # mode returned near-white; clamp
+        if base.lightness() > 250:
             base = QColor("#c9c7c2")
         if self._hover:
             base = base.lighter(106) if not is_dark_theme() else base.lighter(112)
 
-        # fill — dimmed tiles blend toward the window colour and paint
-        # opaque, so nothing underneath can ever bleed through
         rect = QRectF(1.0, 1.0, w - 2.0, h - 2.0)
         if self._dimmed:
             pal = self.palette()
@@ -131,59 +204,32 @@ class ElementTile(QWidget):
                 int(base.blue() * 0.14 + win_c.blue() * 0.86),
             )
         p.fillRect(rect, base)
-        if self._dimmed:
-            p.setOpacity(0.38)
-        text = readable_text_on(base)
-        p.setPen(text)
+        text_alpha = 1.0 if not self._dimmed else 0.45
+        p.setOpacity(text_alpha)
+        text = readable_text_on(QColor(self._color) if not self._dimmed else base)
 
-        small = QFont(self.font())
-        small.setPointSizeF(max(6.5, self.font().pointSizeF() * 0.78))
-        bold = QFont(self.font())
-        bold.setBold(True)
+        font_scale = 1.0  # tile_font_scale applied via app font
+        rows = layout_fields(w, h, self.fields, font_scale)
 
-        # dynamic layout: number pinned top-left, symbol centre-left,
-        # remaining fields distributed under the symbol
-        pad = 4
-        x_text = pad + 1
-        if "number" in self.fields:
-            f = QFont(small)
+        for field, x, y, pt, avail_w in rows:
+            f = QFont(self.font())
+            f.setPointSizeF(pt)
+            if field == "symbol":
+                f.setBold(True)
             p.setFont(f)
-            p.drawText(self.rect().adjusted(x_text, 2, -2, 0),
-                       Qt.TextSingleLine, str(e.number))
-            top = 2 + p.fontMetrics().height() - 2
-        else:
-            top = pad
-
-        has_name = "name" in self.fields
-        has_state = "state" in self.fields
-
-        # symbol: as large as space allows
-        size_avail = h - top - (16 if has_name or "mass" in self.fields else 6)
-        sym_size = max(10, min(21, size_avail * 0.42))
-        bf = QFont(bold)
-        bf.setPointSizeF(sym_size)
-        p.setFont(bf)
-        y = top + 1
-        p.drawText(self.rect().adjusted(x_text, y, -2, 0),
-                   Qt.TextSingleLine, e.symbol)
-        y += p.fontMetrics().height() - 3
-
-        p.setFont(QFont(small))
-        if "mass" in self.fields:
-            p.drawText(self.rect().adjusted(x_text, y, -2, 0), Qt.TextSingleLine,
-                       e.mass_string())
-            y += p.fontMetrics().height() - 2
-        if has_state:
-            p.drawText(self.rect().adjusted(x_text, y, -2, 0), Qt.TextSingleLine,
-                      e.state_string()[0])  # S / L / G initial
-            y += p.fontMetrics().height() - 2
-        if "config" in self.fields and h > 74:
-            p.drawText(self.rect().adjusted(x_text, y, -2, 0), Qt.TextSingleLine,
-                       e.electron_configuration)
-        if has_name:
-            p.drawText(QRectF(2, h - 15, w - 4, 13),
-                       Qt.AlignHCenter | Qt.AlignBottom | Qt.TextSingleLine,
-                       e.name)
+            fm = p.fontMetrics()
+            value = self._field_text(field)
+            if value is None:
+                continue
+            label = fm.elidedText(value, Qt.ElideRight, avail_w)
+            if field == "name":
+                p.drawText(QRectF(x, y, avail_w, fm.height()),
+                           Qt.AlignHCenter | Qt.AlignVCenter | Qt.TextSingleLine,
+                           label)
+            else:
+                p.drawText(QRectF(x, y, avail_w, fm.height()),
+                           Qt.AlignLeft | Qt.AlignVCenter | Qt.TextSingleLine,
+                           label)
 
         p.setOpacity(1.0 if not self._dimmed else 0.45)
 
@@ -194,12 +240,28 @@ class ElementTile(QWidget):
         p.drawRect(rect.adjusted(0.5, 0.5, -0.5, -0.5))
 
         if self._selected:
-            pen = QPen(self.palette().color(self.foregroundRole()))
+            pen = QPen(self.palette().color(QPalette.WindowText))
             pen.setWidthF(2.4)
             p.setPen(pen)
             p.drawRect(rect.adjusted(1.4, 1.4, -1.4, -1.4))
 
         if self.hasFocus():
-            pen = QPen(self.palette().color(self.foregroundRole()), 1, Qt.DashLine)
+            pen = QPen(self.palette().color(QPalette.WindowText), 1, Qt.DashLine)
             p.setPen(pen)
             p.drawRect(rect.adjusted(0.5, 0.5, -0.5, -0.5))
+
+    def _field_text(self, field):
+        e = self.element
+        if field == "number":
+            return str(e.number)
+        if field == "symbol":
+            return e.symbol
+        if field == "mass":
+            return e.mass_string()
+        if field == "state":
+            return e.state_string()[0]
+        if field == "name":
+            return e.name
+        if field == "config":
+            return e.electron_configuration
+        return None

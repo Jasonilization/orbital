@@ -2,8 +2,10 @@
 
 Two states: the welcome state (nothing selected) which shows one of the
 200 chemistry jokes, and the element view, which renders the fields the
-current education profile exposes — sections collapsible, secondary
-information (history) collapsed by default per profile.
+current education profile exposes. Above the sections sits a row of
+toggle chips — the user's one-click control over how much detail shows
+(overrides persist and stack on top of the education level, so nothing
+is ever more than a click away).
 """
 from __future__ import annotations
 
@@ -22,10 +24,20 @@ from PySide6.QtWidgets import (
 from orbital.data import Element
 from orbital.formatting import field_value, field_label, formula_html
 from orbital.profiles import (
-    level_profile, section_title, FIELDS,
+    level_profile, section_title, TOGGLEABLE_FIELDS, FIELDS,
+    SECTION_FIELDS,
 )
 
 JOKES_PATH = Path(__file__).resolve().parent.parent / "data" / "jokes.json"
+
+TOGGLEABLE_LABELS = {
+    "configuration": "Config",
+    "oxidation_states": "Oxidation",
+    "electronegativity": "Electroneg.",
+    "ionization": "Ionisation",
+    "radius": "Radius",
+    "history": "History",
+}
 
 
 def load_jokes():
@@ -36,8 +48,6 @@ def load_jokes():
 
 class WelcomeView(QWidget):
     """Shown when no element is selected: quick guide + joke of the day."""
-
-    joke_requested = Signal(int)  # index
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -55,8 +65,7 @@ class WelcomeView(QWidget):
         hint = QLabel(
             "Select an element on the table to see its details.\n\n"
             "Press <b>/</b> to search. Arrow keys move around the table; "
-            "Enter opens the focused element."
-        )
+            "Enter opens the focused element.")
         hint.setWordWrap(True)
         lay.addWidget(hint)
 
@@ -101,10 +110,6 @@ class WelcomeView(QWidget):
         self._index = new
         self._show()
 
-    def show_next(self):
-        self._index = (self._index + 1) % len(self.jokes)
-        self._show()
-
 
 class _Section(QFrame):
     def __init__(self, title, parent=None):
@@ -118,7 +123,8 @@ class _Section(QFrame):
         self.toggle.setCheckable(True)
         self.toggle.setChecked(True)
         self.toggle.setToolButtonStyle(Qt.ToolButtonTextOnly)
-        self.toggle.setStyleSheet("QToolButton { border: none; font-weight: bold; padding: 4px; }")
+        self.toggle.setStyleSheet(
+            "QToolButton { border: none; font-weight: bold; padding: 4px; }")
         self.body = QWidget()
         self.body_lay = QVBoxLayout(self.body)
         self.body_lay.setContentsMargins(6, 2, 6, 6)
@@ -133,8 +139,8 @@ class _Section(QFrame):
 
 
 class DetailPanel(QWidget):
-    element_pinned = Signal(int)     # add to comparison
-    compare_requested = Signal(int)  # open compare with this element
+    element_pinned = Signal(int)
+    compare_requested = Signal(int)
 
     def __init__(self, settings, parent=None):
         super().__init__(parent)
@@ -158,16 +164,78 @@ class DetailPanel(QWidget):
         if old is not None and old is not self.welcome:
             old.deleteLater()
 
-    # ------------------------------------------------------------------ view
-
     def show_welcome(self):
         self.element = None
-        self._scroll.setWidget(self.welcome)
+        self._swap(self.welcome)
+
+    # -- toggle chips ------------------------------------------------------
+
+    def _chips(self, effective):
+        row = QHBoxLayout()
+        row.setSpacing(4)
+        lead = QLabel("Show:")
+        lead.setStyleSheet("color: palette(mid); padding-right: 2px;")
+        row.addWidget(lead)
+        for fid in TOGGLEABLE_FIELDS + ["history"]:
+            chip = QToolButton()
+            chip.setObjectName("detail_chip")
+            chip.setText(TOGGLEABLE_LABELS.get(fid, fid))
+            chip.setCheckable(True)
+            chip.setChecked(bool(effective.get(fid)))
+            chip.setToolTip(field_label(fid) if fid in FIELDS
+                            else "Discovery and naming details")
+            chip.setStyleSheet(
+                "QToolButton { border: 1px solid palette(mid);"
+                " border-radius: 3px; padding: 2px 6px; }"
+                "QToolButton:checked { background: palette(highlight);"
+                " color: palette(highlighted-text); }")
+            chip.toggled.connect(
+                lambda on, f=fid: self._on_chip(f, on))
+            row.addWidget(chip)
+        row.addStretch(1)
+        wrap = QWidget()
+        wrap.setLayout(row)
+        return wrap
+
+    def _on_chip(self, field_id, shown):
+        self.settings.set_panel_override(field_id, shown)
+        if self.element is not None:
+            self.show_element(self.element)
+
+    # -- element page -------------------------------------------------------
+
+    def _effective(self, profile):
+        """Apply the user's stored toggle overrides to the profile."""
+        overrides = self.settings.panel_overrides()
+        fields = {k: list(v) for k, v in profile["fields"].items()}
+        sections = list(profile["sections"])
+
+        for fid in TOGGLEABLE_FIELDS:
+            default_on = fid in fields.get("chemistry", [])
+            shown = overrides.get(fid, default_on)
+            if shown and fid not in fields.get("chemistry", []):
+                fields.setdefault("chemistry", []).append(fid)
+            elif not shown and fid in fields.get("chemistry", []):
+                fields["chemistry"] = [f for f in fields["chemistry"] if f != fid]
+
+        history_default = "history" in sections
+        if "history" in overrides:
+            if overrides["history"] and "history" not in sections:
+                sections.append("history")
+                fields.setdefault("history", list(SECTION_FIELDS["history"]))
+            elif not overrides["history"] and "history" in sections:
+                sections.remove("history")
+
+        effective = {fid: (overrides.get(fid, fid in fields.get("chemistry", [])))
+                     for fid in TOGGLEABLE_FIELDS}
+        effective["history"] = "history" in sections
+        return sections, fields, effective
 
     def show_element(self, element: Element):
         self.element = element
         level = self.settings.education_level()
         profile = level_profile(level)
+        sections, fields, effective = self._effective(profile)
         mass_precision = self.settings.get("mass_precision")
 
         page = QWidget()
@@ -196,39 +264,42 @@ class DetailPanel(QWidget):
         namebox.addWidget(subtitle)
         head.addLayout(namebox, 1)
 
-        btn_row = QHBoxLayout()
-        pin = QPushButton("Compare\u2026")
-        pin.clicked.connect(lambda: self.compare_requested.emit(element.number))
-        pin.setToolTip("Add %s to a side-by-side comparison" % element.name)
-        btn_row.addWidget(pin)
-        head.addLayout(btn_row)
+        btn = QPushButton("Compare\u2026")
+        btn.clicked.connect(lambda: self.compare_requested.emit(element.number))
+        btn.setToolTip("Add %s to a side-by-side comparison" % element.name)
+        head.addWidget(btn)
         lay.addLayout(head)
 
         divider = QFrame()
         divider.setFrameShape(QFrame.HLine)
         lay.addWidget(divider)
 
+        # detail toggles — visible, persistent, one click
+        lay.addWidget(self._chips(effective))
+
         common_ox = bool(profile.get("common_ox_states_only"))
-        config_style = "short"
-        if level in ("alevel", "advanced"):
-            config_style = "full"
+        config_style = "full" if level in ("alevel", "advanced") else "short"
 
         collapsed = set(profile.get("collapsed", ()))
-        for section_id in profile["sections"]:
-            fields = profile["fields"].get(section_id, [])
-            if not fields:
+        if "history" not in profile["sections"]:
+            # history is present only because the user toggled it on —
+            # respect their intent and show it expanded
+            collapsed.discard("history")
+
+        for section_id in sections:
+            section_fields = fields.get(section_id, [])
+            if not section_fields:
                 continue
             sect = _Section(section_title(section_id))
-            for fid in fields:
-                if fid == "symbol" or fid == "number":
+            for fid in section_fields:
+                if fid in ("symbol", "number"):
                     continue  # already in the header
                 value = field_value(
                     element, fid, config_style=config_style,
                     ox_common_only=(fid == "oxidation_states" and common_ox),
                     mass_precision=mass_precision,
                 )
-                row = self._field_row(field_label(fid), value, fid)
-                sect.body_lay.addLayout(row)
+                sect.body_lay.addLayout(self._field_row(field_label(fid), value, fid))
             sect._set_open(section_id not in collapsed)
             lay.addWidget(sect)
 
@@ -237,7 +308,6 @@ class DetailPanel(QWidget):
         self._swap(page)
 
     def _field_row(self, label, value, fid):
-        from PySide6.QtWidgets import QHBoxLayout
         row = QHBoxLayout()
         lab = QLabel(label)
         lab.setStyleSheet("color: palette(mid); padding-right: 8px;")

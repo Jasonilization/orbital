@@ -7,7 +7,7 @@ from PySide6.QtGui import QAction, QActionGroup, QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QMainWindow, QSplitter, QWidget, QVBoxLayout, QHBoxLayout, QToolBar,
     QComboBox, QPushButton, QLabel, QMenu, QMessageBox, QFileDialog,
-    QApplication, QSizePolicy,
+    QApplication, QSizePolicy, QLineEdit,
 )
 
 from orbital.data import load_elements, by_number
@@ -17,6 +17,10 @@ from orbital.profiles import EDUCATION_LEVELS
 from orbital.search import search as do_search
 from orbital.ui.colors import build_color_modes, DEFAULT_MODE
 from orbital.ui.detail_panel import DetailPanel
+from orbital.ui.icons import icon as _icon
+from orbital.ui.tiles import BASE_SIZE, MIN_SCALE
+
+BASE_W = BASE_SIZE.width()
 from orbital.ui.filter_popover import FilterDialog
 from orbital.ui.compare_dialog import CompareDialog
 from orbital.ui.legend import LegendBar
@@ -53,46 +57,77 @@ class MainWindow(QMainWindow):
 
     def _build_ui(self):
         # toolbar -------------------------------------------------------------
+        from orbital.ui.icons import icon as _icon
+
         self.toolbar = QToolBar()
         self.toolbar.setMovable(False)
         self.addToolBar(self.toolbar)
 
-        self.toolbar.addWidget(QLabel(" Level "))
+        def label(text):
+            lab = QLabel(" " + text)
+            f = lab.font()
+            f.setBold(True)
+            lab.setFont(f)
+            return lab
+
+        self.toolbar.addWidget(label("Level"))
         self.level_combo = QComboBox()
         for lid, prof in EDUCATION_LEVELS.items():
             self.level_combo.addItem(prof["label"], lid)
+            self.level_combo.setItemData(
+                self.level_combo.count() - 1, prof["description"], Qt.ToolTipRole)
+        self.level_combo.setToolTip("How much detail each element shows")
+        self.level_combo.setMinimumWidth(100)
         self.level_combo.setCurrentText(
             EDUCATION_LEVELS[self.settings.education_level()]["label"])
         self.level_combo.currentIndexChanged.connect(self._on_level_combo)
         self.toolbar.addWidget(self.level_combo)
 
-        self.toolbar.addWidget(QLabel(" Layout "))
+        self.toolbar.addWidget(label("Layout"))
         self.layout_combo = QComboBox()
         for lid, builder in LAYOUTS.items():
-            self.layout_combo.addItem(builder.__doc__ and lid.title() or lid.title(), lid)
+            self.layout_combo.addItem(lid.title(), lid)
+        self.layout_combo.setToolTip("Table layout")
+        self.layout_combo.setMinimumWidth(90)
         self.layout_combo.setCurrentText(self.settings.get("layout").title())
         self.layout_combo.currentIndexChanged.connect(self._on_layout_combo)
         self.toolbar.addWidget(self.layout_combo)
 
-        self.toolbar.addWidget(QLabel(" Colour "))
+        self.toolbar.addWidget(label("Colour"))
         self.color_combo = QComboBox()
         for mid, mode in self.color_modes.items():
             self.color_combo.addItem(mode.name, mid)
+        self.color_combo.setToolTip("What the tile colours mean (legend below the table)")
+        self.color_combo.setMinimumWidth(120)
         self.color_combo.setCurrentText(
             self.color_modes.get(self.settings.get("color_mode"),
                                  self.color_modes[DEFAULT_MODE]).name)
         self.color_combo.currentIndexChanged.connect(self._on_color_combo)
         self.toolbar.addWidget(self.color_combo)
 
-        self.filter_button = QPushButton("Filter")
+        self.filter_button = QPushButton(_icon("filter"), "Filter")
         self.filter_button.setCheckable(True)
+        self.filter_button.setToolTip("Show only elements matching…")
         self.filter_button.clicked.connect(self._toggle_filter_dialog)
         self.toolbar.addWidget(self.filter_button)
 
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         self.toolbar.addWidget(spacer)
+
+        self.settings_button = QPushButton(_icon("settings"), "")
+        self.settings_button.setToolTip("Settings (Ctrl+,)")
+        self.settings_button.clicked.connect(self._open_settings)
+        self.toolbar.addWidget(self.settings_button)
+
+        self.help_button = QPushButton(_icon("help"), "")
+        self.help_button.setToolTip("Keyboard shortcuts (Ctrl+/)")
+        self.help_button.clicked.connect(self._show_shortcuts)
+        self.toolbar.addWidget(self.help_button)
+
         self.search_box = SearchBox(self.elements)
+        self.search_box.edit.addAction(
+            _icon("search"), QLineEdit.LeadingPosition)
         self.search_box.picked.connect(self._on_search_picked)
         self.search_box.active_query.connect(self._on_search_query)
         self.search_box.escaped.connect(self._clear_search)
@@ -196,6 +231,20 @@ class MainWindow(QMainWindow):
             theme_menu.addAction(act)
 
         view_menu.addSeparator()
+        zoom_in = QAction("Zoom in", self)
+        zoom_in.setShortcut("Ctrl+=")
+        zoom_in.triggered.connect(lambda: self._zoom(+0.1))
+        view_menu.addAction(zoom_in)
+        zoom_out = QAction("Zoom out", self)
+        zoom_out.setShortcut("Ctrl+-")
+        zoom_out.triggered.connect(lambda: self._zoom(-0.1))
+        view_menu.addAction(zoom_out)
+        zoom_reset = QAction("Reset zoom", self)
+        zoom_reset.setShortcut("Ctrl+0")
+        zoom_reset.triggered.connect(lambda: self._zoom(0))
+        view_menu.addAction(zoom_reset)
+
+        view_menu.addSeparator()
         self.legend_action = QAction("Show legend", self, checkable=True)
         self.legend_action.setChecked(bool(self.settings.get("show_legend")))
         self.legend_action.toggled.connect(
@@ -269,6 +318,17 @@ class MainWindow(QMainWindow):
     def _apply_state(self):
         self.legend.setVisible(bool(self.settings.get("show_legend")))
         apply_theme(self.settings.get("theme"), self.settings.accent_hex())
+        self._refresh_icons()
+
+    def _refresh_icons(self):
+        """Icons are drawn from the palette text colour — redraw on theme change."""
+        self.filter_button.setIcon(_icon("filter"))
+        self.settings_button.setIcon(_icon("settings"))
+        self.help_button.setIcon(_icon("help"))
+        for action in (self.search_box.edit.actions()
+                       if hasattr(self.search_box, "edit") else []):
+            self.search_box.edit.removeAction(action)
+        self.search_box.edit.addAction(_icon("search"), QLineEdit.LeadingPosition)
 
     def select_element(self, number, scroll=True):
         self.table.select_element(number, scroll=scroll)
@@ -288,8 +348,8 @@ class MainWindow(QMainWindow):
         viewport = self.table._scroll.viewport().width()
         if viewport <= 0:
             return
-        needed = 18 * 78 + 17 * 2 + 24  # tiles + spacing + row-label column
-        scale = max(0.68, min(1.0, (viewport - 12) / needed))
+        needed = 18 * BASE_W + 17 * 2 + 24  # tiles + spacing + row-label column
+        scale = max(MIN_SCALE, min(1.0, (viewport - 12) / needed))
         self.settings.set("tile_scale", round(scale, 2))
         self.table._apply_tile_scale()
         self.table.rebuild()
@@ -339,6 +399,15 @@ class MainWindow(QMainWindow):
             act.setChecked(act.data() == mode_id)
         self.table.refresh_colors()
         self.legend.set_mode(self.color_modes[mode_id])
+
+    def _zoom(self, delta):
+        current = float(self.settings.get("tile_scale"))
+        new = 1.0 if delta == 0 else round(current + delta, 2)
+        new = max(0.8, min(1.6, new))
+        if new == current:
+            return
+        self.settings.set("tile_scale", new)
+        self.table.rebuild()
 
     def _set_theme(self, theme_id):
         self.settings.set("theme", theme_id)

@@ -75,6 +75,12 @@ COMPARE_FIELDS = [
 # Education levels
 # --------------------------------------------------------------------------
 
+# Fields that don't appear in the General default view but can be toggled
+# on per-user from the detail panel (and persist). Everything the database
+# holds stays one click away — detail is never sacrificed.
+TOGGLEABLE_FIELDS = ["configuration", "oxidation_states", "electronegativity",
+                     "ionization", "radius"]
+
 EDUCATION_LEVELS = {
     "general": {
         "label": "General",
@@ -83,8 +89,7 @@ EDUCATION_LEVELS = {
         "fields": {
             "essentials": ["number", "symbol", "atomic_mass", "group", "period",
                            "category", "state"],
-            "chemistry": ["configuration", "shells", "oxidation_states",
-                          "electronegativity", "melt", "boil", "density"],
+            "chemistry": ["shells", "melt", "boil", "density"],
             "practical": ["uses", "compounds"],
             "history": ["discovered", "origin"],
         },
@@ -135,6 +140,9 @@ EDUCATION_LEVELS = {
         "tile_preset": "detailed",
     },
 }
+
+# Which section a toggled-on field lands in.
+TOGGLEABLE_SECTION = {fid: "chemistry" for fid in TOGGLEABLE_FIELDS}
 
 DEFAULT_LEVEL = "general"
 

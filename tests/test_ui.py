@@ -159,3 +159,72 @@ def test_themes_switch_without_crash(win):
 def test_status_bar_shows_element_summary(win):
     win.select_element(8)
     assert "Oxygen" in win.status_left.text()
+
+
+def test_detail_panel_toggle_chips(win, qapp):
+    from orbital.ui.detail_panel import TOGGLEABLE_LABELS
+    from orbital.profiles import TOGGLEABLE_FIELDS
+    win.select_element(26)
+    qapp.processEvents()
+    page = win.panel._scroll.widget()
+    from PySide6.QtWidgets import QToolButton
+    buttons = [b for b in page.findChildren(QToolButton)
+               if b.objectName() == "detail_chip"]
+    assert len(buttons) == len(TOGGLEABLE_FIELDS) + 1
+
+    # general level hides electronegativity by default; toggle it on
+    en_chip = next(b for b in buttons if b.text() == "Electroneg.")
+    assert not en_chip.isChecked()
+    en_chip.setChecked(True)
+    qapp.processEvents()
+    assert win.settings.panel_overrides()["electronegativity"] is True
+    # panel re-rendered: the electronegativity row is present
+    page = win.panel._scroll.widget()
+    from PySide6.QtWidgets import QLabel as _QL
+    all_text = " ".join(l.text() for l in page.findChildren(_QL))
+    assert "Electronegativity" in all_text
+
+    # history chip toggles the section in (IGCSE has it off by default)
+    win._set_level("igcse")
+    win.select_element(26)
+    qapp.processEvents()
+    hist_chip = next(b for b in win.panel._scroll.widget().findChildren(QToolButton)
+                     if b.objectName() == "detail_chip" and b.text() == "History")
+    assert not hist_chip.isChecked()
+    hist_chip.setChecked(True)
+    qapp.processEvents()
+    all_text = " ".join(l.text() for l in win.panel._scroll.widget().findChildren(_QL))
+    assert "Discovery" in all_text
+    # override persists across level changes
+    assert win.settings.panel_overrides()["history"] is True
+
+
+def test_toolbar_has_icons_and_buttons(win):
+    assert not win.filter_button.icon().isNull()
+    assert not win.settings_button.icon().isNull()
+    assert not win.help_button.icon().isNull()
+    assert win.settings_button.toolTip().startswith("Settings")
+    # level combo shows short labels only
+    assert "everything" not in win.level_combo.currentText().lower()
+
+
+def test_zoom_controls(win, qapp):
+    before = win.settings.get("tile_scale")
+    win._zoom(+0.1)
+    qapp.processEvents()
+    assert abs(win.settings.get("tile_scale") - (before + 0.1)) < 0.01
+    win._zoom(0)
+    qapp.processEvents()
+    assert win.settings.get("tile_scale") == 1.0
+    win._zoom(-5.0)  # clamps at minimum readable size
+    assert win.settings.get("tile_scale") == 0.8
+    win._zoom(0)
+
+
+def test_legend_wraps(win, qapp):
+    win._set_color_mode("category")
+    qapp.processEvents()
+    # flow layout reports more than one row height when entries don't fit
+    width = win.legend.width() or 600
+    h = win.legend._lay.heightForWidth(width)
+    assert h >= 18
