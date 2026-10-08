@@ -151,6 +151,23 @@ def test_key_physical_values(elements):
     assert by_number(elements, 11).ionization_energy_kj == 496
 
 
+def test_reference_corrected_values(elements):
+    # values fixed during the 2024 audit — sentinels against regression
+    assert by_number(elements, 11).melt_k == 370.944   # Na, CRC use-value
+    assert by_number(elements, 19).melt_k == 336.7    # K
+    assert by_number(elements, 3).boil_k == 1615      # Li
+    # carbon sublimes — no melting point at 1 atm
+    c = by_number(elements, 6)
+    assert c.melt_k is None
+    assert c.boil_k == 3915  # sublimation
+    assert by_number(elements, 85).boil_k == 503      # At, Otozai estimate
+    assert by_number(elements, 94).boil_k == 3508.15  # Pu
+    # predicted superheavy values, kept aligned with the reference
+    assert by_number(elements, 114).melt_k == 200     # Fl
+    assert by_number(elements, 115).melt_k == 670     # Mc
+    assert by_number(elements, 116).boil_k == 1085   # Lv (range midpoint)
+
+
 def test_uses_and_compounds_present(elements):
     for e in elements:
         assert isinstance(e.uses, tuple) and len(e.uses) >= 1

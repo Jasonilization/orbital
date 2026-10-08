@@ -16,7 +16,7 @@
   "ionization_energy_kj": 520,
   "atomic_radius_pm": 145,
   "melt_k": 453.65,
-  "boil_k": 1613,
+  "boil_k": 1615,
   "density_g_cm3": 0.534,
   "abundance_ppm": 20,
   "radioactive": false,
@@ -36,5 +36,10 @@
     "Li2CO3 \u2014 lithium carbonate",
     "LiOH \u2014 lithium hydroxide",
     "Li2O \u2014 lithium oxide"
+  ],
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    6.938,
+    6.997
   ]
 }

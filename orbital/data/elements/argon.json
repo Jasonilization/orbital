@@ -2,7 +2,7 @@
   "number": 18,
   "symbol": "Ar",
   "name": "Argon",
-  "atomic_mass": 39.948,
+  "atomic_mass": 39.95,
   "group": 18,
   "period": 3,
   "block": "p",
@@ -15,7 +15,7 @@
   "electronegativity": null,
   "ionization_energy_kj": 1521,
   "atomic_radius_pm": 71,
-  "melt_k": 83.8,
+  "melt_k": 83.81,
   "boil_k": 87.3,
   "density_g_cm3": 0.0017837,
   "abundance_ppm": 3.5,
@@ -32,5 +32,10 @@
     "Argon-ion lasers",
     "Protecting wine in open bottles"
   ],
-  "compounds": []
+  "compounds": [],
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    39.792,
+    39.963
+  ]
 }

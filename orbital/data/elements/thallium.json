@@ -42,5 +42,10 @@
     "TlCl \u2014 thallium(I) chloride",
     "Tl2O3 \u2014 thallium(III) oxide",
     "TlBr \u2014 thallium(I) bromide (infrared optics)"
+  ],
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    204.382,
+    204.385
   ]
 }

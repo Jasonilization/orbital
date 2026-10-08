@@ -42,5 +42,10 @@
     "NaBr \u2014 sodium bromide",
     "AgBr \u2014 silver bromide",
     "HBr \u2014 hydrogen bromide"
+  ],
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    79.901,
+    79.907
   ]
 }

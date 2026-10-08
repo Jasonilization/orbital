@@ -27,5 +27,6 @@
   },
   "uses": [
     "Research only \u2014 predicted to be a reactive, solid 'noble' gas"
-  ]
+  ],
+  "ionization_energy_kj": 860.0
 }

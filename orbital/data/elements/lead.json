@@ -43,5 +43,10 @@
     "PbO2 \u2014 lead dioxide (battery electrode)",
     "PbSO4 \u2014 lead sulfate",
     "PbCrO4 \u2014 lead chromate (chrome yellow pigment)"
+  ],
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    206.14,
+    207.94
   ]
 }

@@ -18,7 +18,7 @@
     "+4*"
   ],
   "melt_k": 709,
-  "boil_k": 1429,
+  "boil_k": 1085,
   "density_g_cm3": 12.9,
   "discovered": {
     "year": 2000,
@@ -27,5 +27,6 @@
   },
   "uses": [
     "Research only"
-  ]
+  ],
+  "ionization_energy_kj": 664.0
 }

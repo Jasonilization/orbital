@@ -16,7 +16,7 @@
   "oxidation_states": [
     "+2*"
   ],
-  "melt_k": 340,
+  "melt_k": 200,
   "boil_k": 380,
   "density_g_cm3": 14,
   "discovered": {
@@ -26,5 +26,6 @@
   },
   "uses": [
     "Research only \u2014 relativistic effects may make it surprisingly volatile"
-  ]
+  ],
+  "ionization_energy_kj": 832.0
 }

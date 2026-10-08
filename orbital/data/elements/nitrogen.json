@@ -44,5 +44,10 @@
     "NH3 \u2014 ammonia",
     "HNO3 \u2014 nitric acid",
     "NO2 \u2014 nitrogen dioxide"
+  ],
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    14.00643,
+    14.00728
   ]
 }

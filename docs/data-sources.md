@@ -9,7 +9,7 @@ unknown or only estimated, the data says so rather than pretending.
 
 | Field | Source |
 |---|---|
-| Relative atomic masses | IUPAC/CIAAW *Abridged atomic weights (2021)*, rounded to 5 significant figures |
+| Relative atomic masses | CIAAW *Abridged Standard Atomic Weights* (the 2024 table, based on the Atomic Weights 2021 report, incl. the 2024 Gd/Lu/Zr revisions), 5 significant figures |
 | Electron configurations | NIST Atomic Spectra Database, ground-state assignments (including the known anomalies: Cr, Cu, Nb, Mo, Ru, Rh, Pd, Ag, Pt, Au, La, Ce, Gd, Ac, Th, Pa, U, Np, Cm, Lr) |
 | First ionisation energies | NIST (kJ/mol) |
 | Electronegativity | Pauling scale |
@@ -30,10 +30,12 @@ unknown or only estimated, the data says so rather than pretending.
 
 ## Known limitations (by design, stated)
 
-- **Standard atomic weight intervals.** For the elements whose isotopic
-  composition varies in nature (H, Li, B, C, N, O, Si, S, Cl, Tl), the
-  database stores the conventional single value **and** the IUPAC interval.
-  The detail panel shows the interval in the *More detail* section.
+- **Standard atomic weight intervals.** For the 14 elements whose
+  isotopic composition varies in nature (H, Li, B, C, N, O, Mg, Si, S,
+  Cl, Ar, Br, Tl, Pb), the database stores the abridged display value
+  **and** the full CIAAW interval. The detail panel shows the interval in
+  the *More detail* section. (Argon's abridged value 39.95 rounds just
+  outside its own interval — that's CIAAW's convention, kept verbatim.)
 - **Synthetic elements (Z ≥ 93, plus Tc and Pm).** The bracketed atomic
   mass is the mass number of the most stable known isotope — there is no
   standard atomic weight.
@@ -45,9 +47,23 @@ unknown or only estimated, the data says so rather than pretending.
 - **Oxidation states** follow standard reference lists; for the
   superheavies the listed states are theoretically predicted. A star
   (`*`) marks the commonly cited states — what the IGCSE level shows.
+- **First ionisation energies** follow the reference molar table
+  (kJ/mol); from rutherfordium (Z 104) onward they are predictions.
+  Technetium (686.9), francium (393), astatine (899) and fermium (629)
+  reflect the measured/published values rather than older estimates.
+  Protactinium has a standard atomic weight (231.04) — it occurs
+  naturally, unlike the bracketed elements around it.
 - **Bismuth** is treated as non-radioactive (its half-life exceeds a
   billion times the age of the universe), which matches everyday practice.
-- **Astatine's** melting/boiling points are commonly cited estimates.
+- **Astatine's** melting point is a commonly cited estimate; its boiling
+  point (503 K) follows Otozai's 1982 radio-gas-chromatography estimate.
+- **Carbon** does not melt at 1 atm — graphite *sublimes* around 3915 K.
+  The dataset stores no melting point and shows the sublimation
+  temperature for the boiling-point field, which is what every reference
+  table does.
+- **Francium's** melting point (~300 K) is an estimate; older references
+  (and the CRC) give 27 °C, Lavrukhina gives 8 °C — we follow the more
+  commonly cited 27 °C-derived value.
 
 ## Uses and compounds
 

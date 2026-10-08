@@ -26,5 +26,6 @@
   },
   "uses": [
     "Research only \u2014 predicted to be a volatile liquid metal near room temperature"
-  ]
+  ],
+  "ionization_energy_kj": 1155.0
 }

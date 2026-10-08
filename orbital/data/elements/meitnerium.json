@@ -25,5 +25,6 @@
   },
   "uses": [
     "Research only"
-  ]
+  ],
+  "ionization_energy_kj": 800.0
 }

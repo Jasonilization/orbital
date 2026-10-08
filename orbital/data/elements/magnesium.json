@@ -37,5 +37,10 @@
     "MgO \u2014 magnesium oxide",
     "MgSO4 \u2014 Epsom salt",
     "Mg(OH)2 \u2014 magnesium hydroxide (milk of magnesia)"
+  ],
+  "atomic_mass_type": "interval",
+  "atomic_mass_range": [
+    24.304,
+    24.307
   ]
 }

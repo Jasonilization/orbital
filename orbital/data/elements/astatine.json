@@ -18,9 +18,9 @@
     "+5"
   ],
   "electronegativity": 2.2,
-  "ionization_energy_kj": 890,
+  "ionization_energy_kj": 899.0,
   "melt_k": 575,
-  "boil_k": 610,
+  "boil_k": 503,
   "density_g_cm3": 7,
   "radioactive": true,
   "synthetic": false,
