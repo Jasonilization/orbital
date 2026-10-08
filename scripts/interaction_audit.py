@@ -443,6 +443,33 @@ def settings_reset():
 
 check("settings: reset restores defaults", settings_reset)
 
+
+def theme_button():
+    from orbital.ui.theme import is_dark_theme
+    assert not is_dark_theme()
+    win.theme_button.setChecked(True)
+    app.processEvents()
+    assert is_dark_theme() and win.settings.get("theme") == "dark"
+    win.theme_button.setChecked(False)
+    app.processEvents()
+    assert not is_dark_theme()
+
+
+check("toolbar: light/dark toggle", theme_button)
+
+
+def resize_flow():
+    win.resize(680, 460)
+    app.processEvents()
+    assert len(win.table.tiles) == 118
+    from PySide6.QtCore import Qt
+    assert win.panel._scroll.horizontalScrollBarPolicy() == Qt.ScrollBarAlwaysOff
+    win.resize(1440, 860)
+    app.processEvents()
+
+
+check("window: resizes small, panel never scrolls horizontally", resize_flow)
+
 # --------------------------------------------------------------------------
 print()
 print("=== %d passed, %d failed ===" % (len(PASS), len(FAIL)))

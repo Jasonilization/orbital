@@ -14,7 +14,8 @@ from PySide6.QtWidgets import QApplication, QWidget
 class Palette:
     def __init__(self, base, text, window, bright_text, link,
                  button, button_text, highlight, highlighted_text,
-                 mid, light, dark, disabled_text, tile_base, border):
+                 mid, light, dark, disabled_text, tile_base, border,
+                 secondary_text):
         self.base = QColor(base)
         self.text = QColor(text)
         self.window = QColor(window)
@@ -30,6 +31,7 @@ class Palette:
         self.disabled_text = QColor(disabled_text)
         self.tile_base = QColor(tile_base)
         self.border = QColor(border)
+        self.secondary_text = QColor(secondary_text)
 
 
 LIGHT = Palette(
@@ -38,6 +40,7 @@ LIGHT = Palette(
     highlight="#d8e2ee", highlighted_text="#10151c",
     mid="#c9c7c2", light="#e2e0dc", dark="#a8a49d",
     disabled_text="#9b9891", tile_base="#ffffff", border="#c5c2bc",
+    secondary_text="#51504a",
 )
 
 DARK = Palette(
@@ -46,6 +49,7 @@ DARK = Palette(
     highlight="#3a4553", highlighted_text="#f2f6fa",
     mid="#3a3d44", light="#42454c", dark="#131418",
     disabled_text="#7a7d84", tile_base="#2a2d33", border="#3d4046",
+    secondary_text="#b9b9b2",
 )
 
 
@@ -95,19 +99,22 @@ def apply_theme(theme: str, accent_hex: str):
     app.setPalette(pal)
     app.setStyleSheet("")
 
-    # tiny global QSS: focus rings and tab order clarity only
-    is_dark_flag = is_dark
+    # tiny global QSS: focus rings, and a readable "muted text" class.
+    # Labels set property("muted", True) and get a dark secondary colour
+    # (palette(mid) is a border grey — never text).
     app.setStyleSheet(
+        "*[muted=\"true\"] {{ color: {secondary}; }}"
         "QMenu::item:disabled {{ color: {disabled}; }}"
         "QLineEdit:focus, QComboBox:focus, QSpinBox:focus {{ border: 1px solid {accent}; }}"
         "QToolTip {{ border: 1px solid {border}; padding: 3px; }}"
         .format(
+            secondary=pal_src.secondary_text.name(),
             disabled=pal_src.disabled_text.name(),
             accent=accent.name(),
             border=pal_src.border.name(),
         )
     )
-    return is_dark_flag
+    return is_dark
 
 
 def is_dark_theme() -> bool:

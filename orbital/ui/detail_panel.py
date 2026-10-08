@@ -153,6 +153,7 @@ class DetailPanel(QWidget):
         self._scroll = QScrollArea()
         self._scroll.setWidgetResizable(True)
         self._scroll.setFrameShape(QFrame.NoFrame)
+        self._scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self._root.addWidget(self._scroll)
 
         self.welcome = WelcomeView()
@@ -174,7 +175,7 @@ class DetailPanel(QWidget):
         row = QHBoxLayout()
         row.setSpacing(4)
         lead = QLabel("Show:")
-        lead.setStyleSheet("color: palette(mid); padding-right: 2px;")
+        lead.setProperty("muted", True)
         row.addWidget(lead)
         for fid in TOGGLEABLE_FIELDS + ["history"]:
             chip = QToolButton()
@@ -259,7 +260,7 @@ class DetailPanel(QWidget):
         nf.setPointSizeF(nf.pointSizeF() * 1.2)
         name.setFont(nf)
         subtitle = QLabel("%d \u00b7 %s" % (element.number, element.category.title()))
-        subtitle.setStyleSheet("color: palette(mid);")
+        subtitle.setProperty("muted", True)
         namebox.addWidget(name)
         namebox.addWidget(subtitle)
         head.addLayout(namebox, 1)
@@ -330,6 +331,8 @@ class DetailPanel(QWidget):
         include = [f for f in order if f in essentials]
         if not include:
             return ""
+        from orbital.ui.theme import is_dark_theme, LIGHT, DARK
+        secondary = (DARK if is_dark_theme() else LIGHT).secondary_text.name()
         parts = []
         for fid in include:
             value = field_value(element, fid, igcse=(level == "igcse"))
@@ -337,14 +340,15 @@ class DetailPanel(QWidget):
                 continue
             label = field_label(fid)
             parts.append(
-                '<span style="color:palette(mid);">%s</span> <b>%s</b>'
-                % (label, value))
+                '<span style="color:%s;">%s</span> <b>%s</b>'
+                % (secondary, label, value))
         return "  \u00b7  ".join(parts)
 
     def _field_row(self, label, value, fid):
         row = QHBoxLayout()
         lab = QLabel(label)
-        lab.setStyleSheet("color: palette(mid); padding-right: 8px;")
+        lab.setProperty("muted", True)
+        lab.setStyleSheet("padding-right: 8px;")
         lab.setWordWrap(True)
         row.addWidget(lab, 1)
         if isinstance(value, tuple):

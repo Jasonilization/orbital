@@ -30,7 +30,7 @@ class CompareDialog(QDialog):
 
         hint = QLabel("Add elements with right-click \u2192 'Add to comparison', "
                       "or 'Compare\u2026' on an element. Up to %d elements." % MAX_COMPARE)
-        hint.setStyleSheet("color: palette(mid);")
+        hint.setProperty("muted", True)
         lay.addWidget(hint)
 
         btns = QHBoxLayout()

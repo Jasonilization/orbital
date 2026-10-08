@@ -48,7 +48,7 @@ class SetupDialog(QDialog):
 
         note = QLabel("You can change this any time from the Level menu "
                       "or Settings.")
-        note.setStyleSheet("color: palette(mid);")
+        note.setProperty("muted", True)
         lay.addWidget(note)
 
         box = QGroupBox()
@@ -64,7 +64,8 @@ class SetupDialog(QDialog):
             radio.setFont(rf)
             desc = QLabel(description)
             desc.setWordWrap(True)
-            desc.setStyleSheet("color: palette(mid); margin-left: 20px;")
+            desc.setProperty("muted", True)
+            desc.setStyleSheet("margin-left: 20px;")
             radio.setChecked(lid == current)
             self.radios[lid] = radio
             box_lay.addWidget(radio)

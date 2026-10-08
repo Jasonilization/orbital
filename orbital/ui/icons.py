@@ -44,6 +44,16 @@ def icon(name: str, size: int = 16) -> QIcon:
             b = t.map(QPointF(0, -5.0)) + QPointF(8, 8)
             p.drawLine(a, b)
         p.drawEllipse(QRectF(7.0, 7.0, 2.0, 2.0))
+    elif name == "sun":
+        p.drawEllipse(QRectF(4.5, 4.5, 7.0, 7.0))
+        for angle in range(0, 360, 30):
+            t = QTransform()
+            t.rotate(angle)
+            a = t.map(QPointF(0, -8.0)) + QPointF(8, 8)
+            b = t.map(QPointF(0, -6.2)) + QPointF(8, 8)
+            p.drawLine(a, b)
+    elif name == "moon":
+        p.drawArc(QRectF(3.5, 2.5, 10.0, 11.0), 30 * 16, 300 * 16)
     elif name == "help":
         f = p.font()
         f.setBold(True)

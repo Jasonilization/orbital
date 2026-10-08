@@ -286,3 +286,58 @@ def test_igcse_focus_highlights_syllabus_elements(win, qapp):
     win._set_level("general")
     qapp.processEvents()
     assert not win.focus_button.isVisibleTo(win)
+
+
+def test_theme_toggle_button(win, qapp):
+    from orbital.ui.theme import is_dark_theme
+    assert not is_dark_theme()  # test fixture runs light
+    assert not win.theme_button.icon().isNull()
+    win.theme_button.setChecked(True)
+    qapp.processEvents()
+    assert win.settings.get("theme") == "dark"
+    assert is_dark_theme()
+    assert not win.theme_button.icon().isNull()  # sun icon redrawn
+    win.theme_button.setChecked(False)
+    qapp.processEvents()
+    assert win.settings.get("theme") == "light"
+    assert not is_dark_theme()
+
+
+def test_detail_panel_never_scroll_horizontally(win, qapp):
+    from PySide6.QtCore import Qt
+    win.select_element(26)
+    qapp.processEvents()
+    policy = win.panel._scroll.horizontalScrollBarPolicy()
+    assert policy == Qt.ScrollBarAlwaysOff
+    # narrow the panel aggressively: content must wrap, not widen
+    win.splitter.setSizes([140, 700, 120])
+    qapp.processEvents()
+    bar = win.panel._scroll.horizontalScrollBar()
+    assert bar.maximum() == 0 or not bar.isVisible()
+
+
+def test_muted_labels_use_readable_colour(win, qapp):
+    from PySide6.QtWidgets import QLabel
+    from orbital.ui.theme import LIGHT, is_dark_theme
+    win.select_element(26)
+    qapp.processEvents()
+    page = win.panel._scroll.widget()
+    muted = [l for l in page.findChildren(QLabel)
+             if l.property("muted") is True]
+    assert muted, "expected muted labels on the detail page"
+    expected = (LIGHT if not is_dark_theme() else
+                __import__("orbital.ui.theme", fromlist=["DARK"]).DARK).secondary_text
+    # the app stylesheet applies the colour; assert the rule exists
+    from PySide6.QtWidgets import QApplication
+    qss = QApplication.instance().styleSheet()
+    assert expected.name().lower() in qss.lower()
+
+
+def test_window_resizes_small(win, qapp):
+    win.resize(680, 460)
+    qapp.processEvents()
+    assert win.table._scroll.viewport().width() > 200
+    # tiles still all present and clickable
+    assert len(win.table.tiles) == 118
+    win.resize(1280, 800)
+    qapp.processEvents()

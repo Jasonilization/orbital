@@ -29,7 +29,7 @@ from orbital.ui.settings_dialog import SettingsDialog
 from orbital.ui.setup_dialog import SetupDialog
 from orbital.ui.sidebar import Sidebar
 from orbital.ui.table_view import TableView
-from orbital.ui.theme import apply_theme
+from orbital.ui.theme import apply_theme, is_dark_theme as is_dark_now
 from orbital.formatting import field_value
 
 
@@ -47,7 +47,7 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("Orbital")
         self.resize(1280, 800)
-        self.setMinimumSize(980, 560)
+        self.setMinimumSize(680, 460)
 
         self._build_ui()
         self._build_menus()
@@ -128,6 +128,13 @@ class MainWindow(QMainWindow):
         spacer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         self.toolbar.addWidget(spacer)
 
+        self.theme_button = QPushButton(_icon("moon"), "")
+        self.theme_button.setCheckable(True)
+        self.theme_button.setToolTip(
+            "Toggle dark mode (View menu adds a System option)")
+        self.theme_button.toggled.connect(self._on_theme_button)
+        self.toolbar.addWidget(self.theme_button)
+
         self.settings_button = QPushButton(_icon("settings"), "")
         self.settings_button.setToolTip("Settings (Ctrl+,)")
         self.settings_button.clicked.connect(self._open_settings)
@@ -152,8 +159,8 @@ class MainWindow(QMainWindow):
         self.sidebar = Sidebar(self.elements, self.color_modes)
         self.sidebar.element_selected.connect(
             lambda n: self.select_element(n, scroll=True))
-        self.sidebar.setMinimumWidth(150)
-        self.sidebar.setMaximumWidth(230)
+        self.sidebar.setMinimumWidth(140)
+        self.sidebar.setMaximumWidth(420)
         self.splitter.addWidget(self.sidebar)
 
         centre = QWidget()
@@ -173,7 +180,8 @@ class MainWindow(QMainWindow):
         self.splitter.addWidget(centre)
 
         self.panel = DetailPanel(self.settings)
-        self.panel.setMinimumWidth(260)
+        self.panel.setMinimumWidth(230)
+        self.panel.setMaximumWidth(520)
         self.panel.compare_requested.connect(self._add_to_compare)
         self.splitter.addWidget(self.panel)
 
@@ -365,6 +373,16 @@ class MainWindow(QMainWindow):
         self.filter_button.setIcon(_icon("filter"))
         self.settings_button.setIcon(_icon("settings"))
         self.help_button.setIcon(_icon("help"))
+        dark = is_dark_now()
+        self._block(self.theme_button,
+                    lambda: self.theme_button.setChecked(dark))
+        self.theme_button.setIcon(_icon("sun" if dark else "moon"))
+
+    def _on_theme_button(self, on):
+        self._set_theme("dark" if on else "light")
+
+    def _refresh_theme_button(self):
+        pass
         for action in (self.search_box.edit.actions()
                        if hasattr(self.search_box, "edit") else []):
             self.search_box.edit.removeAction(action)

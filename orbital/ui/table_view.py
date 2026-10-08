@@ -37,7 +37,7 @@ class _HeaderLabel(QLabel):
         f = QFont(self.font())
         f.setPointSizeF(max(7.5, f.pointSizeF() * 0.85))
         self.setFont(f)
-        self.setStyleSheet("color: %s;" % ("#8a8780" if not is_dark_theme() else "#9a9da5"))
+        self.setStyleSheet("color: %s;" % ("#5c5a53" if not is_dark_theme() else "#b5b8be"))
 
 
 class TableView(QWidget):
