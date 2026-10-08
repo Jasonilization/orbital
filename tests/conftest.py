@@ -28,6 +28,10 @@ def win(qapp, settings):
     w = MainWindow(settings)
     w.show()
     qapp.processEvents()
+    # run (and thereby disarm) the deferred first-run tile fit so no timer
+    # can fire mid-test and rebuild the table under a test's feet
+    w._fit_tiles_first_run()
+    qapp.processEvents()
     yield w
     w.close()
     qapp.processEvents()

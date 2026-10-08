@@ -71,12 +71,13 @@ def test_keyboard_grid_navigation(win, qapp):
     win.table._on_move_requested(win.table.tiles[1], 1, 0)  # right from H
     qapp.processEvents()
     assert win.table.tiles[2]._selected is False
-    # moving right from hydrogen reaches helium (same row)
-    focused = win.table.tiles[2]
-    assert focused.hasFocus()
+    # moving right from hydrogen reaches helium (same row);
+    # focus is asserted window-relative — hasFocus() also depends on
+    # platform window activation, which offscreen treats inconsistently
+    assert win.focusWidget() is win.table.tiles[2]
     win.table._on_move_requested(win.table.tiles[2], 0, 1)  # down from He
     qapp.processEvents()
-    assert win.table.tiles[10].hasFocus()
+    assert win.focusWidget() is win.table.tiles[10]
 
 
 def test_compare_flow(win):

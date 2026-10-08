@@ -27,7 +27,6 @@ DEFAULTS = {
     "show_legend": True,
     "remember_layout": True,      # restore last layout at startup
     "open_details_on_select": True,
-    "joke_last_index": -1,
 }
 
 _ACCENTS = {
@@ -96,6 +95,9 @@ class Settings(QObject):
         else:
             self._qs.setValue(key, value)
         self.changed.emit(key)
+
+    def has(self, key) -> bool:
+        return self._qs.contains(key)
 
     def reset(self):
         for key in DEFAULTS:

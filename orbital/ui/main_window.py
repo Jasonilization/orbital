@@ -7,7 +7,7 @@ from PySide6.QtGui import QAction, QActionGroup, QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QMainWindow, QSplitter, QWidget, QVBoxLayout, QHBoxLayout, QToolBar,
     QComboBox, QPushButton, QLabel, QMenu, QMessageBox, QFileDialog,
-    QApplication,
+    QApplication, QSizePolicy,
 )
 
 from orbital.data import load_elements, by_number
@@ -90,7 +90,7 @@ class MainWindow(QMainWindow):
         self.toolbar.addWidget(self.filter_button)
 
         spacer = QWidget()
-        spacer.setSizeIncrement(1, 0)
+        spacer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         self.toolbar.addWidget(spacer)
         self.search_box = SearchBox(self.elements)
         self.search_box.picked.connect(self._on_search_picked)
@@ -131,6 +131,9 @@ class MainWindow(QMainWindow):
 
         self.splitter.setSizes([190, 700, 310])
         self.setCentralWidget(self.splitter)
+        # On first run, size tiles so the standard table fits the window
+        # instead of forcing horizontal scrolling on laptops.
+        QTimer.singleShot(0, self._fit_tiles_first_run)
 
         # status bar -----------------------------------------------------------
         self.status_left = QLabel("")
@@ -278,6 +281,18 @@ class MainWindow(QMainWindow):
             % (e.number, e.name, e.symbol, e.mass_string(), e.category.title()))
 
     # -- toolbar handlers ----------------------------------------------------
+
+    def _fit_tiles_first_run(self):
+        if self.settings.has("tile_scale"):
+            return
+        viewport = self.table._scroll.viewport().width()
+        if viewport <= 0:
+            return
+        needed = 18 * 78 + 17 * 2 + 24  # tiles + spacing + row-label column
+        scale = max(0.68, min(1.0, (viewport - 12) / needed))
+        self.settings.set("tile_scale", round(scale, 2))
+        self.table._apply_tile_scale()
+        self.table.rebuild()
 
     def _on_level_combo(self, index):
         self._set_level(self.level_combo.itemData(index))

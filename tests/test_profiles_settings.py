@@ -75,7 +75,6 @@ def test_settings_defaults_roundtrip(tmp_path):
     assert s.get("theme") == "system"
     assert s.get("tile_scale") == 1.0
     assert s.get("show_legend") is True
-    assert s.get("joke_last_index") == -1
 
 
 def test_settings_persist_across_instances(tmp_path):
