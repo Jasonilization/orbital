@@ -28,7 +28,8 @@ DEFAULTS = {
     "remember_layout": True,      # restore last layout at startup
     "open_details_on_select": True,
     "igcse_focus": True,            # highlight only IGCSE data-sheet elements
-    "panel_fields_shown": None,      # dict field_id -> bool (JSON); None = follow level defaults
+    "chips_shown": False,           # detail-panel "+ More detail" row expanded
+    "panel_fields_shown": None,     # dict field_id -> bool (JSON); None = follow level defaults
     "setup_done": False,             # first-run setup completed
 }
 

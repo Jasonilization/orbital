@@ -196,6 +196,7 @@ class ElementTile(QWidget):
         if self._hover:
             base = base.lighter(106) if not is_dark_theme() else base.lighter(112)
 
+        radius = min(w, h) * 0.07
         rect = QRectF(1.0, 1.0, w - 2.0, h - 2.0)
         if self._dimmed:
             pal = self.palette()
@@ -205,7 +206,10 @@ class ElementTile(QWidget):
                 int(base.green() * 0.14 + win_c.green() * 0.86),
                 int(base.blue() * 0.14 + win_c.blue() * 0.86),
             )
-        p.fillRect(rect, base)
+        p.setPen(Qt.NoPen)
+        p.setBrush(base)
+        p.drawRoundedRect(rect, radius, radius)
+        p.setBrush(Qt.NoBrush)
         text_alpha = 1.0 if not self._dimmed else 0.45
         p.setOpacity(text_alpha)
         text = readable_text_on(QColor(self._color) if not self._dimmed else base)
@@ -239,18 +243,18 @@ class ElementTile(QWidget):
         pen = QPen(QColor("#8a8a85") if not is_dark_theme() else QColor("#54575e"))
         pen.setWidthF(1)
         p.setPen(pen)
-        p.drawRect(rect.adjusted(0.5, 0.5, -0.5, -0.5))
+        p.drawRoundedRect(rect.adjusted(0.5, 0.5, -0.5, -0.5), radius, radius)
 
         if self._selected:
             pen = QPen(self.palette().color(QPalette.WindowText))
             pen.setWidthF(2.4)
             p.setPen(pen)
-            p.drawRect(rect.adjusted(1.4, 1.4, -1.4, -1.4))
+            p.drawRoundedRect(rect.adjusted(1.4, 1.4, -1.4, -1.4), radius, radius)
 
         if self.hasFocus():
             pen = QPen(self.palette().color(QPalette.WindowText), 1, Qt.DashLine)
             p.setPen(pen)
-            p.drawRect(rect.adjusted(0.5, 0.5, -0.5, -0.5))
+            p.drawRoundedRect(rect.adjusted(0.5, 0.5, -0.5, -0.5), radius, radius)
 
     def _field_text(self, field):
         e = self.element

@@ -27,6 +27,15 @@ from orbital.profiles import (
     level_profile, section_title, TOGGLEABLE_FIELDS, FIELDS,
     SECTION_FIELDS,
 )
+from orbital.ui.icons import icon as _icon
+
+SECTION_ICONS = {
+    "chemistry": "flask",
+    "practical": "box",
+    "history": "clock",
+    "advanced": "layers",
+    "essentials": None,
+}
 
 JOKES_PATH = Path(__file__).resolve().parent.parent / "data" / "jokes.json"
 
@@ -112,13 +121,17 @@ class WelcomeView(QWidget):
 
 
 class _Section(QFrame):
-    def __init__(self, title, parent=None):
+    def __init__(self, title, icon_name=None, parent=None):
         super().__init__(parent)
-        self.setFrameShape(QFrame.StyledPanel)
+        self.setObjectName("detail_section")
+        self.setFrameShape(QFrame.NoFrame)
         lay = QVBoxLayout(self)
         lay.setContentsMargins(0, 0, 0, 0)
         lay.setSpacing(0)
         self.toggle = QToolButton()
+        if icon_name:
+            self.toggle.setIcon(_icon(icon_name))
+            self.toggle.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
         self.toggle.setText(title)
         self.toggle.setCheckable(True)
         self.toggle.setChecked(True)
@@ -290,8 +303,23 @@ class DetailPanel(QWidget):
             thin.setFrameShape(QFrame.HLine)
             lay.addWidget(thin)
 
-        # detail toggles — visible, persistent, one click
-        lay.addWidget(self._chips(effective))
+        # detail toggles live behind one compact "+ More detail" button —
+        # the default view stays clean; everything is still one click away
+        self._more_button = QToolButton()
+        self._more_button.setObjectName("detail_more")
+        self._more_button.setCheckable(True)
+        self._more_button.setIcon(_icon("plus"))
+        self._more_button.setText("+ More detail")
+        chips = self._chips(effective)
+        chips_visible = bool(self.settings.get("chips_shown"))
+        chips.setVisible(chips_visible)
+        self._more_button.setChecked(chips_visible)
+        self._more_button.toggled.connect(lambda on: (
+            chips.setVisible(on),
+            self.settings.set("chips_shown", on),
+            self._more_button.setText("− Less" if on else "+ More detail")))
+        lay.addWidget(self._more_button)
+        lay.addWidget(chips)
 
         common_ox = bool(profile.get("common_ox_states_only"))
         config_style = "full" if level in ("alevel", "advanced") else "short"
@@ -308,7 +336,8 @@ class DetailPanel(QWidget):
             section_fields = fields.get(section_id, [])
             if not section_fields:
                 continue
-            sect = _Section(section_title(section_id))
+            sect = _Section(section_title(section_id),
+                            SECTION_ICONS.get(section_id))
             for fid in section_fields:
                 if fid in ("symbol", "number"):
                     continue  # already in the header
@@ -344,6 +373,24 @@ class DetailPanel(QWidget):
                 % (secondary, label, value))
         return "  \u00b7  ".join(parts)
 
+    def _render_list(self, items, fid, limit=3):
+        def render(list_):
+            return "<br>".join(
+                ("\u2022&nbsp;" + formula_html(v)) if fid == "compounds" else
+                ("\u2022&nbsp;" + v) for v in list_)
+        val = QLabel(render(items[:limit]))
+        val.setTextFormat(Qt.RichText)
+        if len(items) > limit:
+            more = QToolButton()
+            more.setObjectName("list_more")
+            more.setText("+ %d more" % (len(items) - limit))
+            more.setCursor(Qt.PointingHandCursor)
+            more.setStyleSheet("border: none; font-weight: 600;")
+            more.clicked.connect(
+                lambda: (val.setText(render(items)), more.hide()))
+            return val, more
+        return val, None
+
     def _field_row(self, label, value, fid):
         row = QHBoxLayout()
         lab = QLabel(label)
@@ -354,16 +401,20 @@ class DetailPanel(QWidget):
         if isinstance(value, tuple):
             if not value:
                 value = ("\u2014",)
-            text = "<br>".join(
-                ("\u2022&nbsp;" + formula_html(v)) if fid == "compounds" else
-                ("\u2022&nbsp;" + v) for v in value
-            )
-            val = QLabel(text)
-            val.setTextFormat(Qt.RichText)
+            val, more = self._render_list(value, fid)
+            box = QVBoxLayout()
+            box.setSpacing(0)
+            box.addWidget(val)
+            if more is not None:
+                box.addWidget(more, 0, Qt.AlignRight)
+            wrap = QWidget()
+            wrap.setLayout(box)
+            wrap_item = wrap
         else:
             val = QLabel("\u2014" if value in (None, "") else str(value))
+            wrap_item = val
         val.setWordWrap(True)
         val.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         val.setTextInteractionFlags(Qt.TextSelectableByMouse)
-        row.addWidget(val, 2)
+        row.addWidget(wrap_item, 2)
         return row

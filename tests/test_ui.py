@@ -168,6 +168,14 @@ def test_detail_panel_toggle_chips(win, qapp):
     qapp.processEvents()
     page = win.panel._scroll.widget()
     from PySide6.QtWidgets import QToolButton
+    # chips are hidden behind "+ More detail" by default
+    more = next(b for b in page.findChildren(QToolButton)
+                if b.text().startswith("+ More"))
+    assert not more.isChecked()
+    more.setChecked(True)
+    qapp.processEvents()
+    assert win.settings.get("chips_shown") is True
+    page = win.panel._scroll.widget()
     buttons = [b for b in page.findChildren(QToolButton)
                if b.objectName() == "detail_chip"]
     assert len(buttons) == len(TOGGLEABLE_FIELDS) + 1
@@ -190,6 +198,7 @@ def test_detail_panel_toggle_chips(win, qapp):
     qapp.processEvents()
     hist_chip = next(b for b in win.panel._scroll.widget().findChildren(QToolButton)
                      if b.objectName() == "detail_chip" and b.text() == "History")
+    hist_chip.parent().setVisible(True)
     assert not hist_chip.isChecked()
     hist_chip.setChecked(True)
     qapp.processEvents()

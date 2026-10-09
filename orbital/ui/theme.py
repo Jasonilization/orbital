@@ -104,14 +104,33 @@ def apply_theme(theme: str, accent_hex: str):
     # weight and size, never from grey ink.
     app.setStyleSheet(
         "*[muted=\"true\"] {{ color: {text}; font-weight: 600; }}"
+        # rounded, calm controls: a bit of radius, solid borders, no gradients
+        "QPushButton {{ border: 1px solid {border}; border-radius: 6px;"
+        "  padding: 4px 12px; background: {button}; }}"
+        "QPushButton:hover {{ background: {hover}; }}"
+        "QPushButton:pressed {{ background: {pressed}; }}"
+        "QToolButton {{ border-radius: 9px; }}"
+        "QComboBox, QLineEdit, QSpinBox, QDoubleSpinBox {{"
+        "  border: 1px solid {border}; border-radius: 6px; padding: 3px 8px;"
+        "  background: {tile}; }}"
+        "QComboBox:focus, QLineEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus"
+        " {{ border: 1px solid {accent}; }}"
+        "QFrame#detail_section {{ border: 1px solid {border};"
+        "  border-radius: 9px; background: {tile}; }}"
+        "QMenu {{ border-radius: 6px; }}"
         "QMenu::item:disabled {{ color: {disabled}; }}"
-        "QLineEdit:focus, QComboBox:focus, QSpinBox:focus {{ border: 1px solid {accent}; }}"
-        "QToolTip {{ border: 1px solid {border}; padding: 3px; }}"
+        "QToolTip {{ border: 1px solid {border}; border-radius: 5px; padding: 3px; }}"
         .format(
             text=pal_src.text.name(),
             disabled=pal_src.disabled_text.name(),
             accent=accent.name(),
             border=pal_src.border.name(),
+            button=pal_src.button.name(),
+            hover=(pal_src.button.lighter(106) if not is_dark
+                   else pal_src.button.lighter(112)).name(),
+            pressed=(pal_src.button.darker(108) if not is_dark
+                     else pal_src.button.darker(150)).name(),
+            tile=pal_src.tile_base.name(),
         )
     )
     return is_dark
