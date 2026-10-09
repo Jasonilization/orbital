@@ -28,6 +28,7 @@ from orbital.profiles import (
     SECTION_FIELDS,
 )
 from orbital.ui.icons import icon as _icon
+from orbital.ui.legend import FlowLayout
 
 SECTION_ICONS = {
     "chemistry": "flask",
@@ -185,8 +186,7 @@ class DetailPanel(QWidget):
     # -- toggle chips ------------------------------------------------------
 
     def _chips(self, effective):
-        row = QHBoxLayout()
-        row.setSpacing(4)
+        row = FlowLayout(spacing=5, margin=2)
         lead = QLabel("Show:")
         lead.setProperty("muted", True)
         row.addWidget(lead)
@@ -206,7 +206,6 @@ class DetailPanel(QWidget):
             chip.toggled.connect(
                 lambda on, f=fid: self._on_chip(f, on))
             row.addWidget(chip)
-        row.addStretch(1)
         wrap = QWidget()
         wrap.setLayout(row)
         return wrap

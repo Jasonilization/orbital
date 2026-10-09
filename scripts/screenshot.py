@@ -28,7 +28,8 @@ from orbital.filters import FilterSpec
 
 def render(name):
     app = QApplication.instance()
-    app.processEvents()
+    for _ in range(3):   # let queued rebuilds settle before grabbing
+        app.processEvents()
     pix = win.grab()
     path = os.path.join(OUT, name)
     pix.save(path)
