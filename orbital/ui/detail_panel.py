@@ -352,7 +352,6 @@ class DetailPanel(QWidget):
             lay.addWidget(sect)
 
         lay.addStretch(1)
-        page.adjustSize()
         self._swap(page)
 
     def _facts_strip(self, element, essentials, level):

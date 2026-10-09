@@ -36,6 +36,7 @@ from orbital.formatting import field_value
 class MainWindow(QMainWindow):
     def __init__(self, settings, elements=None):
         super().__init__()
+        self._rebuild_queued = False
         self.settings = settings
         self.elements = elements or load_elements()
         self.color_modes = build_color_modes(self.elements)
@@ -466,6 +467,20 @@ class MainWindow(QMainWindow):
         self.table.refresh_colors()
         self.legend.set_mode(self.color_modes[mode_id])
 
+    def _queue_rebuild(self):
+        """Coalesce bursts of settings writes into one table rebuild."""
+        if self._rebuild_queued:
+            return
+        self._rebuild_queued = True
+
+        def do_rebuild():
+            self._rebuild_queued = False
+            self.table.rebuild()
+            if self.current_element():
+                self.table.select_element(self.current_element().number)
+
+        QTimer.singleShot(0, do_rebuild)
+
     def _zoom(self, delta):
         current = float(self.settings.get("tile_scale"))
         new = 1.0 if delta == 0 else round(current + delta, 2)
@@ -641,8 +656,7 @@ class MainWindow(QMainWindow):
     def _open_settings(self):
         dlg = SettingsDialog(self, self.settings)
         if dlg.exec():
-            dlg.apply()
-            self.table.rebuild()
+            dlg.apply()          # settings.changed handlers do the work
             if self.current_element():
                 self.panel.show_element(self.current_element())
             self._apply_state()
@@ -657,7 +671,7 @@ class MainWindow(QMainWindow):
             self._block(self.layout_combo,
                         lambda: self.layout_combo.setCurrentText(self.settings.get("layout").title()))
         elif key in ("tile_preset", "tile_fields", "tile_scale"):
-            self.table.rebuild()
+            self._queue_rebuild()
         elif key == "color_mode":
             self._set_color_mode(self.settings.get("color_mode"))
         elif key == "education_level":
@@ -666,7 +680,7 @@ class MainWindow(QMainWindow):
                         lambda: self.level_combo.setCurrentText(EDUCATION_LEVELS[level]["label"]))
             for act in self._level_actions:
                 act.setChecked(act.data() == level)
-            self.table.rebuild()
+            self._queue_rebuild()
             self._refresh_focus_button()
             self._sync_sidebar_filter()
             self._update_highlight()

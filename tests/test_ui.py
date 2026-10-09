@@ -379,3 +379,48 @@ def test_sidebar_garageband_chips(win, qapp):
             if max(c.red(), c.green(), c.blue()) - min(c.red(), c.green(), c.blue()) > 30:
                 colored += 1
     assert colored > 200, "expected visible coloured chips, got %d" % colored
+
+
+def test_tiles_render_visible_text(win, qapp):
+    # regression guard: the NoPen-fill bug once erased every glyph.
+    # A rendered tile must contain text-coloured pixels, not just fill.
+    from PySide6.QtGui import QColor
+    win._set_color_mode("monochrome")  # neutral fill makes text easy to see
+    qapp.processEvents()
+    tile = win.table.tiles[26]
+    img = tile.grab().toImage()
+    w, h = img.width(), img.height()
+    center = img.pixelColor(w // 2, h // 2)
+    text_pixels = 0
+    for x in range(2, w - 2):
+        for y in range(2, h - 2):
+            c = img.pixelColor(x, y)
+            if c != center and c.alpha() == 255 and c.lightness() < 120:
+                text_pixels += 1
+    assert text_pixels > 15, "tile rendered no visible text (%d px)" % text_pixels
+    win._set_color_mode("category")
+
+
+def test_search_has_no_popup_completer(win):
+    assert win.search_box.edit.completer() is None
+
+
+def test_settings_burst_causes_single_rebuild(win, qapp):
+    # a settings dialog-style burst of writes -> exactly one rebuild
+    rebuilds = []
+    real_rebuild = win.table.rebuild
+    win.table.rebuild = lambda: rebuilds.append(1) or real_rebuild()
+    try:
+        for key, value in (("tile_preset", "compact"),
+                           ("tile_scale", 1.1),
+                           ("tile_preset", "detailed"),
+                           ("tile_scale", 1.0)):
+            win.settings.set(key, value)
+        # no synchronous rebuild during the burst
+        assert len(rebuilds) == 0
+        qapp.processEvents()
+        assert len(rebuilds) == 1
+    finally:
+        win.table.rebuild = real_rebuild
+        win.settings.set("tile_preset", "standard")
+        qapp.processEvents()

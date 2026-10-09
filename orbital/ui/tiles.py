@@ -213,6 +213,7 @@ class ElementTile(QWidget):
         text_alpha = 1.0 if not self._dimmed else 0.45
         p.setOpacity(text_alpha)
         text = readable_text_on(QColor(self._color) if not self._dimmed else base)
+        p.setPen(text)  # drawText uses the pen — restore it after NoPen fill
 
         font_scale = 1.0  # tile_font_scale applied via app font
         rows = layout_fields(w, h, self.fields, font_scale)

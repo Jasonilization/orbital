@@ -20,7 +20,21 @@ def _text_color() -> QColor:
     return QColor("#1c1c19")
 
 
+_CACHE = {}
+
+
 def icon(name: str, size: int = 16) -> QIcon:
+    color = _text_color().name()
+    key = (name, size, color)
+    cached = _CACHE.get(key)
+    if cached is not None:
+        return cached
+    ic = _draw(name, size)
+    _CACHE[key] = ic
+    return ic
+
+
+def _draw(name: str, size: int) -> QIcon:
     pm = QPixmap(size, size)
     pm.fill(Qt.transparent)
     p = QPainter(pm)
