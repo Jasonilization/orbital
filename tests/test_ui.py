@@ -318,19 +318,19 @@ def test_detail_panel_never_scroll_horizontally(win, qapp):
 
 def test_muted_labels_use_readable_colour(win, qapp):
     from PySide6.QtWidgets import QLabel
-    from orbital.ui.theme import LIGHT, is_dark_theme
+    from orbital.ui.theme import LIGHT, DARK, is_dark_theme
     win.select_element(26)
     qapp.processEvents()
     page = win.panel._scroll.widget()
     muted = [l for l in page.findChildren(QLabel)
              if l.property("muted") is True]
     assert muted, "expected muted labels on the detail page"
-    expected = (LIGHT if not is_dark_theme() else
-                __import__("orbital.ui.theme", fromlist=["DARK"]).DARK).secondary_text
-    # the app stylesheet applies the colour; assert the rule exists
+    # labels now use the FULL text colour at demi-bold — grey ink is gone
+    text = (DARK if is_dark_theme() else LIGHT).text
     from PySide6.QtWidgets import QApplication
     qss = QApplication.instance().styleSheet()
-    assert expected.name().lower() in qss.lower()
+    assert text.name().lower() in qss.lower()
+    assert "font-weight: 600" in qss
 
 
 def test_window_resizes_small(win, qapp):
@@ -341,3 +341,32 @@ def test_window_resizes_small(win, qapp):
     assert len(win.table.tiles) == 118
     win.resize(1280, 800)
     qapp.processEvents()
+
+
+def test_sidebar_garageband_chips(win, qapp):
+    from orbital.ui.sidebar import _RowData
+    # every element row carries paint data with a chip colour + symbol
+    tree = win.sidebar.tree
+    rows = 0
+    for i in range(tree.topLevelItemCount()):
+        section = tree.topLevelItem(i)
+        header = section.data(0, 0x0100)  # Qt.UserRole
+        assert header is not None and header.kind == "header"
+        for j in range(section.childCount()):
+            child = section.child(j)
+            data = child.data(0, 0x0100)
+            assert data is not None and data.kind == "row"
+            assert len(data.symbol) <= 2
+            assert data.chip_color.startswith("#")
+            rows += 1
+    assert rows == 118
+    # symbol chips render: the sidebar grab contains many coloured pixels
+    pix = win.sidebar.grab().toImage()
+    from PySide6.QtGui import QColor
+    colored = 0
+    for x in range(0, pix.width(), 3):
+        for y in range(0, pix.height(), 3):
+            c = pix.pixelColor(x, y)
+            if max(c.red(), c.green(), c.blue()) - min(c.red(), c.green(), c.blue()) > 30:
+                colored += 1
+    assert colored > 200, "expected visible coloured chips, got %d" % colored

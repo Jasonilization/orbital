@@ -99,16 +99,16 @@ def apply_theme(theme: str, accent_hex: str):
     app.setPalette(pal)
     app.setStyleSheet("")
 
-    # tiny global QSS: focus rings, and a readable "muted text" class.
-    # Labels set property("muted", True) and get a dark secondary colour
-    # (palette(mid) is a border grey — never text).
+    # tiny global QSS: focus rings + label style. Labels marked "muted"
+    # use the FULL text colour at demi-bold — readability comes from
+    # weight and size, never from grey ink.
     app.setStyleSheet(
-        "*[muted=\"true\"] {{ color: {secondary}; }}"
+        "*[muted=\"true\"] {{ color: {text}; font-weight: 600; }}"
         "QMenu::item:disabled {{ color: {disabled}; }}"
         "QLineEdit:focus, QComboBox:focus, QSpinBox:focus {{ border: 1px solid {accent}; }}"
         "QToolTip {{ border: 1px solid {border}; padding: 3px; }}"
         .format(
-            secondary=pal_src.secondary_text.name(),
+            text=pal_src.text.name(),
             disabled=pal_src.disabled_text.name(),
             accent=accent.name(),
             border=pal_src.border.name(),

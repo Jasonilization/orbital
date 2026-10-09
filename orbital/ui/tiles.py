@@ -31,8 +31,8 @@ def layout_fields(width, height, fields, font_scale=1.0):
     a metrics-like object with height(). Unit tests use a fake.
     """
     fields = [f for f in fields if f]
-    small_pt = max(7.0, 8.5 * font_scale)
-    name_pt = max(6.5, 8.0 * font_scale)
+    small_pt = max(7.5, 9.5 * font_scale)
+    name_pt = max(7.0, 9.0 * font_scale)
     pad = 3.5
 
     def pt2px(pt):
@@ -62,8 +62,8 @@ def layout_fields(width, height, fields, font_scale=1.0):
 
     # symbol takes what's left, clamped
     symbol_room = available - fixed_h
-    symbol_pt = max(8.0, min(17.0 * font_scale, symbol_room / 1.45 * 0.92))
-    if symbol_pt < 8.0:
+    symbol_pt = max(9.0, min(17.5 * font_scale, symbol_room / 1.45 * 0.92))
+    if symbol_pt < 9.0:
         # nothing fits: drop the most expendable fields and retry once
         for drop in _FIELD_PRIORITY:
             if drop == "symbol":
@@ -71,7 +71,7 @@ def layout_fields(width, height, fields, font_scale=1.0):
             if drop in fields and drop != "number":
                 fields = [f for f in fields if f != drop]
                 return layout_fields(width, height, fields, font_scale)
-        symbol_pt = 8.0
+        symbol_pt = 9.0
 
     y = pad
     out = []
