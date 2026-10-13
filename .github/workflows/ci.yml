@@ -47,7 +47,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e .[dev,package]
       - name: Build .app and .dmg
-        run: scripts/build_mac.sh
+        run: bash scripts/build_mac.sh
       - uses: actions/upload-artifact@v4
         with:
           name: Orbital-macOS
@@ -90,7 +90,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e .[dev,package]
       - name: Build tarball (and AppImage when tooling allows)
-        run: scripts/build_linux.sh
+        run: bash scripts/build_linux.sh
       - uses: actions/upload-artifact@v4
         with:
           name: Orbital-Linux
