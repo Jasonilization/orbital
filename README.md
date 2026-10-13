@@ -116,7 +116,7 @@ The app stores its settings natively per platform (defaults on macOS, registry o
 
 ## Building from source
 
-You need Python 3.10+.
+You need Python 3.11+ (3.10 reached end-of-life in October 2026 and isn't tested).
 
 ```sh
 git clone https://github.com/Jasonilization/orbital.git

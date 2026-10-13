@@ -15,23 +15,17 @@ def qapp():
 
 
 def pytest_sessionfinish(session, exitstatus):
-    """Headless teardown: after a fully green run, clear Qt caches, flush
-    and exit hard. PySide's interpreter-exit teardown races Qt's own
-    cleanup under the offscreen platform on some Linux runners
-    (SIGABRT after all tests pass). On failures we exit normally so
-    pytest can print the details."""
-    if os.environ.get("QT_QPA_PLATFORM") != "offscreen":
-        return
+    """CI-only teardown guard: after a fully green run under the
+    offscreen platform, flush and exit hard without touching Qt at all.
+    PySide's interpreter-exit teardown races Qt's cleanup on some
+    runners (access violation / SIGABRT after all tests pass), and
+    processing pending events at this point can fire handlers on
+    already-deleted widgets. Failures exit normally so pytest can print
+    details."""
     if exitstatus != 0:
         return
     if os.environ.get("ORBITAL_HARD_EXIT") != "1":
-        return   # local runs: let pytest print its summary and exit normally
-    from PySide6.QtWidgets import QApplication
-    app = QApplication.instance()
-    if app is not None:
-        from orbital.ui.icons import clear_icon_cache
-        clear_icon_cache()
-        app.processEvents()
+        return   # local runs: normal exit, full pytest output
     import sys
     sys.stdout.flush()
     sys.stderr.flush()
