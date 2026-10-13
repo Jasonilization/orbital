@@ -224,7 +224,10 @@ class ElementTile(QWidget):
             if field == "symbol":
                 f.setBold(True)
             p.setFont(f)
-            fm = p.fontMetrics()
+            # construct metrics from the font directly — the QPainter
+            # convenience overload mismanages ownership on some platforms
+            # (none_dealloc refcount abort on Linux CI)
+            fm = QFontMetrics(f)
             value = self._field_text(field)
             if value is None:
                 continue
