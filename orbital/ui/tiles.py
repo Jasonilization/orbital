@@ -21,6 +21,35 @@ _FIELD_PRIORITY = ["config", "state", "name", "mass", "symbol", "number"]
 BASE_SIZE = QSize(86, 74)
 MIN_SCALE = 0.8
 
+# Paint-resource caches. Painting 118 tiles allocates thousands of QFont /
+# QFontMetrics / QColor C++ objects per window show; on some shiboken +
+# platform combinations that allocation volume trips refcount bugs
+# (none_dealloc aborts on Linux CI). One cached object per (family,
+# size, bold) or colour key paints identically and far faster.
+_FONT_METRICS = {}
+_TEXT_COLORS = {}
+
+
+def _paint_font_metrics(widget_font, point, bold):
+    key = (widget_font.family(), round(point, 2), bold)
+    cached = _FONT_METRICS.get(key)
+    if cached is None:
+        f = QFont(widget_font)
+        f.setPointSizeF(point)
+        f.setBold(bold)
+        cached = (f, QFontMetrics(f))
+        _FONT_METRICS[key] = cached
+    return cached
+
+
+def _paint_text_color(base: QColor) -> QColor:
+    key = base.name()
+    c = _TEXT_COLORS.get(key)
+    if c is None:
+        c = readable_text_on(base)
+        _TEXT_COLORS[key] = c
+    return c
+
 
 def layout_fields(width, height, fields, font_scale=1.0):
     """Compute the row stack for a tile. Returns a list of
@@ -212,22 +241,16 @@ class ElementTile(QWidget):
         p.setBrush(Qt.NoBrush)
         text_alpha = 1.0 if not self._dimmed else 0.45
         p.setOpacity(text_alpha)
-        text = readable_text_on(QColor(self._color) if not self._dimmed else base)
+        text = _paint_text_color(QColor(self._color) if not self._dimmed else base)
         p.setPen(text)  # drawText uses the pen — restore it after NoPen fill
 
         font_scale = 1.0  # tile_font_scale applied via app font
         rows = layout_fields(w, h, self.fields, font_scale)
 
+        widget_font = self.font()
         for field, x, y, pt, avail_w in rows:
-            f = QFont(self.font())
-            f.setPointSizeF(pt)
-            if field == "symbol":
-                f.setBold(True)
+            f, fm = _paint_font_metrics(widget_font, pt, field == "symbol")
             p.setFont(f)
-            # construct metrics from the font directly — the QPainter
-            # convenience overload mismanages ownership on some platforms
-            # (none_dealloc refcount abort on Linux CI)
-            fm = QFontMetrics(f)
             value = self._field_text(field)
             if value is None:
                 continue
