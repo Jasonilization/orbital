@@ -15,13 +15,17 @@ def qapp():
 
 
 def pytest_sessionfinish(session, exitstatus):
-    """Headless teardown: clear Qt caches and flush events, then exit
-    hard. PySide's interpreter-exit teardown races Qt's own cleanup under
-    the offscreen platform on some Linux runners (SIGABRT after all
-    tests pass). os._exit skips that teardown — only in offscreen/test
-    context, never the real app."""
+    """Headless teardown: after a fully green run, clear Qt caches, flush
+    and exit hard. PySide's interpreter-exit teardown races Qt's own
+    cleanup under the offscreen platform on some Linux runners
+    (SIGABRT after all tests pass). On failures we exit normally so
+    pytest can print the details."""
     if os.environ.get("QT_QPA_PLATFORM") != "offscreen":
         return
+    if exitstatus != 0:
+        return
+    if os.environ.get("ORBITAL_HARD_EXIT") != "1":
+        return   # local runs: let pytest print its summary and exit normally
     from PySide6.QtWidgets import QApplication
     app = QApplication.instance()
     if app is not None:
@@ -31,7 +35,7 @@ def pytest_sessionfinish(session, exitstatus):
     import sys
     sys.stdout.flush()
     sys.stderr.flush()
-    os._exit(exitstatus)
+    os._exit(0)
 
 
 @pytest.fixture()

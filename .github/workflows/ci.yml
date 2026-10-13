@@ -29,6 +29,8 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e .[dev]
       - name: Run tests (offscreen Qt)
+        env:
+          ORBITAL_HARD_EXIT: "1"   # PySide teardown segfaults on exit on some Linux runners
         run: python -m pytest
 
   package-macos:

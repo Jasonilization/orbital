@@ -54,7 +54,7 @@ class MainWindow(QMainWindow):
         self._apply_state()
         self.settings.changed.connect(self._on_setting_changed)
         if not self.settings.get("setup_done"):
-            QTimer.singleShot(100, self._show_setup)
+            QTimer.singleShot(0, self._show_setup)
 
     # ------------------------------------------------------------------ ui
 
