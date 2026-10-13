@@ -2,6 +2,8 @@
 
 **A fast, offline periodic table for macOS, Windows, and Linux.** Built with Python and Qt (PySide6) — a real desktop app, not a web page in a window. All 118 elements, four table layouts, education levels from IGCSE to Advanced, fifteen ways to colour the table, and 200 chemistry jokes.
 
+The complete feature list lives in [FEATURES.md](FEATURES.md).
+
 No account, no cloud, no telemetry. The table loads instantly because everything is on disk.
 
 <p align="center">

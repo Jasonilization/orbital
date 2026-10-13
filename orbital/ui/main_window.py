@@ -26,7 +26,6 @@ from orbital.ui.compare_dialog import CompareDialog
 from orbital.ui.legend import LegendBar
 from orbital.ui.search_box import SearchBox
 from orbital.ui.settings_dialog import SettingsDialog
-from orbital.ui.setup_dialog import SetupDialog
 from orbital.ui.sidebar import Sidebar
 from orbital.ui.table_view import TableView
 from orbital.ui.theme import apply_theme, is_dark_theme as is_dark_now
@@ -121,9 +120,23 @@ class MainWindow(QMainWindow):
             "Highlight the 46 elements on the IGCSE data sheet; the rest stay "
             "findable but dimmed")
         self.focus_button.toggled.connect(self._on_focus_toggled)
-        # the toolbar's layout re-shows plain child widgets when it relayouts;
-        # hiding the ACTION is the supported way to hide a toolbar item
         self.focus_action = self.toolbar.addWidget(self.focus_button)
+
+        # zoom: - / live % / +, plus Ctrl+wheel over the table
+        self.zoom_out = QPushButton("\u2212")
+        self.zoom_out.setFixedWidth(30)
+        self.zoom_out.setToolTip("Zoom out (Ctrl+\u2212 or Ctrl+scroll)")
+        self.zoom_out.clicked.connect(lambda: self._zoom(-0.1))
+        self.toolbar.addWidget(self.zoom_out)
+        self.zoom_label = QLabel("100%")
+        self.zoom_label.setToolTip("Tile size — Ctrl+0 resets")
+        self._zoom_label_fixed()
+        self.toolbar.addWidget(self.zoom_label)
+        self.zoom_in = QPushButton("+")
+        self.zoom_in.setFixedWidth(30)
+        self.zoom_in.setToolTip("Zoom in (Ctrl+= or Ctrl+scroll)")
+        self.zoom_in.clicked.connect(lambda: self._zoom(+0.1))
+        self.toolbar.addWidget(self.zoom_in)
 
         spacer = QWidget()
         spacer.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
@@ -346,6 +359,7 @@ class MainWindow(QMainWindow):
         apply_theme(self.settings.get("theme"), self.settings.accent_hex())
         self._refresh_icons()
         self._refresh_focus_button()
+        self._refresh_zoom_label()
 
     def _refresh_focus_button(self):
         """The syllabus toggle only exists at IGCSE level."""
@@ -413,8 +427,9 @@ class MainWindow(QMainWindow):
         needed = 18 * BASE_W + 17 * 2 + 24  # tiles + spacing + row-label column
         scale = max(MIN_SCALE, min(1.0, (viewport - 12) / needed))
         self.settings.set("tile_scale", round(scale, 2))
-        self.table._apply_tile_scale()
+        self.table.apply_scale_only(scale)
         self.table.rebuild()
+        self._refresh_zoom_label()
 
     def _on_level_combo(self, index):
         self._set_level(self.level_combo.itemData(index))
@@ -481,14 +496,22 @@ class MainWindow(QMainWindow):
 
         QTimer.singleShot(0, do_rebuild)
 
+    def _zoom_label_fixed(self):
+        self.zoom_label.setFixedWidth(44)
+        self.zoom_label.setAlignment(Qt.AlignCenter)
+
+    def _refresh_zoom_label(self):
+        scale = float(self.settings.get("tile_scale"))
+        self.zoom_label.setText("%d%%" % round(scale * 100))
+
     def _zoom(self, delta):
         current = float(self.settings.get("tile_scale"))
         new = 1.0 if delta == 0 else round(current + delta, 2)
         new = max(0.8, min(1.6, new))
         if new == current:
             return
-        self.settings.set("tile_scale", new)
-        self.table.rebuild()
+        self.settings.set("tile_scale", new)   # handler applies the fast path
+        self._refresh_zoom_label()
 
     def _set_theme(self, theme_id):
         self.settings.set("theme", theme_id)
@@ -670,8 +693,12 @@ class MainWindow(QMainWindow):
             self.table.rebuild()
             self._block(self.layout_combo,
                         lambda: self.layout_combo.setCurrentText(self.settings.get("layout").title()))
-        elif key in ("tile_preset", "tile_fields", "tile_scale"):
+        elif key in ("tile_preset", "tile_fields"):
             self._queue_rebuild()
+        elif key == "tile_scale":
+            # zoom fast path: resize tiles, never rebuild 118 widgets
+            self.table.apply_scale_only(float(self.settings.get("tile_scale")))
+            self._refresh_zoom_label()
         elif key == "color_mode":
             self._set_color_mode(self.settings.get("color_mode"))
         elif key == "education_level":
@@ -699,10 +726,10 @@ class MainWindow(QMainWindow):
                 self.panel.show_element(self.current_element())
 
     def _show_setup(self):
-        dlg = SetupDialog(self, self.settings,
-                          first_run=not self.settings.get("setup_done"))
-        # non-modal: the table stays usable; Start applies and closes
-        dlg.accepted.connect(self._on_setup_accepted)
+        from orbital.ui.setup_wizard import SetupWizard
+        dlg = SetupWizard(self, self.settings)
+        # non-modal: the table stays usable behind it
+        dlg.finished_setup.connect(lambda _choices: self._on_setup_accepted())
         dlg.show()
 
     def _on_setup_accepted(self):

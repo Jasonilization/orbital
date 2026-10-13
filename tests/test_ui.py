@@ -239,29 +239,61 @@ def test_legend_wraps(win, qapp):
     assert h >= 18
 
 
-def test_first_run_setup_dialog(qapp, settings, tmp_path):
+def test_first_run_setup_wizard(qapp, settings, tmp_path):
+    from orbital.ui.setup_wizard import SetupWizard
     from orbital.ui.main_window import MainWindow
     from orbital.ui.theme import apply_theme
     from orbital.settings import Settings as S
     fresh = S(ini_path=str(tmp_path / "setup.ini"))
     fresh.set("setup_done", False)
-    assert fresh.get("setup_done") is False
     apply_theme("light", fresh.accent_hex())
     w = MainWindow(fresh)
     w.show()
-    qapp.processEvents()
-    # the first-run dialog was scheduled; find it among children
-    from orbital.ui.setup_dialog import SetupDialog as D
-    dlg = w.findChild(D)
+    for _ in range(3):
+        qapp.processEvents()
+    dlg = w.findChild(SetupWizard)
     assert dlg is not None and dlg.isVisible()
-    dlg.radios["igcse"].setChecked(True)
+    assert dlg.stack.count() == 3
+    # step 1: choose IGCSE, next
+    dlg.level_radios["igcse"].setChecked(True)
+    dlg._go_next()
+    assert dlg.stack.currentIndex() == 1
+    # step 2: pick dark theme, next
+    dlg.theme_radios["dark"].setChecked(True)
+    dlg._go_next()
+    assert dlg.stack.currentIndex() == 2
+    assert "IGCSE" in dlg.summary.text()
+    assert dlg.next.text() == "Finish"
+    # finish applies everything
     dlg.accept()
     qapp.processEvents()
     assert fresh.education_level() == "igcse"
     assert fresh.get("igcse_focus") is True
     assert fresh.get("tile_preset") == "school"
+    assert fresh.get("theme") == "dark"
     assert fresh.get("setup_done") is True
-    assert w.focus_button.isVisible()
+    assert w.focus_button.isVisibleTo(w)
+    w.close()
+
+
+def test_setup_wizard_skip(qapp, settings, tmp_path):
+    from orbital.ui.setup_wizard import SetupWizard
+    from orbital.ui.main_window import MainWindow
+    from orbital.ui.theme import apply_theme
+    from orbital.settings import Settings as S
+    fresh = S(ini_path=str(tmp_path / "skip.ini"))
+    fresh.set("setup_done", False)
+    apply_theme("light", fresh.accent_hex())
+    w = MainWindow(fresh)
+    w.show()
+    qapp.processEvents()
+    dlg = w.findChild(SetupWizard)
+    dlg._skip()
+    qapp.processEvents()
+    # skipped: defaults kept, never nags again
+    assert not dlg.isVisible()
+    assert fresh.get("setup_done") is True
+    assert fresh.education_level() == "general"
     w.close()
 
 
@@ -424,3 +456,29 @@ def test_settings_burst_causes_single_rebuild(win, qapp):
         win.table.rebuild = real_rebuild
         win.settings.set("tile_preset", "standard")
         qapp.processEvents()
+
+
+def test_zoom_controls_and_fast_path(win, qapp):
+    # toolbar cluster exists and shows the live scale
+    assert win.zoom_out.text() == "\u2212" and win.zoom_in.text() == "+"
+    win.settings.set("tile_scale", 1.0)
+    qapp.processEvents()
+    assert win.zoom_label.text() == "100%"
+    # zooming must NOT rebuild: the same widget objects, resized
+    fe_before = win.table.tiles[26]
+    size_before = (fe_before.width(), fe_before.height())
+    win.zoom_in.click()
+    qapp.processEvents()
+    assert win.table.tiles[26] is fe_before          # no rebuild happened
+    assert win.zoom_label.text() == "110%"
+    assert (fe_before.width(), fe_before.height()) != size_before
+    # ctrl+wheel logic clamps at the limits
+    assert abs(win.table._ctrl_wheel_zoom(+99) - 1.6) < 0.001  # big jump clamps
+    while win.table._ctrl_wheel_zoom(+1):
+        pass
+    assert abs(win.settings.get("tile_scale") - 1.6) < 0.001
+    assert win.table._ctrl_wheel_zoom(+1) is None
+    win.zoom_label  # still alive
+    win._zoom(0)    # reset
+    qapp.processEvents()
+    assert win.settings.get("tile_scale") == 1.0

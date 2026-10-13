@@ -103,9 +103,36 @@ class TableView(QWidget):
                 h.setValue(self._pan_h - dx)
                 v.setValue(self._pan_v - dy)
                 return True
+            elif et == QEvent.Wheel and event.modifiers() & Qt.ControlModifier:
+                steps = 1 if event.angleDelta().y() > 0 else -1
+                self._ctrl_wheel_zoom(steps)
+                return True  # zoom instead of scrolling
         return super().eventFilter(obj, event)
 
     # ------------------------------------------------------------------ build
+
+    def apply_scale_only(self, scale):
+        """Fast path for zoom: resize the existing tiles instead of
+        rebuilding 118 widgets."""
+        size = self._tile_size()
+        for tile in self.tiles.values():
+            tile.setFixedSize(size)
+        self._scroll.updateGeometry()
+
+    def set_tile_scale(self, scale):
+        """Persist + apply a tile scale (zoom) without a rebuild."""
+        self.settings.set("tile_scale", scale)
+        self.apply_scale_only(scale)
+
+    def _ctrl_wheel_zoom(self, steps):
+        """Ctrl+wheel zoom handler. Returns the new scale, or None if
+        clamped at a limit."""
+        scale = max(0.8, min(1.6, round(self.settings.get("tile_scale")
+                                         + 0.1 * steps, 2)))
+        if abs(scale - self.settings.get("tile_scale")) < 0.001:
+            return None
+        self.set_tile_scale(scale)
+        return scale
 
     def _tile_size(self) -> QSize:
         scale = max(MIN_SCALE, self.settings.get("tile_scale") or 1.0)

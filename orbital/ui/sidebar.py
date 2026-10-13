@@ -120,6 +120,7 @@ class Sidebar(QWidget):
         self.elements = elements
         self.color_modes = color_modes
         self._item_numbers = {}
+        self._items_by_number = {}
         self._filter_numbers = None
 
         lay = QVBoxLayout(self)
@@ -161,6 +162,7 @@ class Sidebar(QWidget):
     def _build(self):
         self.tree.clear()
         self._item_numbers = {}
+        self._items_by_number = {}
         by_cat = {}
         for e in self.elements:
             if self._filter_numbers is not None and e.number not in self._filter_numbers:
@@ -185,6 +187,7 @@ class Sidebar(QWidget):
                 item.setToolTip(0, "%d \u00b7 %s" % (e.number, e.name))
                 section.addChild(item)
                 self._item_numbers[id(item)] = e.number
+                self._items_by_number[e.number] = item
 
     # ------------------------------------------------------------------ input
 
@@ -196,13 +199,9 @@ class Sidebar(QWidget):
             item.setExpanded(not item.isExpanded())
 
     def select_element(self, number):
-        for i in range(self.tree.topLevelItemCount()):
-            section = self.tree.topLevelItem(i)
-            for j in range(section.childCount()):
-                child = section.child(j)
-                if self._item_numbers.get(id(child)) == number:
-                    self.tree.blockSignals(True)
-                    self.tree.setCurrentItem(child)
-                    self.tree.scrollToItem(child)
-                    self.tree.blockSignals(False)
-                    return
+        item = self._items_by_number.get(number)
+        if item is not None:
+            self.tree.blockSignals(True)
+            self.tree.setCurrentItem(item)
+            self.tree.scrollToItem(item)
+            self.tree.blockSignals(False)
