@@ -31,7 +31,7 @@ jobs:
       - name: Run tests (offscreen Qt)
         env:
           ORBITAL_HARD_EXIT: "1"   # PySide teardown segfaults on exit on some Linux runners
-        run: python -m pytest
+        run: python -X faulthandler -m pytest -v -s
 
   package-macos:
     name: package macOS
