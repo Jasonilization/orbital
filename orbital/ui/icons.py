@@ -1,9 +1,16 @@
 """Minimal standard icons, drawn with QPainter — no icon files, no
-dependency. Only four, each with an obvious conventional meaning:
-magnifier (search), funnel (filter), gear (settings), question (help).
+dependency. Only a few, each with an obvious conventional meaning:
+magnifier (search), funnel (filter), gear (settings), question (help),
+sun/moon (theme), flask/box/clock/layers (sections), plus.
 Follows the palette text colour so it works in every theme.
+
+Icons are cached per (name, size, colour) — and the cache is cleared at
+interpreter exit, because QPixmaps surviving past the QApplication are
+a textbook PySide shutdown segfault (seen on Linux + py3.10 in CI).
 """
 from __future__ import annotations
+
+import atexit
 
 from PySide6.QtCore import Qt, QPointF, QRectF
 from PySide6.QtGui import (QIcon, QPainter, QPen, QColor, QPixmap, QPalette,
@@ -21,6 +28,15 @@ def _text_color() -> QColor:
 
 
 _CACHE = {}
+
+
+def clear_icon_cache():
+    """Drop cached QIcons before Qt teardown — QPixmap outliving the
+    QApplication segfaults at exit on some platforms."""
+    _CACHE.clear()
+
+
+atexit.register(clear_icon_cache)
 
 
 def icon(name: str, size: int = 16) -> QIcon:

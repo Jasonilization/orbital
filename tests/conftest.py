@@ -14,6 +14,18 @@ def qapp():
     yield app
 
 
+def pytest_sessionfinish(session, exitstatus):
+    """Clear Qt object caches and flush events before interpreter exit —
+    leaves QObjects alive past the QApplication is what segfaults the
+    Linux runners."""
+    from PySide6.QtWidgets import QApplication
+    app = QApplication.instance()
+    if app is not None:
+        from orbital.ui.icons import clear_icon_cache
+        clear_icon_cache()
+        app.processEvents()
+
+
 @pytest.fixture()
 def settings(tmp_path):
     from orbital.settings import Settings
